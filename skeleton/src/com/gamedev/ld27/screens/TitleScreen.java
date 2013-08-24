@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import com.gamedev.ld27.Skeleton;
 
 public class TitleScreen extends GameScreen {
@@ -44,7 +45,7 @@ public class TitleScreen extends GameScreen {
 		}
 
 		if (Gdx.input.justTouched()) {
-//			game.setScreen(game.screens.get("SomeOtherScreen"));
+			game.setScreen(game.screens.get("Play"));
 		}
 
 		camera.update();
@@ -68,8 +69,5 @@ public class TitleScreen extends GameScreen {
 		batch.dispose();
 		texture.dispose();
 	}
-
-	@Override
-	public void resize(int width, int height) {}
 
 }
