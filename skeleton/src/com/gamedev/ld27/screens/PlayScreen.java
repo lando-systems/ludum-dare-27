@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 
+import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Skeleton;
 import com.gamedev.ld27.gameobjects.GameObject;
 import com.gamedev.ld27.gameobjects.WorldMap;
@@ -12,11 +14,13 @@ import com.gamedev.ld27.gameobjects.WorldMap;
 public class PlayScreen extends GameScreen {
 
 	private ArrayList<GameObject> _gameObjects = new ArrayList<GameObject>();
+	private OrthographicCamera camera;
 	
 	public PlayScreen(Skeleton game) {
 		super(game);
 		
 		_gameObjects.add(new WorldMap());
+		camera = new OrthographicCamera(Config.screenWidth, Config.screenHeight);
 	}
 
 	@Override
@@ -42,6 +46,7 @@ public class PlayScreen extends GameScreen {
 		Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1.f);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 		
+		batch.setProjectionMatrix(camera.combined);
 		for (GameObject gameObject : _gameObjects) {
 			gameObject.render(batch);
 		}

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.gamedev.ld27.Config;
 
 public class WorldMap extends GameObject {
 
@@ -33,7 +34,7 @@ public class WorldMap extends GameObject {
 		//Load Map
 		for (int i =0; i < mapGrid.length; i ++)
 		{
-			mapGrid[i] = 0;
+			mapGrid[i] = Config.rand.nextInt(100);
 		}
 	}
 	
@@ -45,7 +46,7 @@ public class WorldMap extends GameObject {
 			for (int x = 0; x < mapWidth; x++) {
 				Sprite tile = mapTiles[mapGrid[x + (y *mapWidth)]];
 				//tile.setOrigin(tile.getWidth()/2, tile.getHeight()/2);
-				tile.setPosition(x * TILE_SIZE, y * TILE_SIZE );
+				tile.setPosition(-Config.screenHalfWidth + x * TILE_SIZE, -Config.screenHalfHeight + y * TILE_SIZE );
 				tile.draw(batch);
 			}
 		}
