@@ -4,12 +4,12 @@ import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.items.OffensiveWeaponItem;
 import com.gamedev.ld27.obstacle.DragonShackles;
 
-public class Hacksaw extends OffensiveWeaponItem {
+public class Torch extends OffensiveWeaponItem {
 
-	public Hacksaw(Vector2 position)
+	public Torch(Vector2 position)
 	{
 		super(position);
-		this.setDescription("Hacksaw");
+		this.setDescription("Oxy acetylene torch");
 		this.addDefeater(DragonShackles.class);
 	}
 }
