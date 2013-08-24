@@ -22,18 +22,21 @@ public class PlayScreen extends GameScreen {
 		
 		// grid sizes
 		float leftWidth = Config.screenWidth * 0.9f;
-		float rightWidth = Config.screenHeight - leftWidth;
+		float rightWidth = Config.screenWidth - leftWidth;
 		
-		float topHeight = Config.screenHeight * 0.9f;
+		float topHeight = Config.screenHeight * 0.8f;
 		float mapHeight = Config.screenHeight * 0.6f;
 		float dialogHeight = topHeight - mapHeight;
 		
 		float adHeight = Config.screenHeight - topHeight;
 		
-		_gameObjects.add(new WorldMap(new Rectangle(0, 0, leftWidth, mapHeight)));
-		_gameObjects.add(new DialogBox(new Rectangle(0, mapHeight, leftWidth, dialogHeight)));
-		_gameObjects.add(new AdBar(new Rectangle(0, topHeight, Config.screenWidth, adHeight)));
-		_gameObjects.add(new ItemsBar(new Rectangle(leftWidth, 0, rightWidth, topHeight)));		
+		float y = Config.screenHeight - mapHeight;
+		
+		_gameObjects.add(new WorldMap(new Rectangle(0, y, leftWidth, mapHeight)));
+		y -= dialogHeight;
+		_gameObjects.add(new DialogBox(new Rectangle(0, y, leftWidth, dialogHeight)));
+		_gameObjects.add(new AdBar(new Rectangle(0, 0, Config.screenWidth, adHeight)));
+		_gameObjects.add(new ItemsBar(new Rectangle(leftWidth, Config.screenHeight - topHeight, rightWidth, topHeight)));		
 		camera = new OrthographicCamera(Config.screenWidth, Config.screenHeight);
 	}
 
