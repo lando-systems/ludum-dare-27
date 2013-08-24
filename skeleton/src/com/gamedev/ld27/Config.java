@@ -10,4 +10,7 @@ public class Config {
 	public static int screenHalfWidth = screenWidth/2;
 	public static int screenHalfHeight = screenHeight /2;
 	public static Random rand = new Random();
+	
+	public static int textWidth = 16;
+	public static int textHeight = 16;
 }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
+import com.gamedev.ld27.Game;
 import com.badlogic.gdx.math.Rectangle;
 
 import com.gamedev.ld27.Skeleton;
@@ -34,10 +35,27 @@ public class PlayScreen extends GameScreen {
 		
 		_gameObjects.add(new WorldMap(new Rectangle(0, y, leftWidth, mapHeight)));
 		y -= dialogHeight;
-		_gameObjects.add(new DialogBox(new Rectangle(0, y, leftWidth, dialogHeight)));
+		
+		Game.DialogBox = new DialogBox(new Rectangle(0, y, leftWidth, dialogHeight));
+		_gameObjects.add(Game.DialogBox);
+		
 		_gameObjects.add(new AdBar(new Rectangle(0, 0, Config.screenWidth, adHeight)));
 		_gameObjects.add(new ItemsBar(new Rectangle(leftWidth, Config.screenHeight - topHeight, rightWidth, topHeight)));		
 		camera = new OrthographicCamera(Config.screenWidth, Config.screenHeight);
+		
+		// test
+		Thread t = new Thread(new Runnable() {
+			public void run() {
+				try {
+					while (true) {
+						Game.DialogBox.AppendText("Text test" + Config.rand.nextInt(30));
+						Thread.sleep(800);
+					}
+				} catch(Exception e) {
+				}
+			}
+		});
+		t.start();
 	}
 
 	@Override
