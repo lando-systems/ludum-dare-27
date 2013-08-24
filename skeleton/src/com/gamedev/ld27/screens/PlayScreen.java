@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-
+import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Skeleton;
 import com.gamedev.ld27.gameobjects.GameObject;
@@ -46,9 +46,9 @@ public class PlayScreen extends GameScreen {
 		Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1.f);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 		
-		batch.setProjectionMatrix(camera.combined);
+		Assets.batch.setProjectionMatrix(camera.combined);
 		for (GameObject gameObject : _gameObjects) {
-			gameObject.render(batch);
+			gameObject.render(Assets.batch);
 		}
 	}
 
