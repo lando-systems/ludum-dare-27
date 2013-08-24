@@ -9,10 +9,20 @@ import com.gamedev.ld27.BaseGamePlayObject;
 
 public abstract class BaseItem extends BaseGamePlayObject {
 
+	private int _defeats;
+	
 	public BaseItem(Vector2 position) {
 		super(position);
 		setDescription("Anonymous item - give me a name!");
 		setIcon("default_item.png");
+	}
+
+	public boolean doesDefeat(int gameCode) {
+		return (_defeats & gameCode) != 0;
+	}
+
+	protected void setDefeats(int defeats) {
+		_defeats = defeats;
 	}
 
 }
