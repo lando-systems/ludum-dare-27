@@ -42,6 +42,7 @@ public class Assets {
 	}
 
 	public static void dispose() {
+		mapTiles.dispose();
 		titleBackground.dispose();
 		spritesheet.dispose();
 		batch.dispose();
