@@ -11,7 +11,8 @@ public abstract class BaseItem extends BaseGamePlayObject {
 
 	public BaseItem(Vector2 position) {
 		super(position);
-		// TODO Auto-generated constructor stub
+		setDescription("Anonymous item - give me a name!");
+		setIcon("default_item.png");
 	}
 
 }
