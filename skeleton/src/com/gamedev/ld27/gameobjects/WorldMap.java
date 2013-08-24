@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
+import com.badlogic.gdx.math.Rectangle;
 
 public class WorldMap extends GameObject {
 
@@ -16,7 +17,9 @@ public class WorldMap extends GameObject {
 	private int mapHeight = 100;
 	private int[] mapGrid = new int[mapWidth * mapHeight]; // this is the game map indexes
 	
-	public WorldMap() {
+	public WorldMap(Rectangle bounds) {
+		super(bounds);
+		
 		tilesWide = Assets.mapTiles.getWidth() / TILE_SIZE;
 		tilesHigh = Assets.mapTiles.getHeight()/TILE_SIZE;
 		mapTiles = new Sprite[tilesWide * tilesHigh]; 
@@ -36,8 +39,7 @@ public class WorldMap extends GameObject {
 	
 	@Override
 	public void render(SpriteBatch batch) {
-		batch.begin();
-
+				
 		for(int y = 0; y < mapHeight; y++ ){
 			for (int x = 0; x < mapWidth; x++) {
 				Sprite tile = mapTiles[mapGrid[x + (y *mapWidth)]];
@@ -46,7 +48,6 @@ public class WorldMap extends GameObject {
 				tile.draw(batch);
 			}
 		}
-		batch.end();
 	}
 
 	@Override
@@ -54,7 +55,4 @@ public class WorldMap extends GameObject {
 		// TODO Auto-generated method stub
 		
 	}
-
-
-
 }
