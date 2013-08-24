@@ -61,8 +61,11 @@ public class WorldMap extends GameObject {
 			for (int x = -100; x < mapWidth + 100; x++) {
 				Sprite tile;
 				Rectangle viewPort = new Rectangle(charPos.x, charPos.y, _bounds.width, _bounds.height);
+				
+				// Not on screen
 				if (!viewPort.contains(x*32, y*32) && !viewPort.contains((x+1)*32, (y+1)*32) &&
 					!viewPort.contains(x*32, (y+1)*32) && !viewPort.contains((x+1)*32, y*32)) continue;
+				
 				if (x < 0 || x >= mapWidth || y < 0 || y >= mapHeight)
 				{
 					tile = mapTiles[2]; // Make this Mountains
@@ -71,7 +74,7 @@ public class WorldMap extends GameObject {
 					tile = mapTiles[mapGrid[x + (y *mapWidth)]];
 				}
 				
-				tile.setPosition(_bounds.x -charPos.x -Config.screenHalfWidth + x * TILE_SIZE, _bounds.y - charPos.y -Config.screenHalfHeight + y * TILE_SIZE );
+				tile.setPosition(_bounds.x - charPos.x -Config.screenHalfWidth + x * TILE_SIZE, _bounds.y - charPos.y -Config.screenHalfHeight + y * TILE_SIZE );
 				tile.draw(batch);
 			}
 		}
@@ -79,6 +82,8 @@ public class WorldMap extends GameObject {
 
 	@Override
 	public void update(float delta) {
+		
+		//TODO move this into a player controller?
 		if(Gdx.input.isKeyPressed(Keys.W)){
 			charPos.y += delta * SPEED;
 		}
