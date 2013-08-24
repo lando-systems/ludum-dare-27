@@ -9,6 +9,11 @@ import com.gamedev.ld27.Assets;
 public abstract class GameObject {
 	protected final Rectangle _bounds;
 
+	protected GameObject()
+	{
+		this(new Rectangle());
+	}
+	
 	protected GameObject(Rectangle bounds) {
 		_bounds = bounds;
 	}

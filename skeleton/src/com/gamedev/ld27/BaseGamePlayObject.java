@@ -4,14 +4,15 @@
  */
 package com.gamedev.ld27;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.gamedev.ld27.gameobjects.GameObject;
 
-public class BaseGamePlayObject {
+public class BaseGamePlayObject extends GameObject {
 
 	protected String description;
 	protected TextureRegion textureRegion;
-	private Vector2 objectPosition;
 	
 	/**
 	 * Return a description that can be displayed to the user 
@@ -39,16 +40,22 @@ public class BaseGamePlayObject {
 	}
 
 	protected Vector2 getObjectPosition() {
-		return objectPosition;
+		return new Vector2(_bounds.x, _bounds.y);
 	}
 
 	protected void setObjectPosition(Vector2 objectPosition) {
-		this.objectPosition = objectPosition;
+		_bounds.setPosition(objectPosition);
 	}
-	
-	//TODO:   Find out more about what is needed here
-	public static void render()
-	{
-		//this still needs lots of information on what it's going to do
+
+	@Override
+	public void render(SpriteBatch batch) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(float delta) {
+		// TODO Auto-generated method stub
+		
 	}
 }
