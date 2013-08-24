@@ -7,14 +7,11 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 import com.gamedev.ld27.Skeleton;
 
 public class TitleScreen extends GameScreen {
 
 	private OrthographicCamera camera;
-	private SpriteBatch batch;
 	private Texture texture;
 	private Sprite sprite;
 
@@ -25,7 +22,6 @@ public class TitleScreen extends GameScreen {
 		float h = Gdx.graphics.getHeight();
 
 		camera = new OrthographicCamera(1, h/w);
-		batch = new SpriteBatch();
 
 		texture = new Texture(Gdx.files.internal("data/libgdx.png"));
 		texture .setFilter(TextureFilter.Linear, TextureFilter.Linear);
@@ -66,7 +62,6 @@ public class TitleScreen extends GameScreen {
 
 	@Override
 	public void dispose() {
-		batch.dispose();
 		texture.dispose();
 	}
 
