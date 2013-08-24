@@ -16,6 +16,7 @@ public class Assets {
 
 	public static Texture spritesheet;
 	public static Texture titleBackground;
+	public static Texture mapTiles;
 
 	public static TextureRegion[][] letters;
 	public static TextureRegion[][] digits;
@@ -32,6 +33,9 @@ public class Assets {
 		titleBackground = new Texture(Gdx.files.internal("data/libgdx.png"));
 		titleBackground.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
+		mapTiles = new Texture(Gdx.files.internal("data/maptiles.png"));
+		mapTiles .setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+		
 		letters = splitAndGet(spritesheet, 8, 8, 0, 30, 26, 1);
 		digits  = splitAndGet(spritesheet, 8, 8, 0, 31, 10, 1);
 		symbols = splitAndGet(spritesheet, 8, 8, 10, 31, 18, 1);
