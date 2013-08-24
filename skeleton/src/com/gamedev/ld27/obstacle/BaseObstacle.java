@@ -10,6 +10,7 @@ public abstract class BaseObstacle extends BaseGamePlayObject {
 
 	public BaseObstacle(Vector2 position) {
 		super(position);
-		// TODO Auto-generated constructor stub
+		setDescription("Anonymous obstacle - give me a name!");
+		setIcon("default_obstacle.png");
 	}
 }
