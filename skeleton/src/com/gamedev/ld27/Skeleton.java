@@ -21,6 +21,8 @@ public class Skeleton extends Game {
 
 	@Override
 	public void create() {
+		Assets.load();
+		
 		screens.put("Title", new TitleScreen(this));
 		screens.put("Play", new PlayScreen(this));
 
@@ -32,6 +34,7 @@ public class Skeleton extends Game {
 		for (GameScreen screen : screens.values()) {
 			screen.dispose();
 		}
+		Assets.dispose();
 		Gdx.app.exit();
 	}
 
