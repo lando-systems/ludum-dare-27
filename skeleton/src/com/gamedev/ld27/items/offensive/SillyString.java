@@ -9,6 +9,8 @@ public class SillyString extends OffensiveWeaponItem {
 	public SillyString() {
 		super("Can of silly string", "Don't get it in your eyes");
 		this.setIcon(Assets.sillyString);
+		
+		setProperties(false, 3, 5, 2);
 	
 		setDefeats(GameSettings.CastleGuards);
 	}

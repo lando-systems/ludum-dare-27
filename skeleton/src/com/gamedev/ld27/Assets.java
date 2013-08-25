@@ -56,6 +56,12 @@ public class Assets {
 	public static TextureRegion bottleOfAcid;
 	public static TextureRegion redHerring;
 	public static TextureRegion aShrubbery;	
+	
+	// offensive weapons use
+	public static TextureRegion noWeapon;
+	public static TextureRegion wetNoodleVert;	
+	public static TextureRegion wetNoodleHor;	
+
 
 	public static void load() {
 		random = new Random();
@@ -110,6 +116,10 @@ public class Assets {
 		bottleOfAcid   = itemRow[1][8];
 		redHerring     = itemRow[1][9];
 		aShrubbery     = itemRow[1][10];
+		
+		noWeapon	   = itemRow[1][11];
+		wetNoodleHor   = itemRow[1][12];
+		wetNoodleVert  = itemRow[1][13];
 		
 		letters = splitAndGet(spritesheet, 8, 8, 0, 30, 26, 1);
 		digits  = splitAndGet(spritesheet, 8, 8, 0, 31, 10, 1);

@@ -8,8 +8,10 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
+import com.gamedev.ld27.Direction;
 import com.gamedev.ld27.Game;
 import com.gamedev.ld27.Utils;
+import com.gamedev.ld27.items.OffensiveWeaponItem;
 
 public class Player extends GameObject {
 
@@ -18,13 +20,14 @@ public class Player extends GameObject {
 	private static float SPEED = 100.0f;
 	private int startTileX = 10;
 	private int startTileY = 10;
-	private int walkingDir = 0; // N = 0; E = 1; S = 2; W = 3
+	private int walkingDir = Direction.North; // N = 0; E = 1; S = 2; W = 3
 	private float walkingAnimation = 0f;
 	
 	private Sprite[] animTiles; 
 	private static int TILE_SIZE = 32;
 	private int animLength;
-
+	
+	private WeaponSystem weapon;	
 	
 	public Player(Rectangle bounds) {
 		super(bounds);
@@ -39,6 +42,8 @@ public class Player extends GameObject {
 		
 		pos = new Vector2(startTileX*32,startTileY*32);
 		targetPos = new Vector2(startTileX*32,startTileY*32);
+		
+		weapon = new WeaponSystem(this);
 	}
 	
 	@Override
@@ -46,7 +51,19 @@ public class Player extends GameObject {
 		int animationFrame = (int)walkingAnimation % 4;
 		Sprite tile = animTiles[animationFrame + (walkingDir * animLength)];
 		tile.setPosition(_bounds.x - Config.screenHalfWidth, _bounds.y - Config.screenHalfHeight);
-		tile.draw(batch);
+		
+		boolean south = (walkingDir == Direction.South);
+		
+		// need to render behind player
+		if (!south) {
+			weapon.render(batch, walkingDir);
+		}
+		tile.draw(batch);	
+		
+		// render on player
+		if (south) {
+			weapon.render(batch, walkingDir);
+		}
 		
 	}
 	
@@ -59,22 +76,24 @@ public class Player extends GameObject {
 			Vector2 prevTarget = targetPos.cpy();
 			if(Gdx.input.isKeyPressed(Keys.W)){
 				targetPos.y += 32.0f;
-				walkingDir = 0;
+				walkingDir = Direction.North;
 			}
 			else if(Gdx.input.isKeyPressed(Keys.A)){
 				targetPos.x -= 32.0f;
-				walkingDir = 3;
+				walkingDir = Direction.West;
 			}
 			else if(Gdx.input.isKeyPressed(Keys.S)){
 				targetPos.y -= 32.0f;
-				walkingDir = 2;
+				walkingDir = Direction.South;
 			}
 			else if(Gdx.input.isKeyPressed(Keys.D)){
 				targetPos.x += 32.0f;
-				walkingDir = 1;
+				walkingDir = Direction.East;
 			}
 			if (!Game.gameWorld.walkable(targetPos)) targetPos = prevTarget;
 		} 
+		
+		weapon.update(delta);
 	}
 	
 	public boolean updatePos(float delta){
@@ -118,5 +137,9 @@ public class Player extends GameObject {
 			break;
 		}
 		return usePos;
+	}
+
+	public boolean useWeapon(OffensiveWeaponItem item) {
+		return weapon.useItem(item);	
 	}
 }

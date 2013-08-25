@@ -9,6 +9,8 @@ public class Boomerang extends OffensiveWeaponItem {
 		super("Boomerang", "if you love something let it go, it'll come back");
 		setIcon(Assets.boomerang);
 		
+		setProperties(false, 7, 30, 6);
+		
 		setDefeats(GameSettings.CastleGuards);
 	}
 }
