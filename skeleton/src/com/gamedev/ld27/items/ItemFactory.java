@@ -1,10 +1,19 @@
 package com.gamedev.ld27.items;
 
 import com.gamedev.ld27.Assets;
-import com.gamedev.ld27.items.modifiers.*;
-import com.gamedev.ld27.items.offensive.*;
-import com.gamedev.ld27.items.useful.*;
-import com.gamedev.ld27.items.useless.*;
+import com.gamedev.ld27.items.modifiers.Mushroom;
+import com.gamedev.ld27.items.offensive.BagOfJewels;
+import com.gamedev.ld27.items.offensive.BagOfKittens;
+import com.gamedev.ld27.items.offensive.Hacksaw;
+import com.gamedev.ld27.items.offensive.OffensiveTower;
+import com.gamedev.ld27.items.offensive.WetNoodle;
+import com.gamedev.ld27.items.useful.Bacon;
+import com.gamedev.ld27.items.useful.Bombs;
+import com.gamedev.ld27.items.useful.Boomerang;
+import com.gamedev.ld27.items.useful.Flute;
+import com.gamedev.ld27.items.useful.Hammer;
+import com.gamedev.ld27.items.useful.Helmet;
+import com.gamedev.ld27.items.useful.Slinky;
 
 public class ItemFactory {
 
@@ -36,7 +45,6 @@ public class ItemFactory {
 		if (name.equals("Hammer")) return new Hammer();
 		if (name.equals("Helmet")) return new Helmet();
 		if (name.equals("Slinky")) return new Slinky();
-		if (name.equals("UselessStar")) return new UselessStar();
 		if (name.equals("Mushroom")) return new Mushroom();
 		
 		return null;

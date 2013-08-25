@@ -9,6 +9,6 @@ public class Flute extends BaseItem {
 		super("Flute", "play a relaxing tune");
 		this.setIcon(Assets.flute);
 		
-		setDefeats(GameSettings.CastleGuards);
+		setDefeats(GameSettings.Snake);
 	}
 }
