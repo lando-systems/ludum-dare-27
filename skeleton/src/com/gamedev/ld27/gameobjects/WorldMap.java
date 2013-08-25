@@ -65,6 +65,9 @@ public class WorldMap extends GameObject {
 			mapGrid[i] = layer.getCell(i % mapWidth, i / mapWidth).getTile().getId()-1;
 		}
 		
+		
+		BaseItem slinky = ItemFactory.getItem("Slinky");
+		PlaceItem(slinky, new Vector2(2912, 288));
 
 	}
 	
@@ -160,7 +163,7 @@ public class WorldMap extends GameObject {
 		}
 		
 		//nothing laid on the map, now the real map tiles
-		if (tileType == 0 || tileType == 3 || tileType == 4 || tileType == 5 || tileType == 6|| tileType == 8 || tileType == 9) return true;
+		if (tileType == 0 || tileType == 3 || tileType == 4 || tileType == 5 || tileType == 6|| tileType == 8 || tileType == 9 || tileType == 14) return true;
 		return false;
 	}
 	
