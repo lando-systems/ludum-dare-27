@@ -138,6 +138,10 @@ public class WorldMap extends GameObject {
 		}
 	}
 	
+	public void SetMapTile(int x, int y, int type){
+		mapGrid[x + (y *mapWidth)] = type;
+	}
+	
 	private void placeNewRandom()
 	{
 		worldItems.remove(RandomDropItem);

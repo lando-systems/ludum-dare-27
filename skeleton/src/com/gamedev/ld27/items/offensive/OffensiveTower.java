@@ -16,6 +16,7 @@ public class OffensiveTower extends BaseItem {
 		setDefeats(GameSettings.DefensiveTower);
 		setAutoPickup(false);
 		_walkable = false;
+		_time = 10f;
 	}
 	
 	private float _time;
