@@ -11,6 +11,7 @@ import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Game;
 import com.gamedev.ld27.Utils;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 
 import com.gamedev.ld27.Skeleton;
 import com.gamedev.ld27.gameobjects.*;
@@ -21,6 +22,7 @@ public class PlayScreen extends GameScreen {
 
 	private ArrayList<GameObject> _gameObjects = new ArrayList<GameObject>();
 	private OrthographicCamera camera;
+	private float aiSpawn = 0f;
 	
 	public PlayScreen(Skeleton game) {
 		super(game);
@@ -57,9 +59,7 @@ public class PlayScreen extends GameScreen {
 		Game.itemsBar = new ItemsBar(new Rectangle(leftWidth, Config.screenHeight - topHeight, rightWidth, topHeight));
 		_gameObjects.add(Game.itemsBar);
 		
-		DumbAI dumbAi = new DumbAI();
-		dumbAi.init(100,  14,  14);
-		_gameObjects.add(dumbAi);
+
 		
 		camera = new OrthographicCamera(Config.screenWidth, Config.screenHeight);
 		
@@ -86,10 +86,29 @@ public class PlayScreen extends GameScreen {
 		return _gameObjects;
 	}
 
+	private void spawnAI(){
+		Vector2 tempPos; 
+		do {
+			tempPos = Game.player.pos.cpy();
+			int dx = Assets.random.nextInt(20) - 10;
+			int dy = Assets.random.nextInt(20) - 10;
+			tempPos.add(dx*32,dy*32);
+		} while (!Game.gameWorld.walkable(tempPos));
+
+		DumbAI dumbAi = new DumbAI();
+		Vector2 mapTile = Game.gameWorld.mapTileFromPosition(tempPos);
+		dumbAi.init(100,  (int)mapTile.x,  (int)mapTile.y);
+		_gameObjects.add(dumbAi);
+	}
+	
 	@Override
 	public void update(float delta) {
 		super.update(delta);
-		
+		aiSpawn -= delta;
+		if (aiSpawn < 0) {
+			aiSpawn += 10.0f;
+			spawnAI();
+		}
 		ArrayList<GameObject> keepObjs = new ArrayList<GameObject>();
 		for (GameObject gameObject : _gameObjects) {
 			gameObject.update(delta);
