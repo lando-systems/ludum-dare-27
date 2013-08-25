@@ -61,16 +61,19 @@ public class BaseGamePlayObject extends GameObject {
 	 * @param fileName
 	 */
 	protected void setIcon(TextureRegion region) {
+		textureRegion = region;
 		icon = new Sprite(region);
 		setPosition(icon, _bounds.x, _bounds.y);
+	}
+	
+	protected TextureRegion getTexture() {
+		return textureRegion;
 	}
 	
 	private void setPosition(Sprite sprite, float x, float y) {
 		pos = new Vector2(x, y);
 		icon.setPosition(x - Config.screenHalfWidth, y - Config.screenHalfHeight);
 	}
-	
-
 	
 	public Sprite getIcon() {
 		return icon;
