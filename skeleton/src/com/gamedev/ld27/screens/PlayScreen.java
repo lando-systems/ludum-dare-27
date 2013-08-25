@@ -98,7 +98,7 @@ public class PlayScreen extends GameScreen {
 		DumbAI dumbAi = new DumbAI();
 		Vector2 mapTile = Game.gameWorld.mapTileFromPosition(tempPos);
 		dumbAi.init(100,  (int)mapTile.x,  (int)mapTile.y);
-		_gameObjects.add(dumbAi);
+		_gameObjects.add(1, dumbAi);
 	}
 	
 	@Override
