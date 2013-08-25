@@ -14,6 +14,7 @@ import com.gamedev.ld27.gameobjects.GameObject;
 public class BaseGamePlayObject extends GameObject {
 
 	protected String description = "Anonymous item - give me a name!";
+	private String adDescription = "This is some text that will go in the advertisement";
 	protected Sprite icon;
 	protected TextureRegion textureRegion;
 	protected Vector2 pos;
@@ -76,6 +77,14 @@ public class BaseGamePlayObject extends GameObject {
 	public void render(SpriteBatch batch) {
 		icon.draw(batch);
 	}
+
+	protected String getAdDescription() {
+		return adDescription;
+	}
+	protected void setAdDescription(String adDescription) {
+		this.adDescription = adDescription;
+	}
+
 	public boolean isInWorld() {
 		return inWorld;
 	}

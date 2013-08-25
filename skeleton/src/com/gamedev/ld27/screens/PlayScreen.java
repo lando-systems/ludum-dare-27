@@ -57,6 +57,21 @@ public class PlayScreen extends GameScreen {
 		
 		camera = new OrthographicCamera(Config.screenWidth, Config.screenHeight);
 		
+		// test
+//		Thread t = new Thread(new Runnable() {
+//			public void run() {
+//				try {
+//					while (true) {
+//						Game.dialogBox.AppendText("Text test" + Config.rand.nextInt(30));
+//						Game.itemsBar.Add(new WetNoodle());
+//						Game.adBar.selectRandomAd();
+//						Thread.sleep(800);
+//					}
+//				} catch(Exception e) {
+//				}
+//			}
+//		});
+//		t.start();
 		TESTCODE();
 	}
 
@@ -137,6 +152,9 @@ public class PlayScreen extends GameScreen {
 //		Game.itemsBar.Add(new SillyString(), 9);
 		Game.itemsBar.Add(new Flute(), 9);
 		Game.itemsBar.Add(new BagOfKittens(), 4);
+		
+		//For now this just places a single ad, the rotation and randomization still to come
+		Game.adBar.selectRandomAd();
 	}
 
 }
