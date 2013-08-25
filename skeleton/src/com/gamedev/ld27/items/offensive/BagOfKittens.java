@@ -9,6 +9,6 @@ public class BagOfKittens extends OffensiveWeaponItem {
 		super("Bag of Kittens", "This is a bag and it's full of kittens with razor sharp claws");
 		setIcon(Assets.bagOfKittens);
 		
-		setProperties(false, 3, 5, 3);
+		setProperties(false, 3, 5, 1);
 	}
 }

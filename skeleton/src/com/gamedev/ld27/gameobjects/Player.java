@@ -142,4 +142,8 @@ public class Player extends GameObject {
 	public boolean useWeapon(OffensiveWeaponItem item) {
 		return weapon.useItem(item);	
 	}
+	
+	public int getDirection() {
+		return walkingDir;
+	}
 }

@@ -10,7 +10,7 @@ public class BouncyBall extends OffensiveWeaponItem {
 		super("Bouncy ball", "It's super bouncy and it's round");
 		setIcon(Assets.bouncyBall);
 		
-		setProperties(false, 4, 1, 2);
+		setProperties(false, 4, 1, 1);
 		
 		setDefeats(GameSettings.CastleGuards);
 	}

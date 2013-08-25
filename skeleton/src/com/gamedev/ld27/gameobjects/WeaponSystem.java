@@ -1,10 +1,13 @@
 package com.gamedev.ld27.gameobjects;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Direction;
+import com.gamedev.ld27.RangeWeapon;
 import com.gamedev.ld27.items.OffensiveWeaponItem;
 
 public class WeaponSystem {
@@ -16,17 +19,24 @@ public class WeaponSystem {
 	private OffensiveWeaponItem _item;
 	private Vector2 _playerPos;
 	
+	private ArrayList<RangeWeapon> _rangeWeapons = new ArrayList<RangeWeapon>(10);
+	
 	public WeaponSystem(Player player) {
 		_player = player;
 		_weaponBounds = new Rectangle(0, 0, _player.getWidth(), _player.getHeight());
 	}
 	
 	public boolean useItem(OffensiveWeaponItem item) {
-		if ((item == _item) && item.isMeleeWeapon()) return false;
+		if ((item == _item) && item.isSingleUse()) return false;
 		
 		_item = item;
 		_time = 0;
 		_playerPos = _player.getPosition();
+		
+		if (!item.isMeleeWeapon()) {
+			_rangeWeapons.add(new RangeWeapon(_player, item));
+		}
+		
 		return true;
 	}
 	
@@ -38,9 +48,25 @@ public class WeaponSystem {
 				_item = null;
 			}
 		}
+		
+		ArrayList<RangeWeapon> removeList = new ArrayList<RangeWeapon>();
+		for (RangeWeapon range : _rangeWeapons) {
+			range.update(delta);
+			if (range.isComplete()) {
+				removeList.add(range);
+			}
+		}
+		
+		for (RangeWeapon range : removeList) {
+			_rangeWeapons.remove(range);
+		}
 	}
 
 	public void render(SpriteBatch batch, int walkingDir) {
+		for (RangeWeapon range : _rangeWeapons) {
+			range.render(batch);
+		}
+		
 		if (_item == null) return;
 		
 		if (_item.isMeleeWeapon()) {
