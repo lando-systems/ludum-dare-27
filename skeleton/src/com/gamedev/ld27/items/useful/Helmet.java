@@ -15,6 +15,7 @@ public class Helmet extends BaseItem {
 	
 	@Override
 	public void use(){
+		Game.dialogBox.AppendText("I wonder where this is from?");
 		Game.itemsBar.Remove(this);
 		Game.player.SetWearingHelm();
 		playUseSound();

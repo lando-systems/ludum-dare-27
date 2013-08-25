@@ -104,7 +104,7 @@ public class PlayScreen extends GameScreen {
 			int dx = Assets.random.nextInt(20) - 10;
 			int dy = Assets.random.nextInt(20) - 10;
 			tempPos.add(dx*32,dy*32);
-		} while (!Game.gameWorld.walkable(tempPos));
+		} while (!Game.gameWorld.Spawnable(tempPos));
 
 		DumbAI dumbAi = new DumbAI();
 		Vector2 mapTile = Game.gameWorld.mapTileFromPosition(tempPos);
@@ -193,10 +193,6 @@ public class PlayScreen extends GameScreen {
 		Game.itemsBar.Add(new Hammer());
 		Game.itemsBar.Add(new Boomerang());
 
-
-		Game.itemsBar.Add(new BagOfKittens());
-
-		Game.itemsBar.Add(new OffensiveTower());
 
 	}
 
