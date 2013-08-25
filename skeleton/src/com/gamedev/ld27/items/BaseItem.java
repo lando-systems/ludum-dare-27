@@ -12,6 +12,7 @@ import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Utils;
 import com.gamedev.ld27.Utils.EStringJustify;
 import com.gamedev.ld27.Game;
+import com.gamedev.ld27.obstacle.BaseObstacle;
 
 public abstract class BaseItem extends BaseGamePlayObject {
 
@@ -65,5 +66,14 @@ public abstract class BaseItem extends BaseGamePlayObject {
 
 	protected void setAutoPickup(boolean autoPickup) {
 		_autoPickup = autoPickup;
+	}
+
+	public boolean defeat(BaseObstacle obstacle) {
+		if (doesDefeat(obstacle.getObstacleCode())) {
+			obstacle.defeat();
+			Game.itemsBar.Remove(this);
+			return true;
+		}
+		return false;
 	}
 }

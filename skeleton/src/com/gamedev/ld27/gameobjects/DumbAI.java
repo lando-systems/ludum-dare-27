@@ -3,7 +3,6 @@ package com.gamedev.ld27.gameobjects;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Direction;

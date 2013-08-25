@@ -61,6 +61,11 @@ public class Assets {
 	public static TextureRegion noWeapon;
 	public static TextureRegion wetNoodleVert;	
 	public static TextureRegion wetNoodleHor;	
+	
+	
+	// obstacles
+	public static TextureRegion troll;
+	public static TextureRegion rock;
 
 
 	public static void load() {
@@ -84,7 +89,7 @@ public class Assets {
 		playerSheet .setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 		
 		// Key items ------------------------------
-		TextureRegion[][] itemRow = splitAndGet(itemsheet, 32, 32, 0, 0, 20, 2);
+		TextureRegion[][] itemRow = splitAndGet(itemsheet, 32, 32, 0, 0, 20, 4);
 		wetNoodle      = itemRow[0][0];
 		bagOfJewels    = itemRow[0][1];
 		hammer         = itemRow[0][2];
@@ -120,6 +125,10 @@ public class Assets {
 		noWeapon	   = itemRow[1][11];
 		wetNoodleHor   = itemRow[1][12];
 		wetNoodleVert  = itemRow[1][13];
+		
+		// obstacles
+		troll 		   = itemRow[3][0];
+		rock 	       = itemRow[3][1];
 		
 		letters = splitAndGet(spritesheet, 8, 8, 0, 30, 26, 1);
 		digits  = splitAndGet(spritesheet, 8, 8, 0, 31, 10, 1);

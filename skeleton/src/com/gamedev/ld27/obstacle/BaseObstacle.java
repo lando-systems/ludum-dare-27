@@ -3,11 +3,12 @@
  */
 package com.gamedev.ld27.obstacle;
 
-import com.gamedev.ld27.items.BaseGamePlayObject;
+import com.gamedev.ld27.items.BaseItem;
 
-public abstract class BaseObstacle extends BaseGamePlayObject {
+public abstract class BaseObstacle extends BaseItem {
 	
 	private int _obstacleCode;
+	protected boolean _completed;
 
 	protected BaseObstacle(String name, String description, int obstacleCode) {
 		super(name, description);
@@ -16,5 +17,13 @@ public abstract class BaseObstacle extends BaseGamePlayObject {
 	
 	public int getObstacleCode() {
 		return _obstacleCode;
+	}
+	
+	public void defeat() {
+		_completed = true;
+	}
+	
+	public boolean isCompleted() {
+		return _completed;
 	}
 }
