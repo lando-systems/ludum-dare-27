@@ -101,7 +101,22 @@ public class Player extends GameObject {
 		return false;
 	}
 
-	public Vector2 getTargetPosition() {
-		return targetPos;
+	public Vector2 getUsePosition() {
+		Vector2 usePos = targetPos.cpy();
+		switch (walkingDir){
+		case 0:
+			usePos.add(0, 32);
+			break;
+		case 1:
+			usePos.add(32, 0);
+			break;
+		case 2:
+			usePos.add(0, -32);
+			break;
+		case 3: 
+			usePos.add(-32, 0);
+			break;
+		}
+		return usePos;
 	}
 }
