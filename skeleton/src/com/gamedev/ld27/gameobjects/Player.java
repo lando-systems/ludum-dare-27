@@ -146,4 +146,8 @@ public class Player extends GameObject {
 	public int getDirection() {
 		return walkingDir;
 	}
+	
+	public Vector2 getPlayerPosition() {
+		return pos;
+	}
 }

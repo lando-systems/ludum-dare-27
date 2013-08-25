@@ -8,6 +8,7 @@ import com.gamedev.ld27.items.OffensiveWeaponItem;
 
 public class RangeWeapon {
 
+	private Player _player;
 	private Vector2 _direction;
 	private Vector2 _offset;
 	private Vector2 _position;
@@ -19,10 +20,10 @@ public class RangeWeapon {
 	private float _rotation;
 		
 	public RangeWeapon(Player player, OffensiveWeaponItem item) {
+		_player = player;
 		_direction = getDirection(player, item);
-		//_offset = Game.gameWorld.
-		Vector2 playerPos = player.getPosition();
-		_position = new Vector2(playerPos.x, playerPos.y);
+		_offset = new Vector2(player.getPlayerPosition());
+		_position = new Vector2(player.getPosition());
 		_maxTime = item.animationTime();
 		_texture = item.getWeaponUseImage(player.getDirection());
 		_scale = item.getRangeScale();
@@ -48,8 +49,13 @@ public class RangeWeapon {
 	}
 	
 	public void update(float delta) {
-		_position.x += _direction.x*delta;
-		_position.y += _direction.y*delta;
+		Vector2 playerPos = new Vector2(_player.getPlayerPosition());
+		float dx = _offset.x - playerPos.x;
+		float dy = _offset.y - playerPos.y;
+		_offset = playerPos;
+		
+		_position.x += (_direction.x*delta + dx);
+		_position.y += (_direction.y*delta + dy);
 		_time += delta;	
 		
 		_rotation += _rotationDr*delta;
