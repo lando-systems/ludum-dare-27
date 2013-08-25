@@ -31,4 +31,8 @@ public class RangeWeapon extends Weapon {
 	public float getRotation(int direction) {
 		return 0f;
 	}
+	
+	public boolean doesReturn() {
+		return false;
+	}
 }
