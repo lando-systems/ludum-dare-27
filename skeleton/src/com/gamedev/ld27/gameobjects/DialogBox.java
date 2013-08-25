@@ -22,7 +22,7 @@ public class DialogBox extends GameObject {
 	
 	@Override
 	public void render(SpriteBatch batch) {
-		Fill(Color.BLACK, Color.RED);
+		fill(Color.BLACK, Color.RED);
 		float x = _bounds.x + 10 - Config.screenHalfWidth;
 		float y = _yPosition - Config.screenHalfHeight;
 		

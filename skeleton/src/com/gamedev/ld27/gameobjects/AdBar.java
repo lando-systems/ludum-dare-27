@@ -11,7 +11,7 @@ public class AdBar extends GameObject {
 	}
 	@Override
 	public void render(SpriteBatch batch) {
-		Fill(Color.GREEN);
+		fill(Color.GREEN);
 	}
 
 	@Override
