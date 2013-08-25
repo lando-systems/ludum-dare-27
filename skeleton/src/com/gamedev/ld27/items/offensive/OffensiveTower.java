@@ -4,7 +4,6 @@ import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Game;
 import com.gamedev.ld27.GameSettings;
-import com.gamedev.ld27.Utils;
 import com.gamedev.ld27.items.OffensiveWeaponItem;
 
 
