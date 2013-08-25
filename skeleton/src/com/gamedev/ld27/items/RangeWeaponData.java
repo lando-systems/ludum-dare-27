@@ -5,11 +5,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Direction;
-import com.gamedev.ld27.gameobjects.Player;
+import com.gamedev.ld27.gameobjects.PlayerBase;
 
 public class RangeWeaponData {
 
-	private Player _player;
+	private PlayerBase _player;
 	private Vector2 _direction;
 	private Vector2 _offset;
 	private Vector2 _position;
@@ -22,7 +22,7 @@ public class RangeWeaponData {
 	private boolean _isReturning;
 	private RangeWeapon _weapon;
 		
-	public RangeWeaponData(Player player, RangeWeapon item) {
+	public RangeWeaponData(PlayerBase player, RangeWeapon item) {
 		_player = player;
 		_direction = getDirection(player, item);
 		_offset = new Vector2(player.getPlayerPosition());
@@ -39,7 +39,7 @@ public class RangeWeaponData {
 		return (_weapon == weapon);
 	}
 	
-	private Vector2 getDirection(Player player, Weapon item) {
+	private Vector2 getDirection(PlayerBase player, Weapon item) {
 		
 		float speed = (item.getRange() * item.getWidth()) / item.animationTime();
 		
@@ -62,7 +62,7 @@ public class RangeWeaponData {
 	public void update(float delta) {
 		
 		if (_time < _maxTime) {
-			Vector2 playerPos = new Vector2(_player.getPlayerPosition());
+			Vector2 playerPos = _player.pos.cpy();
 			float dx = _offset.x - playerPos.x;
 			float dy = _offset.y - playerPos.y;
 			_offset = playerPos;

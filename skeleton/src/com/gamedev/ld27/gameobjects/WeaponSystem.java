@@ -13,7 +13,7 @@ import com.gamedev.ld27.items.RangeWeaponData;
 
 public class WeaponSystem {
 	
-	private Player _player;
+	private PlayerBase _player;
 	private Rectangle _weaponBounds;
 	
 	private float _time;
@@ -22,7 +22,7 @@ public class WeaponSystem {
 	
 	private ArrayList<RangeWeaponData> _rangeWeapons = new ArrayList<RangeWeaponData>(10);
 	
-	public WeaponSystem(Player player) {
+	public WeaponSystem(PlayerBase player) {
 		_player = player;
 		_weaponBounds = new Rectangle(0, 0, _player.getWidth(), _player.getHeight());
 	}
