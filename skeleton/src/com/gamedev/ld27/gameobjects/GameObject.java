@@ -54,7 +54,7 @@ public abstract class GameObject {
 		drawRect(bounds, border, true);
 	}
 	
-	private void drawRect(Rectangle bounds, Color border, boolean stopBatch) {
+	protected void drawRect(Rectangle bounds, Color border, boolean stopBatch) {
 		if (stopBatch) {
 			Assets.batch.end();
 		}
