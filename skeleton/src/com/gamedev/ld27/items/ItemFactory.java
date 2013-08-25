@@ -10,6 +10,7 @@ import com.gamedev.ld27.items.offensive.WetNoodle;
 import com.gamedev.ld27.items.useful.Bacon;
 import com.gamedev.ld27.items.useful.Bombs;
 import com.gamedev.ld27.items.useful.Boomerang;
+import com.gamedev.ld27.items.useful.ExplodingCigar;
 import com.gamedev.ld27.items.useful.Flute;
 import com.gamedev.ld27.items.useful.Hammer;
 import com.gamedev.ld27.items.useful.Helmet;
@@ -46,6 +47,7 @@ public class ItemFactory {
 		if (name.equals("Helmet")) return new Helmet();
 		if (name.equals("Slinky")) return new Slinky();
 		if (name.equals("Mushroom")) return new Mushroom();
+		if (name.equals("ExplodingCigar")) return new ExplodingCigar();
 		
 		return null;
 	}

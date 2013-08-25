@@ -8,6 +8,8 @@ import com.gamedev.ld27.Direction;
 import com.gamedev.ld27.Game;
 import com.gamedev.ld27.GameSettings;
 import com.gamedev.ld27.gameobjects.Player;
+import com.gamedev.ld27.items.BaseItem;
+import com.gamedev.ld27.items.ItemFactory;
 
 public class TrollBridge extends BaseObstacle {
 
@@ -28,7 +30,8 @@ public class TrollBridge extends BaseObstacle {
 		
 		setPosition(position);
 		Spawned = true;
-		// TODO Create cigar here right away.
+		BaseItem cigar = ItemFactory.getItem("ExplodingCigar");
+		Game.gameWorld.PlaceItem(cigar, position);
 		Game.dialogBox.SetText(" You have 10 seconds to pay a troll to cross this bridge!");
 		Game.dialogBox.AppendText("<Binary Troll> Rrrarr");		
 	}

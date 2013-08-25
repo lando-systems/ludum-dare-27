@@ -15,7 +15,7 @@ public class OffensiveTower extends BaseItem {
 		this.setIcon(Assets.offensiveTower);
 		setDefeats(GameSettings.DefensiveTower);
 		setAutoPickup(false);
-		_walkable = false;
+		_walkable = true;
 		_time = 10f;
 	}
 	
@@ -23,6 +23,7 @@ public class OffensiveTower extends BaseItem {
 	
 	public void update(float delta) {
 		if (isInWorld()) {
+			if (Game.player.isWearingHelf()) setAutoPickup(true);
 			if (inRange()){
 				_time += delta;
 

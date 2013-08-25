@@ -152,7 +152,7 @@ public class WorldMap extends GameObject {
 			int dx = Assets.random.nextInt(20) - 10;
 			int dy = Assets.random.nextInt(20) - 10;
 			tempPos.add(dx*32,dy*32);
-		} while (!Game.gameWorld.walkable(tempPos));
+		} while (!Game.gameWorld.Spawnable(tempPos));
 		PlaceItem(RandomDropItem, tempPos);
 	}
 	
@@ -177,6 +177,20 @@ public class WorldMap extends GameObject {
 		if (tileType == 0 || tileType == 3 || tileType == 4 || tileType == 5 || tileType == 6|| tileType == 8 || tileType == 9 || tileType == 14) return true;
 		return false;
 	}
+	
+	public boolean Spawnable(Vector2 worldPos) {
+		int tileType = getTileType(worldPos);
+		Vector2 tileVec = mapTileFromPosition(worldPos);
+		for (BaseItem item: worldItems){
+			Vector2 tileItem = mapTileFromPosition(item.getPosition());
+			if (!item.getWalkable() && tileItem.x == tileVec.x && tileItem.y == tileVec.y) return false;
+		}
+		
+		//nothing laid on the map, now the real map tiles
+		if (tileType == 0 || tileType == 3 || tileType == 5 || tileType == 6|| tileType == 8 || tileType == 9 || tileType == 14) return true;
+		return false;
+	}
+	
 	
 	public int getTileType(Vector2 worldPos) {
 		int tileX = (int)(worldPos.x / 32);
