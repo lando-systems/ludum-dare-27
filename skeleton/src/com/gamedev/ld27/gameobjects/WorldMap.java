@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import com.gamedev.ld27.Assets;
+import com.gamedev.ld27.Game;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -24,13 +25,12 @@ public class WorldMap extends GameObject {
 	private int mapWidth = 100;
 	private int mapHeight = 100;
 	private int[] mapGrid; // this is the game map indexes
-	private Vector2 charPos;
-	
-	private static float SPEED = 100.0f;
+
+
 	
 	public WorldMap(Rectangle bounds) {
 		super(bounds);
-		charPos = new Vector2();
+
 		tilesWide = Assets.mapTiles.getWidth() / TILE_SIZE;
 		tilesHigh = Assets.mapTiles.getHeight()/TILE_SIZE;
 		mapTiles = new Sprite[tilesWide * tilesHigh]; 
@@ -56,15 +56,16 @@ public class WorldMap extends GameObject {
 
 	@Override
 	public void render(SpriteBatch batch) {
-				
-		for(int y = -100; y < mapHeight + 100; y++ ){
-			for (int x = -100; x < mapWidth + 100; x++) {
+		int playerTileX = (int)Game.player.pos.x/32;
+		int playerTileY = (int)Game.player.pos.y/32;
+		for(int y = playerTileY - 40; y < playerTileY + 40; y++ ){
+			for (int x = playerTileX - 40; x < playerTileX + 40; x++) {
 				Sprite tile;
-				Rectangle viewPort = new Rectangle(charPos.x, charPos.y, _bounds.width, _bounds.height);
+				Rectangle viewPort = new Rectangle(Game.player.pos.x - (_bounds.width/2.0f), Game.player.pos.y - (_bounds.height/2.0f), _bounds.width, _bounds.height);
 				
 				// Not on screen
-				if (!viewPort.contains(x*32, y*32) && !viewPort.contains((x+1)*32, (y+1)*32) &&
-					!viewPort.contains(x*32, (y+1)*32) && !viewPort.contains((x+1)*32, y*32)) continue;
+				if (!viewPort.contains((x-2)*32, (y-2)*32) && !viewPort.contains((x+2)*32, (y+2)*32) &&
+					!viewPort.contains((x-2)*32, (y+2)*32) && !viewPort.contains((x+2)*32, (y-2)*32)) continue;
 				
 				if (x < 0 || x >= mapWidth || y < 0 || y >= mapHeight)
 				{
@@ -74,7 +75,7 @@ public class WorldMap extends GameObject {
 					tile = mapTiles[mapGrid[x + (y *mapWidth)]];
 				}
 				
-				tile.setPosition(_bounds.x - charPos.x -Config.screenHalfWidth + x * TILE_SIZE, _bounds.y - charPos.y -Config.screenHalfHeight + y * TILE_SIZE );
+				tile.setPosition(_bounds.x + (_bounds.width/2.0f) - 16 - Game.player.pos.x -Config.screenHalfWidth + x * TILE_SIZE, _bounds.y + (_bounds.height/2.0f) - 16 - Game.player.pos.y -Config.screenHalfHeight + y * TILE_SIZE );
 				tile.draw(batch);
 			}
 		}
@@ -83,18 +84,14 @@ public class WorldMap extends GameObject {
 	@Override
 	public void update(float delta) {
 		
-		//TODO move this into a player controller?
-		if(Gdx.input.isKeyPressed(Keys.W)){
-			charPos.y += delta * SPEED;
-		}
-		if(Gdx.input.isKeyPressed(Keys.A)){
-			charPos.x -= delta * SPEED;
-		}
-		if(Gdx.input.isKeyPressed(Keys.S)){
-			charPos.y -= delta * SPEED;
-		}
-		if(Gdx.input.isKeyPressed(Keys.D)){
-			charPos.x += delta * SPEED;
-		}
+
+	}
+	
+	public boolean walkable(Vector2 worldPos){
+		int tileX = (int)(worldPos.x / 32);
+		int tileY = (int)(worldPos.y / 32);
+		int tileType = mapGrid[tileX + (tileY *mapWidth)];
+		if (tileType == 0) return true;
+		return false;
 	}
 }

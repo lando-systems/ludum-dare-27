@@ -33,11 +33,18 @@ public class PlayScreen extends GameScreen {
 		
 		float y = Config.screenHeight - mapHeight;
 		
-		_gameObjects.add(new WorldMap(new Rectangle(0, y, leftWidth, mapHeight)));
+		Game.gameWorld = new WorldMap(new Rectangle(0, y, leftWidth, mapHeight));
+		_gameObjects.add(Game.gameWorld);
+		
+		Game.player = new Player(new Rectangle((leftWidth/2.0f -16), y + (mapHeight/2.0f)-16, 32, 32));
+		_gameObjects.add(Game.player);
+		
 		y -= dialogHeight;
 		
 		Game.DialogBox = new DialogBox(new Rectangle(0, y, leftWidth, dialogHeight));
 		_gameObjects.add(Game.DialogBox);
+		
+
 		
 		_gameObjects.add(new AdBar(new Rectangle(0, 0, Config.screenWidth, adHeight)));
 		_gameObjects.add(new ItemsBar(new Rectangle(leftWidth, Config.screenHeight - topHeight, rightWidth, topHeight)));		
