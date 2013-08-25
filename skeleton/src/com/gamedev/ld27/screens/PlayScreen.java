@@ -66,11 +66,14 @@ public class PlayScreen extends GameScreen {
 			gameObject.update(delta);
 		}
 		
-		if (Gdx.input.isKeyPressed(Keys.DOWN)) {
+		if (Utils.isKeyJustPressed(Keys.DOWN)) {
 			Game.itemsBar.selectNext(true);
 		} 
-		else if (Gdx.input.isKeyPressed(Keys.UP)){
+		else if (Utils.isKeyJustPressed(Keys.UP)) {
 			Game.itemsBar.selectNext(false);
+		}
+		else if (Utils.isKeyJustPressed(Keys.SPACE)) {
+			Game.itemsBar.useItem();			
 		}
 				
 //		if (Gdx.input.justTouched()) {
