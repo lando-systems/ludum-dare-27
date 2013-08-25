@@ -97,6 +97,8 @@ public class PlayScreen extends GameScreen {
 		for (GameObject gameObject : _gameObjects) {
 			gameObject.render(Assets.batch);
 		}
+		
+		Game.player.render(Assets.batch);
 		Assets.batch.end();
 	}
 

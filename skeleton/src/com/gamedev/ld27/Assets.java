@@ -18,6 +18,7 @@ public class Assets {
 	public static Texture titleBackground;
 	public static Texture mapTiles;
 	public static Texture itemsheet;
+	public static Texture playerSheet;
 
 	public static TextureRegion[][] letters;
 	public static TextureRegion[][] digits;
@@ -72,6 +73,9 @@ public class Assets {
 
 		mapTiles = new Texture(Gdx.files.internal("data/maptiles.png"));
 		mapTiles .setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+		
+		playerSheet = new Texture(Gdx.files.internal("data/playersheet.png"));
+		playerSheet .setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 		
 		// Key items ------------------------------
 		TextureRegion[][] itemRow = splitAndGet(itemsheet, 32, 32, 0, 0, 20, 2);
