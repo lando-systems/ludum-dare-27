@@ -6,7 +6,7 @@ import com.gamedev.ld27.items.OffensiveWeaponItem;
 public class BagOfKittens extends OffensiveWeaponItem {
 
 	public BagOfKittens() {
-		this.setDescription("Bag of Kittens: warning, dangerously cute");
+		super("Bag of Kittens", "This is a bag and it's full of kittens with razor sharp claws");
 		this.setIcon(Assets.bagOfKittens);
 	}
 }

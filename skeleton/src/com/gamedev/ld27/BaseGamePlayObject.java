@@ -13,17 +13,25 @@ import com.gamedev.ld27.gameobjects.GameObject;
 
 public class BaseGamePlayObject extends GameObject {
 
-	protected String description = "Anonymous item - give me a name!";
+	protected String name;
+	protected String description;
 	private String adDescription = "This is some text that will go in the advertisement";
 	protected Sprite icon;
 	protected TextureRegion textureRegion;
 	protected Vector2 pos;
 	private boolean inWorld;
 	
-	protected BaseGamePlayObject()
+	protected BaseGamePlayObject(String name, String description)
 	{
 		super(new Rectangle(0, 0, 32, 32));
+		this.name = name;
+		this.description = description;
 	}
+	
+	public String getName() {
+		return name;
+	}
+	
 	/**
 	 * Return a description that can be displayed to the user 
 	 * about what the object is
@@ -33,12 +41,7 @@ public class BaseGamePlayObject extends GameObject {
 	{
 		return description;
 	}
-	
-	public void setDescription(String desc)
-	{
-		description = desc;
-	}	
-	
+		
 	public void setPosition(Vector2 position) {
 		super.setPosition(position);
 		pos = position.cpy();

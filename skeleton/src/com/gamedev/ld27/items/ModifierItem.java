@@ -7,6 +7,10 @@ import com.gamedev.ld27.obstacle.BaseObstacle;
 
 public class ModifierItem extends BaseItem {
 
+	public ModifierItem(String name, String description) {
+		super(name, description);
+	}
+	
 	/**
 	 * Because this is a ModifierItem it won't defeat anything
 	 */

@@ -2,6 +2,8 @@ package com.gamedev.ld27.gameobjects;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -61,8 +63,13 @@ public class WorldMap extends GameObject {
 		ArrayList<BaseItem> itemsToRemove= new ArrayList<BaseItem>();
 		for (BaseItem item:worldItems) {
 			item.update(delta);
-			if (PickUpItem(item))
-				itemsToRemove.add(item);
+			
+			if (item.isAutoPickup() || Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
+				if (PickUpItem(item)) {
+					itemsToRemove.add(item);
+					Game.dialogBox.AppendText("You picked up the " + item.getName());
+				}
+			}
 		}
 		for (BaseItem item : itemsToRemove) {
 			worldItems.remove(item);

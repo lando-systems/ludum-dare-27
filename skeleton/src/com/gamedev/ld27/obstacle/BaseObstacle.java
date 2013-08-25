@@ -7,5 +7,7 @@ import com.gamedev.ld27.BaseGamePlayObject;
 
 public abstract class BaseObstacle extends BaseGamePlayObject {
 
-	
+	protected BaseObstacle(String name, String description) {
+		super(name, description);
+	}
 }

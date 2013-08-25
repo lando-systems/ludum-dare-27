@@ -7,9 +7,8 @@ import com.gamedev.ld27.items.OffensiveWeaponItem;
 public class BagOfJewels extends OffensiveWeaponItem {
 
 	public BagOfJewels() {
-		this.setDescription("Diamonds, Saphires and Rubies, Oh My!");
-		this.setIcon(Assets.bagOfJewels);
-		
+		super("Bag of Jewels", "Diamonds, Saphires and Rubies, Oh My!");
+		this.setIcon(Assets.bagOfJewels);		
 		setDefeats(GameSettings.TrollBridge);
 	}
 }

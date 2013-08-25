@@ -140,7 +140,7 @@ public class PlayScreen extends GameScreen {
 //				});
 //				t.start();
 		
-		Game.itemsBar.Add(new WetNoodle(), 0);
+		Game.itemsBar.Add(new OffensiveTower(), 0);
 		Game.itemsBar.Add(new BagOfJewels(), 1);
 		Game.itemsBar.Add(new Hammer(), 2);
 		Game.itemsBar.Add(new Boomerang(), 3);
