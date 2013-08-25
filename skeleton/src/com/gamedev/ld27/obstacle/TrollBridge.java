@@ -1,8 +1,11 @@
 package com.gamedev.ld27.obstacle;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
+import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Direction;
 import com.gamedev.ld27.Game;
 import com.gamedev.ld27.GameSettings;
@@ -12,11 +15,13 @@ public class TrollBridge extends BaseObstacle {
 
 	private Player _player;
 	private float _time;
+	private Sprite trollSprite;
 	
 	public TrollBridge(Player player) {		
 		super("Troll Bridge", "Like a toll bridge, but with an extra R", GameSettings.TrollBridge);
 		
 		_player = player;
+		trollSprite = new Sprite(Assets.playerSheet, 0, 0, 32, 32);
 		Vector2 position = player.getPosition().cpy();
 		if (player.getDirection() == Direction.East) {
 			position.x += 32;
@@ -42,6 +47,7 @@ public class TrollBridge extends BaseObstacle {
 	}
 	
 	private void drawTroll(SpriteBatch batch) {
-		fill(Color.RED);
+		Game.gameWorld.screenPositionFromWorld(trollSprite, pos);
+		trollSprite.draw(batch);
 	}
 }

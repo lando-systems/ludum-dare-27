@@ -21,13 +21,19 @@ public class OffensiveTower extends BaseItem {
 	
 	public void update(float delta) {
 		if (isInWorld()) {
-			_time += delta;
-			
-			if (_time > 10f) {
-				generateInsult();
-				_time = 0;
+			if (inRange()){
+				_time += delta;
+
+				if (_time > 10f) {
+					generateInsult();
+					_time = 0;
+				}
 			}
 		}
+	}
+	
+	private boolean inRange(){
+		return pos.dst2(Game.player.pos) < (320 * 320);
 	}
 	
 	private static final String _insultList[] = new String[] {
