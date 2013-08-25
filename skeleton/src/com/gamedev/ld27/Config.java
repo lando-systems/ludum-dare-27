@@ -13,5 +13,4 @@ public class Config {
 	
 	public static int textWidth = 16;
 	public static int textHeight = 16;
-	
 }

@@ -199,10 +199,7 @@ public class PlayScreen extends GameScreen {
 		Game.itemsBar.Add(new BouncyBall());
 		Game.itemsBar.Add(new Torch());
 		Game.itemsBar.Add(new OffensiveTower());
-		
-		
-		//For now this just places a single ad, the rotation and randomization still to come
-		Game.adBar.selectRandomAd();
+
 	}
 
 }
