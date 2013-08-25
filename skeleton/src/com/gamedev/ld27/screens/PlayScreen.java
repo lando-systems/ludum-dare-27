@@ -49,7 +49,7 @@ public class PlayScreen extends GameScreen {
 		_gameObjects.add(Game.gameWorld);
 		
 		Game.player = new Player(new Rectangle((leftWidth/2.0f -16), y + (mapHeight/2.0f)-16, 32, 32));
-		Game.player.init(100,  10, 10);
+		Game.player.init(900,  10, 10);
 		_gameObjects.add(Game.player);
 		
 		y -= dialogHeight;
@@ -189,11 +189,10 @@ public class PlayScreen extends GameScreen {
 //				});
 //				t.start();
 		
-		Game.itemsBar.Add(new BagOfJewels());
+
 		Game.itemsBar.Add(new Hammer());
 		Game.itemsBar.Add(new Boomerang());
-		Game.itemsBar.Add(new Bombs());
-		Game.itemsBar.Add(new Slinky());
+
 
 		Game.itemsBar.Add(new BagOfKittens());
 

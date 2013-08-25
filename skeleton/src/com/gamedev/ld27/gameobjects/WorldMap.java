@@ -195,9 +195,11 @@ public class WorldMap extends GameObject {
 		return (firstMapTile.x == secondMapTile.x && firstMapTile.y == secondMapTile.y);
 	}
 	
+	
 	public void PlaceItem(BaseItem item, Vector2 position) {
 		if (item.PlaceOnUnWalkable || walkable(position)) {
-			Game.itemsBar.Remove(item);
+			if (Game.itemsBar != null)
+				Game.itemsBar.Remove(item);
 			item.setPosition(position);
 			item.setInWorld(true);
 			worldItems.add(item);
