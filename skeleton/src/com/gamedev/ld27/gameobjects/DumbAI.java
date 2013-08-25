@@ -69,29 +69,29 @@ public class DumbAI extends PlayerBase {
 		}	
 	}
 		
-	public boolean updatePos(float delta) {
-		Vector2 pos = getPosition().cpy();
-		
-			
-			if ((int)pos.x == (int)targetPos.x &&
-				(int)pos.y == (int)targetPos.y)
-				return true;
-			
-			Vector2 dir = new Vector2(targetPos.x - pos.x, targetPos.y - pos.y);
-			dir.nor();
-			dir.scl(100*delta);
-			float dist = dir.len2();
-			float targetDist = targetPos.dst2(pos);
-			if (dist >= targetDist){
-				pos.x = targetPos.x;
-				pos.y = targetPos.y;
-			} else
-			{
-				pos.add(dir);
-			}
-			
-			setPosition(pos);
-			return false;
-		
-	}
+//	public boolean updatePos(float delta) {
+//		Vector2 pos = getPosition().cpy();
+//		
+//			
+//			if ((int)pos.x == (int)targetPos.x &&
+//				(int)pos.y == (int)targetPos.y)
+//				return true;
+//			
+//			Vector2 dir = new Vector2(targetPos.x - pos.x, targetPos.y - pos.y);
+//			dir.nor();
+//			dir.scl(100*delta);
+//			float dist = dir.len2();
+//			float targetDist = targetPos.dst2(pos);
+//			if (dist >= targetDist){
+//				pos.x = targetPos.x;
+//				pos.y = targetPos.y;
+//			} else
+//			{
+//				pos.add(dir);
+//			}
+//			
+//			setPosition(pos);
+//			return false;
+//		
+//	}
 }
