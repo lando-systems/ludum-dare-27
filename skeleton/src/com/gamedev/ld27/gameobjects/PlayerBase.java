@@ -13,7 +13,7 @@ import com.gamedev.ld27.items.Weapon;
 public class PlayerBase extends GameObject {
 
 	public Vector2 pos;
-	private Vector2 targetPos;
+	protected Vector2 targetPos;
 	private float speed = 100.0f;
 	private int walkingDir = Direction.North; // N = 0; E = 1; S = 2; W = 3
 	private float walkingAnimation = 0f;
@@ -52,9 +52,7 @@ public class PlayerBase extends GameObject {
 	public void render(SpriteBatch batch) {
 		int animationFrame = (int)walkingAnimation % 4;
 		Sprite tile = animTiles[animationFrame + (walkingDir * animLength)];
-		if (_livePlayer) {
-			tile.setPosition(_bounds.x - Config.screenHalfWidth, _bounds.y - Config.screenHalfHeight);
-		}
+		tile.setPosition(_bounds.x - Config.screenHalfWidth, _bounds.y - Config.screenHalfHeight);
 		
 		boolean south = (walkingDir == Direction.South);
 		

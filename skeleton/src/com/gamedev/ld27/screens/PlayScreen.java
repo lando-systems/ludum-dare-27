@@ -56,7 +56,7 @@ public class PlayScreen extends GameScreen {
 		_gameObjects.add(Game.itemsBar);
 		
 		DumbAI dumbAi = new DumbAI();
-		dumbAi.init(300,  12,  12);
+		dumbAi.init(100,  10,  10);
 		_gameObjects.add(dumbAi);
 		
 		camera = new OrthographicCamera(Config.screenWidth, Config.screenHeight);
