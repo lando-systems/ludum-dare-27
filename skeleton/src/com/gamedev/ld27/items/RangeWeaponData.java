@@ -29,7 +29,7 @@ public class RangeWeaponData {
 	public RangeWeaponData(PlayerBase player, RangeWeapon item) {
 		_player = player;
 		_direction = getDirection(player, item);
-		_offset = new Vector2(player.getPlayerPosition());
+		_offset = player.getPosition().cpy();
 		_position = new Vector2(player.getPosition());
 		_maxTime = item.animationTime();
 		_texture = item.getWeaponUseImage(player.getDirection());

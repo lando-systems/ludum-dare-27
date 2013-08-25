@@ -117,13 +117,17 @@ public class WorldMap extends GameObject {
 		return new Vector2(_bounds.x + (_bounds.width/2.0f) - 16 - Game.player.pos.x -Config.screenHalfWidth + pos.x, _bounds.y + (_bounds.height/2.0f) - 16 - Game.player.pos.y -Config.screenHalfHeight + pos.y );
 	}
 	
-	public boolean walkable(Vector2 worldPos){
-		int tileX = (int)(worldPos.x / 32);
-		int tileY = (int)(worldPos.y / 32);
-		if (tileX < 0 || tileX >= mapWidth || tileY < 0 || tileY >= mapHeight) return false;
-		int tileType = mapGrid[tileX + (tileY *mapWidth)];
+	public boolean walkable(Vector2 worldPos) {
+		int tileType = getTileType(worldPos);
 		if (tileType == 0 || tileType == 3 || tileType == 4 || tileType == 5 || tileType == 6) return true;
 		return false;
+	}
+	
+	public int getTileType(Vector2 worldPos) {
+		int tileX = (int)(worldPos.x / 32);
+		int tileY = (int)(worldPos.y / 32);
+		if (tileX < 0 || tileX >= mapWidth || tileY < 0 || tileY >= mapHeight) return -1;
+		return mapGrid[tileX + (tileY *mapWidth)];
 	}
 	
 	public Vector2 mapTileFromPosition(Vector2 pos){

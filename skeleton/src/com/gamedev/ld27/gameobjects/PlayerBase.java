@@ -69,11 +69,14 @@ public class PlayerBase extends GameObject {
 		}		
 	}
 	
+	public boolean IgnoreInput;
+	
 	@Override
 	public void update(float delta) {
 		if (isImmune()) _immuneTime -= delta;
 		walkingAnimation += delta * 4f;
 		if (walkingAnimation > 5.0f) walkingAnimation -= 4.0f;
+		if (IgnoreInput) return;
 		if (updatePos(delta)){
 			Vector2 prevTarget = targetPos.cpy();
 			handleInput(delta);
@@ -112,10 +115,20 @@ public class PlayerBase extends GameObject {
 		walkingDir = Direction.East;
 	}
 	
+	private boolean _moving = false;
 	public boolean updatePos(float delta){
 		if ((int)pos.x == (int)targetPos.x &&
-			(int)pos.y == (int)targetPos.y)
+			(int)pos.y == (int)targetPos.y) 
+		{
+			if (_moving) {
+				finishMove(Game.gameWorld.getTileType(pos));
+				_moving = false;
+			}
+			
 			return true;
+		}
+		
+		_moving = true;
 		
 		Vector2 dir = new Vector2(targetPos.x - pos.x, targetPos.y - pos.y);
 		dir.nor();
@@ -130,6 +143,10 @@ public class PlayerBase extends GameObject {
 			pos.add(dir);
 		}
 		return false;
+	}
+	
+	protected void finishMove(int tileType) {
+		
 	}
 
 	public Vector2 getUsePosition() {
@@ -182,9 +199,9 @@ public class PlayerBase extends GameObject {
 		return walkingDir;
 	}
 	
-	public Vector2 getPlayerPosition() {
-		return pos;
-	}
+//	public Vector2 getPlayerPosition() {
+//		return pos;
+//	}
 	
 	@Override
 	public Vector2 getPosition()

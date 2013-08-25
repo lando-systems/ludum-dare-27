@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.gamedev.ld27.Game;
 import com.gamedev.ld27.Utils;
 import com.gamedev.ld27.items.BaseItem;
 
@@ -77,7 +78,9 @@ public class ItemsBar extends GameObject {
 	public void useItem() {
 		BaseItem item = selectedItem();
 		if (item != null) {
-			item.use();
+			if (Game.player.canUse(item)) {
+				item.use();
+			}
 		}
 	}
 	
