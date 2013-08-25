@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Assets;
 
 public abstract class GameObject {
@@ -16,6 +17,14 @@ public abstract class GameObject {
 	
 	protected GameObject(Rectangle bounds) {
 		_bounds = bounds;
+	}
+	
+	public float getWidth() { 
+		return _bounds.height;
+	}
+	
+	public float getHeight() {
+		return _bounds.width;
 	}
 	
 	private static final Color Transparent = new Color(0, 0, 0, 0);
@@ -41,6 +50,10 @@ public abstract class GameObject {
 		}
 		
 		Assets.batch.begin();
+	}
+	
+	public void setPosition(Vector2 position) {
+		_bounds.setPosition(position);
 	}
 	
 	public void render(SpriteBatch batch) {}

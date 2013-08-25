@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 import com.gamedev.ld27.Skeleton;
 import com.gamedev.ld27.gameobjects.*;
+import com.gamedev.ld27.items.offensive.WetNoodle;
 
 public class PlayScreen extends GameScreen {
 
@@ -41,13 +42,15 @@ public class PlayScreen extends GameScreen {
 		
 		y -= dialogHeight;
 		
-		Game.DialogBox = new DialogBox(new Rectangle(0, y, leftWidth, dialogHeight));
-		_gameObjects.add(Game.DialogBox);
+		Game.dialogBox = new DialogBox(new Rectangle(0, y, leftWidth, dialogHeight));
+		_gameObjects.add(Game.dialogBox);
+	
+		Game.adBar = new AdBar(new Rectangle(0, 0, Config.screenWidth, adHeight));
+		_gameObjects.add(Game.adBar);
 		
-
+		Game.itemsBar = new ItemsBar(new Rectangle(leftWidth, Config.screenHeight - topHeight, rightWidth, topHeight));
+		_gameObjects.add(Game.itemsBar);
 		
-		_gameObjects.add(new AdBar(new Rectangle(0, 0, Config.screenWidth, adHeight)));
-		_gameObjects.add(new ItemsBar(new Rectangle(leftWidth, Config.screenHeight - topHeight, rightWidth, topHeight)));		
 		camera = new OrthographicCamera(Config.screenWidth, Config.screenHeight);
 		
 		// test
@@ -55,7 +58,8 @@ public class PlayScreen extends GameScreen {
 			public void run() {
 				try {
 					while (true) {
-						Game.DialogBox.AppendText("Text test" + Config.rand.nextInt(30));
+						Game.dialogBox.AppendText("Text test" + Config.rand.nextInt(30));
+						Game.itemsBar.Add(new WetNoodle());
 						Thread.sleep(800);
 					}
 				} catch(Exception e) {
