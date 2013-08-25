@@ -68,7 +68,12 @@ public class WorldMap extends GameObject {
 		
 		BaseItem slinky = ItemFactory.getItem("Slinky");
 		PlaceItem(slinky, new Vector2(2912, 288));
-
+		BaseItem flute = ItemFactory.getItem("Flute");
+		PlaceItem(flute, new Vector2(1536, 256));
+		BaseItem helmet = ItemFactory.getItem("Helmet");
+		PlaceItem(helmet, new Vector2(992, 224));
+		BaseItem OT = ItemFactory.getItem("OffensiveTower");
+		PlaceItem(OT, new Vector2(1888, 1920));
 	}
 	
 	@Override
