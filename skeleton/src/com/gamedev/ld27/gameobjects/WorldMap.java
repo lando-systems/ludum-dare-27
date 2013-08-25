@@ -60,6 +60,7 @@ public class WorldMap extends GameObject {
 	public void update(float delta) {
 		ArrayList<BaseItem> itemsToRemove= new ArrayList<BaseItem>();
 		for (BaseItem item:worldItems) {
+			item.update(delta);
 			if (PickUpItem(item))
 				itemsToRemove.add(item);
 		}
@@ -67,7 +68,7 @@ public class WorldMap extends GameObject {
 			worldItems.remove(item);
 		}
 	}
-		
+	
 	@Override
 	public void render(SpriteBatch batch) {
 		int playerTileX = (int)Game.player.pos.x/32;

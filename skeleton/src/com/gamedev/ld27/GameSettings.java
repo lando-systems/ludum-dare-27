@@ -6,7 +6,7 @@ public class GameSettings {
 	public static final int DragonChain = 0x1 << 2;
 	public static final int Rocks = 0x1 << 3;
 	public static final int Abyss = 0x1 << 4;
-	public static final int Defensive = 0x1 << 5;
+	public static final int DefensiveTower = 0x1 << 5;
 	public static final int Quicksand = 0x1 << 6;
 	public static final int Vegetarian = 0x1 << 7;
 	public static final int GuardDog = 0x1 << 8;

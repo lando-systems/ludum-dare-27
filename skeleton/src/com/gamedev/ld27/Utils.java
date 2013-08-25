@@ -75,5 +75,14 @@ public class Utils {
 	public static Rectangle inflate(Rectangle bounds, float width, float height) {
 		return new Rectangle(bounds.x - width/2, bounds.y - height/2,
 				bounds.width + width, bounds.height + height);
+	}
+
+	/**
+	 * 1-100
+	 * @param prob
+	 * @return
+	 */
+	public static boolean probability(int prob) {
+		return (Config.rand.nextInt(100) < prob);
 	}	
 }
