@@ -13,6 +13,7 @@ public class TrollBridge extends BaseObstacle {
 
 	private float _time;
 	private Sprite trollSprite;
+	public static boolean Spawned = false;
 	
 	public TrollBridge(Player player) {		
 		super("Troll Bridge", "Like a toll bridge, but with an extra R", GameSettings.TrollBridge);
@@ -26,7 +27,8 @@ public class TrollBridge extends BaseObstacle {
 		}
 		
 		setPosition(position);
-		
+		Spawned = true;
+		// TODO Create cigar here right away.
 		Game.dialogBox.SetText(" You have 10 seconds to pay a troll to cross this bridge!");
 		Game.dialogBox.AppendText("<Binary Troll> Rrrarr");		
 	}

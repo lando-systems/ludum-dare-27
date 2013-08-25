@@ -9,6 +9,7 @@ public abstract class BaseObstacle extends BaseItem {
 	
 	private int _obstacleCode;
 	protected boolean _completed;
+	
 
 	protected BaseObstacle(String name, String description, int obstacleCode) {
 		super(name, description);

@@ -137,7 +137,7 @@ public class WorldMap extends GameObject {
 	}
 	
 	public void screenPositionFromWorld(Sprite tile, Vector2 pos){
-		if (pos == null) return; // No idea why this sometimes happens
+		if (pos == null || Game.player == null) return; // No idea why this sometimes happens
 		tile.setPosition(_bounds.x + (_bounds.width/2.0f) - 16 - Game.player.pos.x -Config.screenHalfWidth + pos.x, _bounds.y + (_bounds.height/2.0f) - 16 - Game.player.pos.y -Config.screenHalfHeight + pos.y );
 	}
 	
