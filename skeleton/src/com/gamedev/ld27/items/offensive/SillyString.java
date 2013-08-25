@@ -11,7 +11,6 @@ public class SillyString extends RangeWeapon {
 		this.setIcon(Assets.sillyString);
 		
 		setProperties(3, 5, 2);
-	
 		setDefeats(GameSettings.CastleGuards);
 	}
 }

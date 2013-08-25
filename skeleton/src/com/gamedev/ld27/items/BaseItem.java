@@ -18,6 +18,8 @@ public abstract class BaseItem extends BaseGamePlayObject {
 
 	private int _defeats;
 	private boolean _autoPickup;
+	protected boolean _walkable = true;
+	public boolean PlaceOnUnWalkable = false;
 	
 	protected BaseItem(String name, String description) {
 		super(name, description);
@@ -32,6 +34,10 @@ public abstract class BaseItem extends BaseGamePlayObject {
 		_defeats = defeats;
 	}
 
+	public boolean getWalkable(){
+		return _walkable;
+	}
+	
 	/**
 	 * Render method that prints the icon followed by the text of the advertisement
 	 * @param batch
@@ -50,7 +56,7 @@ public abstract class BaseItem extends BaseGamePlayObject {
 	{
 		// this just places item in world, override on weapons
 		Vector2 position = Game.player.getUsePosition();
-		if (Game.gameWorld.walkable(position))
+		if (this.PlaceOnUnWalkable || Game.gameWorld.walkable(position))
 		{
 			Game.gameWorld.PlaceItem(this, position);
 			Game.itemsBar.Remove(this);

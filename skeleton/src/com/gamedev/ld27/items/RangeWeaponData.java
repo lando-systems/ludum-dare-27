@@ -115,7 +115,7 @@ public class RangeWeaponData {
 			Vector2 weaponTile = Game.gameWorld.mapTileFromPosition(_position);
 			if (playerTile.x == weaponTile.x && playerTile.y == weaponTile.y && !ai.isImmune()) {
 				ai.takeKnockbackDamage(_dir);
-				ai.takeDamage(1);
+				ai.takeDamage(_weapon.Damage);
 				_time = _maxTime;
 			}
 		}

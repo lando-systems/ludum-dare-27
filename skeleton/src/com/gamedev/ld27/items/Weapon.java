@@ -13,6 +13,7 @@ public abstract class Weapon extends BaseItem {
 	private float _range = 1.5f;
 	private int _uses = 4;
 	protected boolean _isMelee = true;
+	public int Damage = 0;
 	
 	protected Weapon(String name, String description) {
 		super(name, description);

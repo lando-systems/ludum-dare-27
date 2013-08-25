@@ -11,7 +11,7 @@ public class Boomerang extends RangeWeapon {
 		setIcon(Assets.boomerang);
 		
 		setProperties(7, 30);
-		
+		Damage = 1;
 		setDefeats(GameSettings.CastleGuards);
 	}
 	
