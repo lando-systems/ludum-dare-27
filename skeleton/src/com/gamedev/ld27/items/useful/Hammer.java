@@ -14,7 +14,7 @@ public class Hammer extends Weapon {
 		super("Hammer", "Mainly used for the smashing");
 		setIcon(Assets.hammer);
 		
-		setProperties(1, 10);
+		setProperties(1, 3);
 		Damage = 1;
 		setDefeats(GameSettings.Rocks);
 	}

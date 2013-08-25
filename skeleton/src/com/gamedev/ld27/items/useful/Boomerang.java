@@ -10,7 +10,7 @@ public class Boomerang extends RangeWeapon {
 		super("Boomerang", "if you love something let it go, it'll come back");
 		setIcon(Assets.boomerang);
 		
-		setProperties(7, 30);
+		setProperties(7, 10);
 		Damage = 1;
 		setDefeats(GameSettings.CastleGuards);
 	}
