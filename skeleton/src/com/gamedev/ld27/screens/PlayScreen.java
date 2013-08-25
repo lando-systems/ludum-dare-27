@@ -129,10 +129,14 @@ public class PlayScreen extends GameScreen {
 		Game.itemsBar.Add(new BagOfJewels(), 1);
 		Game.itemsBar.Add(new Hammer(), 2);
 		Game.itemsBar.Add(new Boomerang(), 3);
-		Game.itemsBar.Add(new Bombs(), 4);
+//		Game.itemsBar.Add(new Bombs(), 4);
 		Game.itemsBar.Add(new Mushroom(), 5);
 		Game.itemsBar.Add(new Bacon(), 6);
-		Game.itemsBar.Add(new OffensiveTower(), 8);
+		Game.itemsBar.Add(new Slinky(), 7);
+		Game.itemsBar.Add(new Helmet(), 8);
+//		Game.itemsBar.Add(new SillyString(), 9);
+		Game.itemsBar.Add(new Flute(), 9);
+		Game.itemsBar.Add(new BagOfKittens(), 4);
 	}
 
 }
