@@ -4,6 +4,7 @@
 package com.gamedev.ld27.items;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Game;
 
 public abstract class Weapon extends BaseItem {
@@ -64,5 +65,10 @@ public abstract class Weapon extends BaseItem {
 	
 	public boolean isSingleUse() {
 		return _isMelee;
+	}
+	
+	public void SpecialDamage(Vector2 pos)
+	{
+		
 	}
 }
