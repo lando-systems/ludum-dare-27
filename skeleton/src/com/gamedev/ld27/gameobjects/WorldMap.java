@@ -29,7 +29,7 @@ public class WorldMap extends GameObject {
 	private int mapHeight = 100;
 	private int[] mapGrid; // this is the game map indexes
 	
-	private ArrayList<BaseItem> worldItems = new ArrayList<BaseItem>(20);
+	public ArrayList<BaseItem> worldItems = new ArrayList<BaseItem>(20);
 	
 	public WorldMap(Rectangle bounds) {
 		super(bounds);
@@ -69,6 +69,7 @@ public class WorldMap extends GameObject {
 					itemsToRemove.add(item);
 					Game.dialogBox.AppendText("You picked up the " + item.getName());
 				}
+				if (!item.Alive) itemsToRemove.add(item);
 			}
 		}
 		for (BaseItem item : itemsToRemove) {
@@ -119,6 +120,13 @@ public class WorldMap extends GameObject {
 	
 	public boolean walkable(Vector2 worldPos) {
 		int tileType = getTileType(worldPos);
+		Vector2 tileVec = mapTileFromPosition(worldPos);
+		for (BaseItem item: worldItems){
+			Vector2 tileItem = mapTileFromPosition(item.getPosition());
+			if (!item.getWalkable() && tileItem.x == tileVec.x && tileItem.y == tileVec.y) return false;
+		}
+		
+		//nothing laid on the map, now the real map tiles
 		if (tileType == 0 || tileType == 3 || tileType == 4 || tileType == 5 || tileType == 6) return true;
 		return false;
 	}
@@ -145,8 +153,14 @@ public class WorldMap extends GameObject {
 		return false;
 	}
 	
+	public boolean SameTile(Vector2 first, Vector2 second){
+		Vector2 firstMapTile = mapTileFromPosition(first);
+		Vector2 secondMapTile = mapTileFromPosition(second);
+		return (firstMapTile.x == secondMapTile.x && firstMapTile.y == secondMapTile.y);
+	}
+	
 	public void PlaceItem(BaseItem item, Vector2 position) {
-		if (walkable(position)) {
+		if (item.PlaceOnUnWalkable || walkable(position)) {
 			Game.itemsBar.Remove(item);
 			item.setPosition(position);
 			item.setInWorld(true);

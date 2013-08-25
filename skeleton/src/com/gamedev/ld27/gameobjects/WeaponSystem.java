@@ -38,7 +38,38 @@ public class WeaponSystem {
 			_rangeWeapons.add(new RangeWeaponData(_player, (RangeWeapon)item));
 		}
 		
+		if (item.isMeleeWeapon()){
+			Vector2 tile = _player.getUsePosition();
+			checkHitPlayer(tile);
+			checkHitAI(tile);
+		}
+		
 		return true;
+	}
+	
+	private void checkHitPlayer(Vector2 pos){
+		if (_player == Game.player) return; // don't hit ourselves
+		Vector2 playerTile = Game.gameWorld.mapTileFromPosition(Game.player.pos);
+		Vector2 weaponTile = Game.gameWorld.mapTileFromPosition(pos);
+		if (playerTile.x == weaponTile.x && playerTile.y == weaponTile.y && !Game.player.isImmune()) {
+			Game.player.takeKnockbackDamage(_player.getDirection());
+			
+		}
+	}
+	
+	private void checkHitAI(Vector2 pos) {
+		if (_player != Game.player) return; //only from us
+		for (GameObject obj : Game.playScreen.getGameObjects()){
+			if(!(obj instanceof DumbAI))
+				continue;
+			DumbAI ai = (DumbAI) obj;
+			Vector2 playerTile = Game.gameWorld.mapTileFromPosition(ai.pos);
+			Vector2 weaponTile = Game.gameWorld.mapTileFromPosition(pos);
+			if (playerTile.x == weaponTile.x && playerTile.y == weaponTile.y && !ai.isImmune()) {
+				ai.takeKnockbackDamage(_player.getDirection());
+				ai.takeDamage(_item.Damage);
+			}
+		}
 	}
 	
 	public void update(float delta) {

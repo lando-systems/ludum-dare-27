@@ -8,5 +8,6 @@ public class Rock extends BaseObstacle {
 	public Rock() {
 		super("Rock", "Just your average rock, no roll", GameSettings.Rocks);
 		setIcon(Assets.rock);
+		_walkable = false;
 	}
 }
