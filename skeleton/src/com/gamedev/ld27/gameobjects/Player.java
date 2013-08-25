@@ -47,7 +47,7 @@ public class Player extends GameObject {
 		Sprite tile = animTiles[animationFrame + (walkingDir * animLength)];
 		tile.setPosition(_bounds.x - Config.screenHalfWidth, _bounds.y - Config.screenHalfHeight);
 		tile.draw(batch);
-
+		
 	}
 	
 	@Override
