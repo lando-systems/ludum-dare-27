@@ -9,6 +9,7 @@ import com.gamedev.ld27.Assets;
 
 public abstract class GameObject {
 	protected final Rectangle _bounds;
+	public boolean Alive = true;
 
 	protected GameObject()
 	{

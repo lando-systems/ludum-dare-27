@@ -37,6 +37,8 @@ public class PlayScreen extends GameScreen {
 		
 		float y = Config.screenHeight - mapHeight;
 		
+		Game.playScreen = this;
+		
 		Game.gameWorld = new WorldMap(new Rectangle(0, y, leftWidth, mapHeight));
 		_gameObjects.add(Game.gameWorld);
 		
@@ -78,14 +80,24 @@ public class PlayScreen extends GameScreen {
 //		t.start();
 		TESTCODE();
 	}
+	
+	public ArrayList<GameObject> getGameObjects()
+	{
+		return _gameObjects;
+	}
 
 	@Override
 	public void update(float delta) {
 		super.update(delta);
 		
+		ArrayList<GameObject> keepObjs = new ArrayList<GameObject>();
 		for (GameObject gameObject : _gameObjects) {
 			gameObject.update(delta);
+			if (gameObject.Alive){
+				keepObjs.add(gameObject);
+			}
 		}
+		_gameObjects = keepObjs;
 		
 		if (Utils.isKeyJustPressed(Keys.DOWN)) {
 			Game.itemsBar.selectNext(true);

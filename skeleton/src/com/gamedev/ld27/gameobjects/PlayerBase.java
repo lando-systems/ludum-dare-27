@@ -23,12 +23,13 @@ public class PlayerBase extends GameObject {
 	protected int animLength;
 	
 	protected boolean _livePlayer;
+	protected float _immuneTime;
 	
 	protected WeaponSystem weaponSystem;	
 	
 	public PlayerBase(Rectangle bounds, Texture textureSheet) {
 		super(bounds);
-		
+		_immuneTime = 0f;
 		animLength = textureSheet.getWidth() / TILE_SIZE;
 		animTiles = new Sprite[4 * animLength]; 
 		for (int y = 0; y < 4; y++){
@@ -70,6 +71,7 @@ public class PlayerBase extends GameObject {
 	
 	@Override
 	public void update(float delta) {
+		if (isImmune()) _immuneTime -= delta;
 		walkingAnimation += delta * 4f;
 		if (walkingAnimation > 5.0f) walkingAnimation -= 4.0f;
 		if (updatePos(delta)){
@@ -79,6 +81,11 @@ public class PlayerBase extends GameObject {
 		} 
 		
 		weaponSystem.update(delta);
+	}
+	
+	public boolean isImmune()
+	{
+		return _immuneTime > 0;
 	}
 	
 	protected void handleInput(float delta) {
@@ -145,6 +152,7 @@ public class PlayerBase extends GameObject {
 	}
 
 	public void takeKnockbackDamage(int dir){
+		_immuneTime = 1f;
 		Vector2 tempPos = targetPos.cpy();
 		switch (dir){
 		case 0:
