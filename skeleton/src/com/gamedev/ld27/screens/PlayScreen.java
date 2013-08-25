@@ -81,6 +81,8 @@ public class PlayScreen extends GameScreen {
 		TESTCODE();
 	}
 	
+
+	
 	public ArrayList<GameObject> getGameObjects()
 	{
 		return _gameObjects;
@@ -116,7 +118,9 @@ public class PlayScreen extends GameScreen {
 				keepObjs.add(gameObject);
 			}
 		}
+		
 		_gameObjects = keepObjs;
+
 		
 		if (Utils.isKeyJustPressed(Keys.DOWN)) {
 			Game.itemsBar.selectNext(true);

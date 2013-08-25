@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Config;
+import com.gamedev.ld27.Game;
 import com.gamedev.ld27.gameobjects.GameObject;
 
 public class BaseGamePlayObject extends GameObject {
@@ -82,7 +83,11 @@ public class BaseGamePlayObject extends GameObject {
 	
 	@Override
 	public void render(SpriteBatch batch) {
+		if (inWorld){
+			Game.gameWorld.screenPositionFromWorld(icon, pos);
+		}
 		icon.draw(batch);
+		
 	}
 
 	protected String getAdDescription() {
