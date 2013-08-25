@@ -111,7 +111,7 @@ public class WorldMap extends GameObject {
 		int tileY = (int)(worldPos.y / 32);
 		if (tileX < 0 || tileX >= mapWidth || tileY < 0 || tileY >= mapHeight) return false;
 		int tileType = mapGrid[tileX + (tileY *mapWidth)];
-		if (tileType == 0 || tileType == 3 || tileType == 4) return true;
+		if (tileType == 0 || tileType == 3 || tileType == 4 || tileType == 5 || tileType == 6) return true;
 		return false;
 	}
 	
