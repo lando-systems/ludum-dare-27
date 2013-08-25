@@ -1,9 +1,10 @@
 package com.gamedev.ld27;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Config {
-	public static String title = "LD27 - 10 Seconds";
+	public static String title = "Dragon Rescue";
 	public static boolean useGL20 = true;
 	public static int screenWidth = 1280;
 	public static int screenHeight = 720;
@@ -13,4 +14,5 @@ public class Config {
 	
 	public static int textWidth = 16;
 	public static int textHeight = 16;
+	
 }

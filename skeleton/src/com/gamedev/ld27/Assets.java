@@ -79,7 +79,7 @@ public class Assets {
 		itemsheet = new Texture(Gdx.files.internal("data/gameitems.png"));
 		itemsheet.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 		
-		titleBackground = new Texture(Gdx.files.internal("data/libgdx.png"));
+		titleBackground = new Texture(Gdx.files.internal("data/dragon.png"));
 		titleBackground.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
 		mapTiles = new Texture(Gdx.files.internal("data/maptiles.png"));
