@@ -30,6 +30,7 @@ public class WeaponSystem {
 	public boolean useItem(Weapon item) {
 		if ((item == _item) && item.isSingleUse()) return false;
 		item.playUseSound();
+		
 		_item = item;
 		_time = 0;
 		_playerPos = _player.getPosition();
@@ -40,6 +41,7 @@ public class WeaponSystem {
 		
 		if (item.isMeleeWeapon()){
 			Vector2 tile = _player.getUsePosition();
+			item.SpecialDamage(tile);
 			checkHitPlayer(tile);
 			checkHitAI(tile);
 		}

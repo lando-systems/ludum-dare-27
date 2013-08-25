@@ -123,6 +123,7 @@ public class PlayerBase extends GameObject {
 			if (_moving) {
 				finishMove(Game.gameWorld.getTileType(pos));
 				_moving = false;
+				return false;
 			}
 			
 			return true;
