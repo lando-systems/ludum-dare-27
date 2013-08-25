@@ -6,6 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Direction;
 import com.gamedev.ld27.Game;
+import com.gamedev.ld27.gameobjects.DumbAI;
+import com.gamedev.ld27.gameobjects.GameObject;
 import com.gamedev.ld27.gameobjects.PlayerBase;
 
 public class RangeWeaponData {
@@ -90,6 +92,7 @@ public class RangeWeaponData {
 			}
 		}
 		checkHitPlayer();
+		checkHitAI();
 		_rotation += _rotationDr*delta;
 	}
 	
@@ -97,9 +100,25 @@ public class RangeWeaponData {
 		if (_player == Game.player) return; // don't hit ourselves
 		Vector2 playerTile = Game.gameWorld.mapTileFromPosition(Game.player.pos);
 		Vector2 weaponTile = Game.gameWorld.mapTileFromPosition(_position);
-		if (playerTile.x == weaponTile.x && playerTile.y == weaponTile.y) {
+		if (playerTile.x == weaponTile.x && playerTile.y == weaponTile.y && !Game.player.isImmune()) {
 			Game.player.takeKnockbackDamage(_dir);
 			_time = _maxTime;
+		}
+	}
+	
+	private void checkHitAI() {
+		if (_player != Game.player) return; //only from us
+		for (GameObject obj : Game.playScreen.getGameObjects()){
+			if(!(obj instanceof DumbAI))
+				continue;
+			DumbAI ai = (DumbAI) obj;
+			Vector2 playerTile = Game.gameWorld.mapTileFromPosition(ai.pos);
+			Vector2 weaponTile = Game.gameWorld.mapTileFromPosition(_position);
+			if (playerTile.x == weaponTile.x && playerTile.y == weaponTile.y && !ai.isImmune()) {
+				ai.takeKnockbackDamage(_dir);
+				ai.takeDamage(1);
+				_time = _maxTime;
+			}
 		}
 	}
 	

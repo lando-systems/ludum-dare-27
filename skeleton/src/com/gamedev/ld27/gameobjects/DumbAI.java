@@ -14,17 +14,27 @@ import com.gamedev.ld27.items.useful.Boomerang;
 public class DumbAI extends PlayerBase {
 
 	private Weapon _weapon;
+	private int _hitPoints;
 	
 	public DumbAI() {
 		super(new Rectangle(0, 0, TILE_SIZE, TILE_SIZE), Assets.playerSheet);
 		_weapon = new Boomerang();
+		_hitPoints = 3;
 	}
 	
 	private float _time;
 	private float _moveTime = 2;
 	
+	public void takeDamage(int amount){
+		_hitPoints -= amount;
+		_immuneTime = 1f;
+	}
+	
 	protected void handleInput(float delta) {
-		
+		if (_hitPoints <= 0) {
+			Alive = false;
+			return;
+		}
 		_time += delta;
 		if (_time > _moveTime) {
 			_time = 0;
