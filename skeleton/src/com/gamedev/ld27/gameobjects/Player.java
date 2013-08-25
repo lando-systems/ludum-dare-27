@@ -60,7 +60,7 @@ public class Player extends PlayerBase {
 	protected void finishMove(int tileType) {
 		// e-w bridge
 		if (tileType == 6) {
-			if (Utils.probability(90)) {
+			if (Utils.probability(10)) {
 				_obstacle = new TrollBridge(this);
 			}
 		}	

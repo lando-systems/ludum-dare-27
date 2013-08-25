@@ -18,6 +18,7 @@ public class Assets {
 	public static Texture titleBackground;
 	public static Texture endBackground;
 	public static Texture mapTiles;
+	public static Texture mapTilesMushroom;
 	public static Texture itemsheet;
 	public static Texture playerSheet;
 
@@ -88,6 +89,9 @@ public class Assets {
 		
 		mapTiles = new Texture(Gdx.files.internal("data/maptiles.png"));
 		mapTiles .setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+		
+		mapTilesMushroom = new Texture(Gdx.files.internal("data/maptiles_mushroom.png"));
+		mapTilesMushroom .setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 		
 		playerSheet = new Texture(Gdx.files.internal("data/playersheet.png"));
 		playerSheet .setFilter(TextureFilter.Nearest, TextureFilter.Nearest);

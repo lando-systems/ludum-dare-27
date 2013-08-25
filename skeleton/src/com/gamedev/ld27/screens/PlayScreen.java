@@ -24,6 +24,8 @@ public class PlayScreen extends GameScreen {
 	private ArrayList<GameObject> _gameObjects = new ArrayList<GameObject>();
 	private OrthographicCamera camera;
 	private float aiSpawn = 0f;
+	
+	private int MaxTotalAI = 5;
 
 	
 	public PlayScreen(Skeleton game) {
@@ -91,6 +93,11 @@ public class PlayScreen extends GameScreen {
 	}
 
 	private void spawnAI(){
+		int count = 0;
+		for (GameObject obj : _gameObjects){
+			if (obj instanceof DumbAI) count++;
+		}
+		if (count >= MaxTotalAI) return;
 		Vector2 tempPos; 
 		do {
 			tempPos = Game.player.pos.cpy();

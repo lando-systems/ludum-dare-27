@@ -21,6 +21,7 @@ import com.gamedev.ld27.items.ItemFactory;
 public class WorldMap extends GameObject {
 
 	private Sprite[] mapTiles; 
+	private Sprite[] mapTilesMushroom;
 	private static int TILE_SIZE = 32;
 	private int tilesWide;
 	private int tilesHigh;
@@ -41,9 +42,11 @@ public class WorldMap extends GameObject {
 		tilesWide = Assets.mapTiles.getWidth() / TILE_SIZE;
 		tilesHigh = Assets.mapTiles.getHeight()/TILE_SIZE;
 		mapTiles = new Sprite[tilesWide * tilesHigh]; 
+		mapTilesMushroom = new Sprite[tilesWide * tilesHigh];
 		for (int y = 0; y < tilesHigh; y++){
 			for (int x = 0; x < tilesWide; x++){
 				mapTiles[x + (y * tilesWide)] = new Sprite(Assets.mapTiles, x*TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+				mapTilesMushroom[x + (y * tilesWide)] = new Sprite(Assets.mapTilesMushroom, x*TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 			}
 		}
 		
@@ -134,6 +137,7 @@ public class WorldMap extends GameObject {
 	}
 	
 	public void screenPositionFromWorld(Sprite tile, Vector2 pos){
+		if (pos == null) return; // No idea why this sometimes happens
 		tile.setPosition(_bounds.x + (_bounds.width/2.0f) - 16 - Game.player.pos.x -Config.screenHalfWidth + pos.x, _bounds.y + (_bounds.height/2.0f) - 16 - Game.player.pos.y -Config.screenHalfHeight + pos.y );
 	}
 	
@@ -150,7 +154,7 @@ public class WorldMap extends GameObject {
 		}
 		
 		//nothing laid on the map, now the real map tiles
-		if (tileType == 0 || tileType == 3 || tileType == 4 || tileType == 5 || tileType == 6) return true;
+		if (tileType == 0 || tileType == 3 || tileType == 4 || tileType == 5 || tileType == 6|| tileType == 8 || tileType == 9) return true;
 		return false;
 	}
 	
