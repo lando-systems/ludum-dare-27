@@ -28,6 +28,9 @@ public class Player extends PlayerBase {
 		
 		if (_obstacle != null) {
 			_obstacle.update(delta);
+			if (_obstacle.isCompleted()) {
+				_obstacle = null;
+			}
 		}
 	}
 	
@@ -57,7 +60,7 @@ public class Player extends PlayerBase {
 	protected void finishMove(int tileType) {
 		// e-w bridge
 		if (tileType == 6) {
-			if (Utils.probability(40)) {
+			if (Utils.probability(90)) {
 				_obstacle = new TrollBridge(this);
 			}
 		}	
@@ -65,7 +68,8 @@ public class Player extends PlayerBase {
 
 	public boolean canUse(BaseItem item) {
 		if (_obstacle != null) {
-			return item.doesDefeat(_obstacle.getObstacleCode());
+			item.defeat(_obstacle);
+			return false;
 		}
 		return true;
 	}

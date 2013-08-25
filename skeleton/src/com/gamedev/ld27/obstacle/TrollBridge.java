@@ -1,9 +1,7 @@
 package com.gamedev.ld27.obstacle;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Direction;
@@ -13,14 +11,12 @@ import com.gamedev.ld27.gameobjects.Player;
 
 public class TrollBridge extends BaseObstacle {
 
-	private Player _player;
 	private float _time;
 	private Sprite trollSprite;
 	
 	public TrollBridge(Player player) {		
 		super("Troll Bridge", "Like a toll bridge, but with an extra R", GameSettings.TrollBridge);
 		
-		_player = player;
 		trollSprite = new Sprite(Assets.playerSheet, 0, 0, 32, 32);
 		Vector2 position = player.getPosition().cpy();
 		if (player.getDirection() == Direction.East) {
@@ -31,14 +27,17 @@ public class TrollBridge extends BaseObstacle {
 		
 		setPosition(position);
 		
-		Game.dialogBox.SetText("<Binary Troll> Rrrarr");
-		Game.dialogBox.AppendText(" You have 10 seconds to pay a troll to cross this bridge!");
+		Game.dialogBox.SetText(" You have 10 seconds to pay a troll to cross this bridge!");
+		Game.dialogBox.AppendText("<Binary Troll> Rrrarr");		
 	}
 	
 	public void update(float delta) {
 		_time += delta;
 		if (_time > 2.0) {
-			
+			Rock rock = new Rock();		
+			rock.setPosition(pos);
+			Game.gameWorld.PlaceItem(rock, pos);
+			_completed = true;
 		}
 	}
 	

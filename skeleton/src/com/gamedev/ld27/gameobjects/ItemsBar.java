@@ -33,6 +33,7 @@ public class ItemsBar extends GameObject {
 			if (index >= 0 && index < _items.length) {
 				_items[index] = item;
 				setBounds(item, index);
+				item.setInWorld(false);
 				added = true;
 				
 				if (_selectedIndex == -1) {
