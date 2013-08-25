@@ -18,17 +18,31 @@ public abstract class GameObject {
 		_bounds = bounds;
 	}
 	
+	private static final Color Transparent = new Color(0, 0, 0, 0);
+		
 	protected void Fill(Color color) {
+		Fill(color, Transparent);
+	}
+	
+	protected void Fill(Color background, Color border)
+	{
 		Assets.batch.end();
 		
 		Assets.shapes.begin(ShapeType.Filled);
-		Assets.shapes.setColor(color);
+		Assets.shapes.setColor(background);
 		Assets.shapes.rect(_bounds.x, _bounds.y, _bounds.width, _bounds.height);
 		Assets.shapes.end();
+		
+		if (border != Transparent) {
+			Assets.shapes.begin(ShapeType.Line);
+			Assets.shapes.setColor(border);
+			Assets.shapes.rect(_bounds.x, _bounds.y, _bounds.width, _bounds.height);
+			Assets.shapes.end();
+		}
 		
 		Assets.batch.begin();
 	}
 	
-	public abstract void render(SpriteBatch batch);
-	public abstract void update(float delta);
+	public void render(SpriteBatch batch) {}
+	public void update(float delta) {}
 }

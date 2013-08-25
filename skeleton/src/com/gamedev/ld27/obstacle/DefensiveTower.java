@@ -7,7 +7,7 @@ public class DefensiveTower extends BaseObstacle {
 	public DefensiveTower(Vector2 position) {
 		super(position);
 		setDescription("Tower Defense");
-		setIcon("defensive_tower.png");
+		//setIcon("defensive_tower.png");
 	}
 
 }

@@ -9,7 +9,7 @@ public class BouncyBall extends OffensiveWeaponItem {
 	public BouncyBall(Vector2 position)
 	{
 		super(position);
-		this.setDescription("Can of Silly String");
+		this.setDescription("Super bouncy ball!");
 
 		setDefeats(GameSettings.CastleGuards);
 	}

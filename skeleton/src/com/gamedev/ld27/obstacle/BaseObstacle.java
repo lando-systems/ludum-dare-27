@@ -11,6 +11,6 @@ public abstract class BaseObstacle extends BaseGamePlayObject {
 	public BaseObstacle(Vector2 position) {
 		super(position);
 		setDescription("Anonymous obstacle - give me a name!");
-		setIcon("default_obstacle.png");
+		//setIcon("default_obstacle.png");
 	}
 }

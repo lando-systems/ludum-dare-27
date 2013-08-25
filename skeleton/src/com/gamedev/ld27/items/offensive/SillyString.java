@@ -9,7 +9,7 @@ public class SillyString extends OffensiveWeaponItem {
 	public SillyString(Vector2 position)
 	{
 		super(position);
-		this.setDescription("Super bouncy ball!");
+		this.setDescription("Can of silly String");
 
 		setDefeats(GameSettings.CastleGuards);
 	}
