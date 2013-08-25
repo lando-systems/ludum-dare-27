@@ -16,6 +16,7 @@ public class Assets {
 
 	public static Texture spritesheet;
 	public static Texture titleBackground;
+	public static Texture endBackground;
 	public static Texture mapTiles;
 	public static Texture itemsheet;
 	public static Texture playerSheet;
@@ -82,6 +83,9 @@ public class Assets {
 		titleBackground = new Texture(Gdx.files.internal("data/dragon.png"));
 		titleBackground.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
+		endBackground = new Texture(Gdx.files.internal("data/dragonend.png"));
+		endBackground.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		
 		mapTiles = new Texture(Gdx.files.internal("data/maptiles.png"));
 		mapTiles .setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 		

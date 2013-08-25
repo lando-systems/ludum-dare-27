@@ -1,6 +1,5 @@
 package com.gamedev.ld27;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Config {
