@@ -23,7 +23,7 @@ public class OffensiveTower extends OffensiveWeaponItem {
 		if (isInWorld()) {
 			_time += delta;
 			
-			if (_time > 6f) {
+			if (_time > 10f) {
 				generateInsult();
 				_time = 0;
 			}
