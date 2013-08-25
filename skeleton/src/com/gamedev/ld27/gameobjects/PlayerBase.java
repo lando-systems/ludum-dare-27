@@ -14,17 +14,17 @@ public class PlayerBase extends GameObject {
 
 	public Vector2 pos;
 	protected Vector2 targetPos;
-	private float speed = 100.0f;
-	private int walkingDir = Direction.North; // N = 0; E = 1; S = 2; W = 3
-	private float walkingAnimation = 0f;
+	protected float speed = 100.0f;
+	protected int walkingDir = Direction.North; // N = 0; E = 1; S = 2; W = 3
+	protected float walkingAnimation = 0f;
 	
-	private Sprite[] animTiles; 
+	protected Sprite[] animTiles; 
 	protected static final int TILE_SIZE = 32;
-	private int animLength;
+	protected int animLength;
 	
 	protected boolean _livePlayer;
 	
-	private WeaponSystem weaponSystem;	
+	protected WeaponSystem weaponSystem;	
 	
 	public PlayerBase(Rectangle bounds, Texture textureSheet) {
 		super(bounds);
@@ -153,6 +153,12 @@ public class PlayerBase extends GameObject {
 	}
 	
 	public Vector2 getPlayerPosition() {
+		return pos;
+	}
+	
+	@Override
+	public Vector2 getPosition()
+	{
 		return pos;
 	}
 }

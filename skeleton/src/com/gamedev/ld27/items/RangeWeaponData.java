@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Direction;
+import com.gamedev.ld27.Game;
 import com.gamedev.ld27.gameobjects.PlayerBase;
 
 public class RangeWeaponData {
@@ -92,8 +93,9 @@ public class RangeWeaponData {
 	}
 	
 	public void render(SpriteBatch batch) {
-		batch.draw(_texture,  _position.x - Config.screenHalfWidth, 
-				_position.y - Config.screenHalfHeight, 16, 16, 32, 32, _scale, _scale, _rotation);
+		Vector2 screenPos = Game.gameWorld.worldPosToScreenMapPos(_position);
+		batch.draw(_texture,  screenPos.x, 
+				screenPos.y, 16, 16, 32, 32, _scale, _scale, _rotation);
 	}
 	
 	public boolean isComplete() {

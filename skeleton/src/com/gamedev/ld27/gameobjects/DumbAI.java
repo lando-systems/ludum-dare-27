@@ -1,10 +1,13 @@
 package com.gamedev.ld27.gameobjects;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Direction;
+import com.gamedev.ld27.Game;
 import com.gamedev.ld27.items.Weapon;
 import com.gamedev.ld27.items.useful.Boomerang;
 
@@ -43,6 +46,27 @@ public class DumbAI extends PlayerBase {
 			}
 			
 		}
+	}
+	
+	@Override
+	public void render(SpriteBatch batch){
+		int animationFrame = (int)walkingAnimation % 4;
+		Sprite tile = animTiles[animationFrame + (walkingDir * animLength)];
+		Game.gameWorld.screenPositionFromWorld(tile, pos);
+		//tile.setPosition(_bounds.x - Config.screenHalfWidth, _bounds.y - Config.screenHalfHeight);
+		
+		boolean south = (walkingDir == Direction.South);
+		
+		// need to render behind player
+		if (!south) {
+			weaponSystem.render(batch, walkingDir);
+		}
+		tile.draw(batch);	
+		
+		// render on player
+		if (south) {
+			weaponSystem.render(batch, walkingDir);
+		}	
 	}
 		
 	public boolean updatePos(float delta) {
