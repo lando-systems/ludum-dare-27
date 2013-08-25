@@ -13,7 +13,8 @@ public abstract class OffensiveWeaponItem extends BaseItem {
 	protected float _animationTime = 1f;
 	private float _range = 1.5f;
 	private int _uses = 4;
-	private boolean _isMelee = true;		
+	private boolean _isMelee = true;	
+	private boolean _rotate = true;
 	
 	protected OffensiveWeaponItem(String name, String description) {
 		super(name, description);
@@ -57,6 +58,6 @@ public abstract class OffensiveWeaponItem extends BaseItem {
 	}
 	
 	public TextureRegion getWeaponUseImage(int direction) {
-		return Assets.noWeapon;
+		return getTexture();
 	}	
 }
