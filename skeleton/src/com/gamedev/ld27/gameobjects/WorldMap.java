@@ -52,7 +52,20 @@ public class WorldMap extends GameObject {
 		{
 			mapGrid[i] = layer.getCell(i % mapWidth, i / mapWidth).getTile().getId()-1;
 		}
+		
 
+	}
+	
+	@Override
+	public void update(float delta) {
+		ArrayList<BaseItem> itemsToRemove= new ArrayList<BaseItem>();
+		for (BaseItem item:worldItems) {
+			if (PickUpItem(item))
+				itemsToRemove.add(item);
+		}
+		for (BaseItem item : itemsToRemove) {
+			worldItems.remove(item);
+		}
 	}
 		
 	@Override
@@ -76,11 +89,20 @@ public class WorldMap extends GameObject {
 				else {
 					tile = mapTiles[mapGrid[x + (y *mapWidth)]];
 				}
-				
-				tile.setPosition(_bounds.x + (_bounds.width/2.0f) - 16 - Game.player.pos.x -Config.screenHalfWidth + x * TILE_SIZE, _bounds.y + (_bounds.height/2.0f) - 16 - Game.player.pos.y -Config.screenHalfHeight + y * TILE_SIZE );
+				screenPositionFromWorld(tile, new Vector2(x*TILE_SIZE, y * TILE_SIZE));
 				tile.draw(batch);
 			}
 		}
+		
+		for (BaseItem item: worldItems){
+			Sprite tile = item.getIcon();
+			screenPositionFromWorld(tile, item.getPosition());
+			tile.draw(batch);
+		}
+	}
+	
+	public void screenPositionFromWorld(Sprite tile, Vector2 pos){
+		tile.setPosition(_bounds.x + (_bounds.width/2.0f) - 16 - Game.player.pos.x -Config.screenHalfWidth + pos.x, _bounds.y + (_bounds.height/2.0f) - 16 - Game.player.pos.y -Config.screenHalfHeight + pos.y );
 	}
 	
 	public boolean walkable(Vector2 worldPos){
@@ -92,10 +114,26 @@ public class WorldMap extends GameObject {
 		return false;
 	}
 	
+	public Vector2 mapTileFromPosition(Vector2 pos){
+		return new Vector2((int)(pos.x/32), (int)(pos.y/32));
+	}
+	
+	public boolean PickUpItem(BaseItem item)
+	{
+		Vector2 playerMapTile = mapTileFromPosition(Game.player.pos);
+		Vector2 itemMapTile = mapTileFromPosition(item.getPosition());
+		if (playerMapTile.x == itemMapTile.x && playerMapTile.y == itemMapTile.y && Game.itemsBar.Add(item)){
+			item.setInWorld(false);
+			return true;
+		}
+		return false;
+	}
+	
 	public void PlaceItem(BaseItem item, Vector2 position) {
 		if (walkable(position)) {
 			Game.itemsBar.Remove(item);
 			item.setPosition(position);
+			item.setInWorld(true);
 			worldItems.add(item);
 		}
 	}

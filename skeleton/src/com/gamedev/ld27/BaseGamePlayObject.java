@@ -16,6 +16,8 @@ public class BaseGamePlayObject extends GameObject {
 	protected String description = "Anonymous item - give me a name!";
 	protected Sprite icon;
 	protected TextureRegion textureRegion;
+	protected Vector2 pos;
+	private boolean inWorld;
 	
 	protected BaseGamePlayObject()
 	{
@@ -38,10 +40,15 @@ public class BaseGamePlayObject extends GameObject {
 	
 	public void setPosition(Vector2 position) {
 		super.setPosition(position);
-		
+		pos = position.cpy();
 		if (icon != null) {
 			setPosition(icon, position.x, position.y);
 		}
+	}
+	
+	public Vector2 getPosition()
+	{
+		return pos;
 	}
 	
 	/**
@@ -55,8 +62,11 @@ public class BaseGamePlayObject extends GameObject {
 	}
 	
 	private void setPosition(Sprite sprite, float x, float y) {
+		pos = new Vector2(x, y);
 		icon.setPosition(x - Config.screenHalfWidth, y - Config.screenHalfHeight);
 	}
+	
+
 	
 	public Sprite getIcon() {
 		return icon;
@@ -65,5 +75,11 @@ public class BaseGamePlayObject extends GameObject {
 	@Override
 	public void render(SpriteBatch batch) {
 		icon.draw(batch);
+	}
+	public boolean isInWorld() {
+		return inWorld;
+	}
+	public void setInWorld(boolean inWorld) {
+		this.inWorld = inWorld;
 	}
 }
