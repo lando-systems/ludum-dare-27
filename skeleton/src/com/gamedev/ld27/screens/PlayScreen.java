@@ -55,6 +55,10 @@ public class PlayScreen extends GameScreen {
 		Game.itemsBar = new ItemsBar(new Rectangle(leftWidth, Config.screenHeight - topHeight, rightWidth, topHeight));
 		_gameObjects.add(Game.itemsBar);
 		
+		DumbAI dumbAi = new DumbAI();
+		dumbAi.init(300,  12,  12);
+		_gameObjects.add(dumbAi);
+		
 		camera = new OrthographicCamera(Config.screenWidth, Config.screenHeight);
 		
 		// test
