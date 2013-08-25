@@ -141,9 +141,10 @@ public class PlayScreen extends GameScreen {
 			Game.itemsBar.useItem();			
 		}
 				
-//		if (Gdx.input.justTouched()) {
-//			game.setScreen(game.screens.get("Title"));
-//		}
+		// TEMPORARY, Stopwatch testing
+		if (Gdx.input.justTouched()) {
+			_gameObjects.add(1, new Stopwatch(new Rectangle(Game.player.pos.x, Game.player.pos.y, 32, 32)));
+		}
 
 		// TODO : update all the things...
 		

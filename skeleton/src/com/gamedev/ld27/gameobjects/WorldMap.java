@@ -168,7 +168,7 @@ public class WorldMap extends GameObject {
 	public Vector2 mapTileFromPosition(Vector2 pos){
 		return new Vector2((int)(pos.x/32), (int)(pos.y/32));
 	}
-	
+
 	public boolean PickUpItem(BaseItem item)
 	{
 		Vector2 playerMapTile = mapTileFromPosition(Game.player.pos);
