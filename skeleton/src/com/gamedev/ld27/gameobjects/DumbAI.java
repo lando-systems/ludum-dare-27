@@ -28,9 +28,9 @@ public class DumbAI extends PlayerBase {
 		_time += delta;
 		if (_time > _moveTime) {
 			_time = 0;
-			useWeapon(_weapon);
 			
-			switch(Config.rand.nextInt(3))
+			
+			switch(Config.rand.nextInt(4))
 			{
 			case Direction.North:
 				moveNorth();
@@ -44,6 +44,8 @@ public class DumbAI extends PlayerBase {
 			default:
 				moveWest();
 			}
+			
+			useWeapon(_weapon);
 			
 		}
 	}
