@@ -3,6 +3,7 @@ package com.gamedev.ld27.screens;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.gamedev.ld27.Assets;
@@ -12,7 +13,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 import com.gamedev.ld27.Skeleton;
 import com.gamedev.ld27.gameobjects.*;
-import com.gamedev.ld27.items.offensive.WetNoodle;
+import com.gamedev.ld27.items.offensive.*;
 
 public class PlayScreen extends GameScreen {
 
@@ -53,20 +54,7 @@ public class PlayScreen extends GameScreen {
 		
 		camera = new OrthographicCamera(Config.screenWidth, Config.screenHeight);
 		
-		// test
-		Thread t = new Thread(new Runnable() {
-			public void run() {
-				try {
-					while (true) {
-						Game.dialogBox.AppendText("Text test" + Config.rand.nextInt(30));
-						Game.itemsBar.Add(new WetNoodle());
-						Thread.sleep(800);
-					}
-				} catch(Exception e) {
-				}
-			}
-		});
-		t.start();
+		TESTCODE();
 	}
 
 	@Override
@@ -77,10 +65,16 @@ public class PlayScreen extends GameScreen {
 			gameObject.update(delta);
 		}
 		
-		
-		if (Gdx.input.justTouched()) {
-			game.setScreen(game.screens.get("Title"));
+		if (Gdx.input.isKeyPressed(Keys.DOWN)) {
+			Game.itemsBar.selectNext(true);
+		} 
+		else if (Gdx.input.isKeyPressed(Keys.UP)){
+			Game.itemsBar.selectNext(false);
 		}
+				
+//		if (Gdx.input.justTouched()) {
+//			game.setScreen(game.screens.get("Title"));
+//		}
 
 		// TODO : update all the things...
 	}
@@ -105,6 +99,26 @@ public class PlayScreen extends GameScreen {
 	@Override
 	public void dispose() {
 		
+	}
+	
+	public void TESTCODE() {
+		// test
+//				Thread t = new Thread(new Runnable() {
+//					public void run() {
+//						try {
+//							while (true) {
+//								Game.dialogBox.AppendText("Text test" + Config.rand.nextInt(30));
+//								Game.itemsBar.Add(new WetNoodle());
+//								Thread.sleep(800);
+//							}
+//						} catch(Exception e) {
+//						}
+//					}
+//				});
+//				t.start();
+		
+		Game.itemsBar.Add(new WetNoodle(), 3);
+		Game.itemsBar.Add(new BagOfJewels(), 6);
 	}
 
 }

@@ -29,11 +29,11 @@ public abstract class GameObject {
 	
 	private static final Color Transparent = new Color(0, 0, 0, 0);
 		
-	protected void Fill(Color color) {
-		Fill(color, Transparent);
+	protected void fill(Color color) {
+		fill(color, Transparent);
 	}
 	
-	protected void Fill(Color background, Color border)
+	protected void fill(Color background, Color border)
 	{
 		Assets.batch.end();
 		
@@ -43,13 +43,29 @@ public abstract class GameObject {
 		Assets.shapes.end();
 		
 		if (border != Transparent) {
-			Assets.shapes.begin(ShapeType.Line);
-			Assets.shapes.setColor(border);
-			Assets.shapes.rect(_bounds.x, _bounds.y, _bounds.width, _bounds.height);
-			Assets.shapes.end();
+			drawRect(_bounds, border, false);
 		}
 		
 		Assets.batch.begin();
+	}
+	
+	protected void drawRect(Rectangle bounds, Color border) {
+		drawRect(bounds, border, true);
+	}
+	
+	private void drawRect(Rectangle bounds, Color border, boolean stopBatch) {
+		if (stopBatch) {
+			Assets.batch.end();
+		}
+		
+		Assets.shapes.begin(ShapeType.Line);
+		Assets.shapes.setColor(border);
+		Assets.shapes.rect(bounds.x, bounds.y, bounds.width, bounds.height);
+		Assets.shapes.end();
+		
+		if (stopBatch) {
+			Assets.batch.begin();
+		}
 	}
 	
 	public void setPosition(Vector2 position) {

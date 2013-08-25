@@ -2,6 +2,7 @@ package com.gamedev.ld27;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 
 public class Utils {
 
@@ -57,5 +58,10 @@ public class Utils {
 			}
 		}
 		batch.setColor(Color.WHITE);
+	}
+
+	public static Rectangle inflate(Rectangle bounds, float width, float height) {
+		return new Rectangle(bounds.x - width/2, bounds.y - height/2,
+				bounds.width + width, bounds.height + height);
 	}	
 }
