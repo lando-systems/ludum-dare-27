@@ -31,8 +31,8 @@ public class PlayScreen extends GameScreen {
 		float leftWidth = Config.screenWidth * 0.9f;
 		float rightWidth = Config.screenWidth - leftWidth;
 		
-		float topHeight = Config.screenHeight * 0.8f;
-		float mapHeight = Config.screenHeight * 0.6f;
+		float topHeight = Config.screenHeight * 0.9f;
+		float mapHeight = Config.screenHeight * 0.7f;
 		float dialogHeight = topHeight - mapHeight;
 		
 		float adHeight = Config.screenHeight - topHeight;
