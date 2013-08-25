@@ -14,6 +14,7 @@ public abstract class BaseObstacle extends BaseItem {
 	protected BaseObstacle(String name, String description, int obstacleCode) {
 		super(name, description);
 		_obstacleCode = obstacleCode;
+		_walkable = false;
 	}
 	
 	public int getObstacleCode() {
