@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Direction;
+import com.gamedev.ld27.Game;
 import com.gamedev.ld27.items.RangeWeapon;
 import com.gamedev.ld27.items.Weapon;
 import com.gamedev.ld27.items.RangeWeaponData;
@@ -92,9 +93,10 @@ public class WeaponSystem {
 	
 	private void renderMelee(SpriteBatch batch, int walkingDir) {
 		Rectangle weaponBounds = getMeleeBounds(walkingDir);
+		Vector2 screenPos = Game.gameWorld.worldPosToScreenMapPos(new Vector2(weaponBounds.x, weaponBounds.y));
 		batch.draw(_item.getWeaponUseImage(walkingDir),  
-				weaponBounds.x - Config.screenHalfWidth,
-				weaponBounds.y - Config.screenHalfHeight,
+				screenPos.x,
+				screenPos.y,
 				0, 0, _item.getWidth(), _item.getHeight(), weaponBounds.width / _item.getWidth(),
 				weaponBounds.height / _item.getHeight(), 0);
 	}

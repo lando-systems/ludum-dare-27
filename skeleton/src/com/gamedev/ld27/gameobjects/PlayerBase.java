@@ -144,6 +144,28 @@ public class PlayerBase extends GameObject {
 		return usePos;
 	}
 
+	public void takeKnockbackDamage(int dir){
+		Vector2 tempPos = targetPos.cpy();
+		switch (dir){
+		case 0:
+			tempPos.add(0, 32);
+			break;
+		case 1:
+			tempPos.add(32, 0);
+			break;
+		case 2:
+			tempPos.add(0, -32);
+			break;
+		case 3: 
+			tempPos.add(-32, 0);
+			break;
+		}
+	
+		if (Game.gameWorld.walkable(tempPos)){
+			targetPos = tempPos;
+		} // else stay there... can't move onto it
+	}
+	
 	public boolean useWeapon(Weapon item) {
 		return weaponSystem.useItem(item);	
 	}
