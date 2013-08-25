@@ -14,10 +14,12 @@ public class DialogBox extends GameObject {
 	private final ArrayList<String> _dialogText = new ArrayList<String>(20);
 	private float _yPosition;
 	private int _maxText;
+	private int _maxTextWidth;
 
 	public DialogBox(Rectangle bounds) {
 		super(bounds);
 		_maxText = (int)(bounds.height / Config.textHeight);
+		_maxTextWidth = (int)(bounds.width / Config.textWidth) - 2;
 	}
 	
 	@Override
@@ -41,11 +43,27 @@ public class DialogBox extends GameObject {
 	}
 	
 	public void AppendText(String text) {
-		_dialogText.add(text);
+		add(text);
 	}
 	
 	public void SetText(String text) {
 		_dialogText.clear();
-		_dialogText.add(text);
+		add(text);
+	}
+	
+	private void add(String text) {
+		int insertIndex = _dialogText.size();
+		
+		while (text.length() > _maxTextWidth) {
+			int index = _maxTextWidth;
+			while (text.charAt(index) != ' ') {
+				index--;
+			}
+			
+			String subText = text.substring(0, index);
+			_dialogText.add(insertIndex, subText);
+			text = text.substring(index);
+		}
+		_dialogText.add(insertIndex, text);
 	}
 }

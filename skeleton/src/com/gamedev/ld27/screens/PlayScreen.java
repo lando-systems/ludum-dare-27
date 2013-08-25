@@ -132,6 +132,7 @@ public class PlayScreen extends GameScreen {
 		Game.itemsBar.Add(new Bombs(), 4);
 		Game.itemsBar.Add(new Mushroom(), 5);
 		Game.itemsBar.Add(new Bacon(), 6);
+		Game.itemsBar.Add(new OffensiveTower(), 8);
 	}
 
 }
