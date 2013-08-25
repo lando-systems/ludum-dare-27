@@ -10,7 +10,7 @@ public class Utils {
 	private static final String symbols = ",.!?'\"-+=/\\%()<>:;";
 	public static enum EStringJustify { LEFT, CENTER, RIGHT };
 	private static boolean[] lastInput = new boolean[256];
-	
+	private static int pixelsBetweenCharacters = 2; // spacing between characters (pixels)
 	public static void updateInput(){
 		for (int i =0; i < 256; i++){
 			lastInput[i] = Gdx.input.isKeyPressed(i);
@@ -35,10 +35,21 @@ public class Utils {
 	public static void drawText(SpriteBatch batch, String text, float x, float y, Color color, EStringJustify justify) {
 		drawText(batch, text, x, y, Config.textWidth, Config.textHeight, color, justify);
 	}
-	
+
+//	public static void drawText(SpriteBatch batch, String text, float x, float y, Color color, EStringJustify justify, boolean wrap) {
+//		if(wrap)
+//		{
+//			//If there is more text than will fit on one line
+//			if(text.length() * (Config.textWidth + pixelsBetweenChacters) > Config.textWidth())
+//		}
+//		else{
+//			//Just draw as much of the text as will fit
+//			drawText(batch, text, x, y, Config.textWidth, Config.textHeight, color, justify);
+//		}
+//	}
+
 	public static void drawText(SpriteBatch batch, String text, float x, float y, int w, int h, Color color, EStringJustify justify) {
 		text = text.toUpperCase();
-		int s = 2; // spacing between characters (pixels)
 		
 		batch.setColor(color);
 		float totalWidth = text.length() * w;
@@ -55,7 +66,7 @@ public class Utils {
 		}
 		for(int i = 0; i < text.length(); ++i) {
 			char ch = text.charAt(i);
-			float xPos = x + i * w + s;
+			float xPos = x + i * w + pixelsBetweenCharacters;
 			float yPos = y;
 
 			if (ch >= 'A' && ch <= 'Z') {

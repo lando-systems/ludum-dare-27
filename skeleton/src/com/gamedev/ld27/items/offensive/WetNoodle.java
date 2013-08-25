@@ -10,7 +10,7 @@ public class WetNoodle extends Weapon {
 	public WetNoodle() {
 		super("Wet Noodle", "You can hit something with a wet noodle");
 		setIcon(Assets.wetNoodle);
-		
+		setAdDescription("Every been smacked with spagetti? It hurts more than you would think");
 		setProperties(1, 4);
 		
 		setDefeats(GameSettings.CastleGuards);

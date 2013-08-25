@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.TimeUtils;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Utils;
 import com.gamedev.ld27.Utils.EStringJustify;
@@ -45,10 +46,16 @@ public abstract class BaseItem extends BaseGamePlayObject {
 	 */
 	public void renderAd(SpriteBatch batch, Rectangle adBarBounds) {
 		icon.draw(batch);
+
+		float x = adBarBounds.x + 10;
+		float y = (adBarBounds.height -  adBarBounds.y)/2;
+		this.setPosition(new Vector2(x,y));
 		
 		//Print the description text next to the icon
-		float x = adBarBounds.x + icon.getOriginX() - Config.screenHalfWidth + icon.getWidth();
-		float y = (adBarBounds.height -  adBarBounds.y)/2 - Config.screenHalfHeight;
+		x = adBarBounds.x + icon.getOriginX() - Config.screenHalfWidth + icon.getWidth();
+		y = (adBarBounds.height -  adBarBounds.y)/2 - Config.screenHalfHeight;
+		
+		//TODO:   Handle wrapping
 		Utils.drawText(batch, this.getAdDescription(), x,  y, Color.BLACK, EStringJustify.LEFT);
 	}
 
