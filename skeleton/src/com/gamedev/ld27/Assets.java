@@ -17,24 +17,43 @@ public class Assets {
 	public static Texture spritesheet;
 	public static Texture titleBackground;
 	public static Texture mapTiles;
+	public static Texture itemsheet;
 
 	public static TextureRegion[][] letters;
 	public static TextureRegion[][] digits;
 	public static TextureRegion[][] symbols;
+	
+	public static TextureRegion wetNoodle;
+	public static TextureRegion bagOfJewels;
+	public static TextureRegion hammer;
+	public static TextureRegion boomerang;
+	public static TextureRegion bombs;
+	public static TextureRegion mushroom;
 
 	public static void load() {
 		random = new Random();
 		batch  = new SpriteBatch();
 		shapes = new ShapeRenderer();
-
+ 
 		spritesheet  = new Texture(Gdx.files.internal("data/spritesheet.png"));
 		spritesheet.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+		
+		itemsheet = new Texture(Gdx.files.internal("data/gameitems.png"));
+		itemsheet.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 		
 		titleBackground = new Texture(Gdx.files.internal("data/libgdx.png"));
 		titleBackground.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
 		mapTiles = new Texture(Gdx.files.internal("data/maptiles.png"));
 		mapTiles .setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+		
+		TextureRegion[][] itemRow = splitAndGet(itemsheet, 32, 32, 0, 0, 20, 1);
+		wetNoodle   = itemRow[0][0];
+		bagOfJewels = itemRow[0][1];
+		hammer      = itemRow[0][2];
+		boomerang   = itemRow[0][3];
+		bombs       = itemRow[0][4];
+		mushroom    = itemRow[0][5];		
 		
 		letters = splitAndGet(spritesheet, 8, 8, 0, 30, 26, 1);
 		digits  = splitAndGet(spritesheet, 8, 8, 0, 31, 10, 1);
