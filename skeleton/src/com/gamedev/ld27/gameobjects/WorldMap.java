@@ -1,5 +1,7 @@
 package com.gamedev.ld27.gameobjects;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -11,6 +13,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.gamedev.ld27.Config;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.gamedev.ld27.items.BaseItem;
 
 public class WorldMap extends GameObject {
 
@@ -23,8 +26,8 @@ public class WorldMap extends GameObject {
 	private int mapWidth = 100;
 	private int mapHeight = 100;
 	private int[] mapGrid; // this is the game map indexes
-
-
+	
+	private ArrayList<BaseItem> worldItems = new ArrayList<BaseItem>(20);
 	
 	public WorldMap(Rectangle bounds) {
 		super(bounds);
@@ -51,11 +54,12 @@ public class WorldMap extends GameObject {
 		}
 
 	}
-
+		
 	@Override
 	public void render(SpriteBatch batch) {
 		int playerTileX = (int)Game.player.pos.x/32;
 		int playerTileY = (int)Game.player.pos.y/32;
+		
 		for(int y = playerTileY - 40; y < playerTileY + 40; y++ ){
 			for (int x = playerTileX - 40; x < playerTileX + 40; x++) {
 				Sprite tile;
@@ -78,12 +82,6 @@ public class WorldMap extends GameObject {
 			}
 		}
 	}
-
-	@Override
-	public void update(float delta) {
-		
-
-	}
 	
 	public boolean walkable(Vector2 worldPos){
 		int tileX = (int)(worldPos.x / 32);
@@ -92,5 +90,13 @@ public class WorldMap extends GameObject {
 		int tileType = mapGrid[tileX + (tileY *mapWidth)];
 		if (tileType == 0) return true;
 		return false;
+	}
+	
+	public void PlaceItem(BaseItem item, Vector2 position) {
+		if (walkable(position)) {
+			Game.itemsBar.Remove(item);
+			item.setPosition(position);
+			worldItems.add(item);
+		}
 	}
 }

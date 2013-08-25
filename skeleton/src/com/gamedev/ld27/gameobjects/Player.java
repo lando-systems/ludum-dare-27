@@ -100,4 +100,8 @@ public class Player extends GameObject {
 		}
 		return false;
 	}
+
+	public Vector2 getTargetPosition() {
+		return targetPos;
+	}
 }

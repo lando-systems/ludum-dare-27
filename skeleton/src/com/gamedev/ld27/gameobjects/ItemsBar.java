@@ -42,6 +42,22 @@ public class ItemsBar extends GameObject {
 		return added;
 	}
 	
+	public boolean Remove(BaseItem item) {
+		boolean removed = false;
+		
+		for (int i = 0; i < _items.length; i++) {
+			if (_items[i] == item) {
+				_items[i] = null;
+				if (_selectedIndex == i) {
+					selectNext(true);
+				}
+				removed = true;
+				break;
+			}
+		}
+		return removed;
+	}
+	
 	private int FindEmptySlot() {
 		for (int i = 0; i < _items.length; i++) {
 			if (_items[i] == null) { 
@@ -49,6 +65,20 @@ public class ItemsBar extends GameObject {
 			}
 		}
 		return -1;
+	}
+	
+	public BaseItem selectedItem() {
+		if (_selectedIndex != -1) {
+			return _items[_selectedIndex];			
+		}
+		return null;
+	}
+	
+	public void useItem() {
+		BaseItem item = selectedItem();
+		if (item != null) {
+			item.use();
+		}
 	}
 	
 	private void setBounds(BaseItem item, int index) {
@@ -79,9 +109,11 @@ public class ItemsBar extends GameObject {
 			if (_items[index] != null) {
 				_selectedIndex = index;
 				_selectionBounds = Utils.inflate(getItemBounds(index), -30, -10);
-				break;
+				return;
 			}
 		}
+		
+		_selectedIndex = -1;
 	}
 	
 	@Override
