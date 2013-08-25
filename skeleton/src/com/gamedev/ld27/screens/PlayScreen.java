@@ -131,7 +131,10 @@ public class PlayScreen extends GameScreen {
 		_gameObjects = keepObjs;
 
 		
-		if (Utils.isKeyJustPressed(Keys.DOWN)) {
+		if (Utils.isKeyJustPressed(Keys.ESCAPE)) {
+			Gdx.app.exit();
+		}
+		else if (Utils.isKeyJustPressed(Keys.DOWN)) {
 			Game.itemsBar.selectNext(true);
 		} 
 		else if (Utils.isKeyJustPressed(Keys.UP)) {
