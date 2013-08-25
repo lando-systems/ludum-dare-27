@@ -23,7 +23,7 @@ public abstract class BaseItem extends BaseGamePlayObject {
 	public void use() 
 	{
 		// this just places item in world, override on weapons
-		Vector2 position = Game.player.getTargetPosition();
+		Vector2 position = Game.player.getUsePosition();
 		if (Game.gameWorld.walkable(position))
 		{
 			Game.gameWorld.PlaceItem(this, position);
