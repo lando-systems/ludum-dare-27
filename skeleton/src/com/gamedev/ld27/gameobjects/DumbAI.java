@@ -7,6 +7,8 @@ import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Direction;
 import com.gamedev.ld27.Game;
+import com.gamedev.ld27.items.BaseItem;
+import com.gamedev.ld27.items.ItemFactory;
 import com.gamedev.ld27.items.Weapon;
 import com.gamedev.ld27.items.useful.Boomerang;
 
@@ -31,6 +33,11 @@ public class DumbAI extends PlayerBase {
 	
 	protected void handleInput(float delta) {
 		if (_hitPoints <= 0) {
+			if (Alive){
+				BaseItem drop = ItemFactory.GetRandomItem();
+				drop.setPosition(pos);
+				Game.gameWorld.PlaceItem(drop, pos);
+			}
 			Alive = false;
 			return;
 		}
