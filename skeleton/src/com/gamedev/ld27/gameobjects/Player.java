@@ -9,6 +9,8 @@ public class Player extends PlayerBase {
 
 	public Player(Rectangle bounds) {
 		super(bounds, Assets.playerSheet);
+		
+		_livePlayer = true;
 	}
 	
 	protected void handleInput(float delta) {
@@ -25,4 +27,6 @@ public class Player extends PlayerBase {
 			moveEast();
 		}
 	}
+	
+
 }

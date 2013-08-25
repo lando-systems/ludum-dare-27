@@ -19,8 +19,10 @@ public class PlayerBase extends GameObject {
 	private float walkingAnimation = 0f;
 	
 	private Sprite[] animTiles; 
-	private static int TILE_SIZE = 32;
+	protected static final int TILE_SIZE = 32;
 	private int animLength;
+	
+	protected boolean _livePlayer;
 	
 	private WeaponSystem weaponSystem;	
 	
@@ -50,7 +52,9 @@ public class PlayerBase extends GameObject {
 	public void render(SpriteBatch batch) {
 		int animationFrame = (int)walkingAnimation % 4;
 		Sprite tile = animTiles[animationFrame + (walkingDir * animLength)];
-		tile.setPosition(_bounds.x - Config.screenHalfWidth, _bounds.y - Config.screenHalfHeight);
+		if (_livePlayer) {
+			tile.setPosition(_bounds.x - Config.screenHalfWidth, _bounds.y - Config.screenHalfHeight);
+		}
 		
 		boolean south = (walkingDir == Direction.South);
 		
