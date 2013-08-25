@@ -9,6 +9,9 @@ public class Hammer extends OffensiveWeaponItem {
 	public Hammer() {
 		super("Hammer", "Mainly used for the smashing");
 		setIcon(Assets.hammer);
+		
+		setProperties(true, 1, 10);
+		
 		setDefeats(GameSettings.Rocks);
 	}
 }

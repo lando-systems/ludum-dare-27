@@ -68,6 +68,11 @@ public abstract class GameObject {
 		}
 	}
 	
+	public Vector2 getPosition()
+	{
+		return new Vector2(_bounds.x, _bounds.y);
+	}
+	
 	public void setPosition(Vector2 position) {
 		_bounds.setPosition(position);
 	}

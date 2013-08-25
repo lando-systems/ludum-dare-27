@@ -16,7 +16,6 @@ import com.gamedev.ld27.Skeleton;
 import com.gamedev.ld27.gameobjects.*;
 import com.gamedev.ld27.items.offensive.*;
 import com.gamedev.ld27.items.useful.*;
-import com.gamedev.ld27.items.modifiers.*;
 
 public class PlayScreen extends GameScreen {
 
@@ -140,18 +139,17 @@ public class PlayScreen extends GameScreen {
 //				});
 //				t.start();
 		
-		Game.itemsBar.Add(new OffensiveTower(), 0);
-		Game.itemsBar.Add(new BagOfJewels(), 1);
-		Game.itemsBar.Add(new Hammer(), 2);
-		Game.itemsBar.Add(new Boomerang(), 3);
-//		Game.itemsBar.Add(new Bombs(), 4);
-		Game.itemsBar.Add(new Mushroom(), 5);
-		Game.itemsBar.Add(new Bacon(), 6);
-		Game.itemsBar.Add(new Slinky(), 7);
-		Game.itemsBar.Add(new Helmet(), 8);
-//		Game.itemsBar.Add(new SillyString(), 9);
-		Game.itemsBar.Add(new Flute(), 9);
-		Game.itemsBar.Add(new BagOfKittens(), 4);
+		Game.itemsBar.Add(new WetNoodle());
+		Game.itemsBar.Add(new Hammer());
+		Game.itemsBar.Add(new Boomerang());
+		Game.itemsBar.Add(new Bombs());
+		Game.itemsBar.Add(new Slinky());
+		Game.itemsBar.Add(new SillyString());
+		Game.itemsBar.Add(new BagOfKittens());
+		Game.itemsBar.Add(new BouncyBall());
+		Game.itemsBar.Add(new Torch());
+		Game.itemsBar.Add(new OffensiveTower());
+		
 		
 		//For now this just places a single ad, the rotation and randomization still to come
 		Game.adBar.selectRandomAd();

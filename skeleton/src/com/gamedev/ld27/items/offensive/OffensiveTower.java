@@ -4,10 +4,10 @@ import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Game;
 import com.gamedev.ld27.GameSettings;
-import com.gamedev.ld27.items.OffensiveWeaponItem;
+import com.gamedev.ld27.items.BaseItem;
 
 
-public class OffensiveTower extends OffensiveWeaponItem {
+public class OffensiveTower extends BaseItem {
 	
 	public OffensiveTower() {
 		super("Offensive Tower", "This tower is really offensive");
