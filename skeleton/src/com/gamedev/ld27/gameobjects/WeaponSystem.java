@@ -7,8 +7,9 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Direction;
-import com.gamedev.ld27.RangeWeapon;
-import com.gamedev.ld27.items.OffensiveWeaponItem;
+import com.gamedev.ld27.items.RangeWeapon;
+import com.gamedev.ld27.items.Weapon;
+import com.gamedev.ld27.items.RangeWeaponData;
 
 public class WeaponSystem {
 	
@@ -16,25 +17,25 @@ public class WeaponSystem {
 	private Rectangle _weaponBounds;
 	
 	private float _time;
-	private OffensiveWeaponItem _item;
+	private Weapon _item;
 	private Vector2 _playerPos;
 	
-	private ArrayList<RangeWeapon> _rangeWeapons = new ArrayList<RangeWeapon>(10);
+	private ArrayList<RangeWeaponData> _rangeWeapons = new ArrayList<RangeWeaponData>(10);
 	
 	public WeaponSystem(Player player) {
 		_player = player;
 		_weaponBounds = new Rectangle(0, 0, _player.getWidth(), _player.getHeight());
 	}
 	
-	public boolean useItem(OffensiveWeaponItem item) {
+	public boolean useItem(Weapon item) {
 		if ((item == _item) && item.isSingleUse()) return false;
-		
+		item.playUseSound();
 		_item = item;
 		_time = 0;
 		_playerPos = _player.getPosition();
 		
-		if (!item.isMeleeWeapon()) {
-			_rangeWeapons.add(new RangeWeapon(_player, item));
+		if (item instanceof RangeWeapon) {
+			_rangeWeapons.add(new RangeWeaponData(_player, (RangeWeapon)item));
 		}
 		
 		return true;
@@ -49,21 +50,21 @@ public class WeaponSystem {
 			}
 		}
 		
-		ArrayList<RangeWeapon> removeList = new ArrayList<RangeWeapon>();
-		for (RangeWeapon range : _rangeWeapons) {
+		ArrayList<RangeWeaponData> removeList = new ArrayList<RangeWeaponData>();
+		for (RangeWeaponData range : _rangeWeapons) {
 			range.update(delta);
 			if (range.isComplete()) {
 				removeList.add(range);
 			}
 		}
 		
-		for (RangeWeapon range : removeList) {
+		for (RangeWeaponData range : removeList) {
 			_rangeWeapons.remove(range);
 		}
 	}
 
 	public void render(SpriteBatch batch, int walkingDir) {
-		for (RangeWeapon range : _rangeWeapons) {
+		for (RangeWeaponData range : _rangeWeapons) {
 			range.render(batch);
 		}
 		

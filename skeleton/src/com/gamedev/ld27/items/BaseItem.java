@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.gamedev.ld27.BaseGamePlayObject;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Utils;
 import com.gamedev.ld27.Utils.EStringJustify;
@@ -54,8 +53,11 @@ public abstract class BaseItem extends BaseGamePlayObject {
 		{
 			Game.gameWorld.PlaceItem(this, position);
 			Game.itemsBar.Remove(this);
+			playUseSound();
 		}
 	}
+	
+	public void playUseSound() { }
 
 	public boolean isAutoPickup() {
 		return _autoPickup;

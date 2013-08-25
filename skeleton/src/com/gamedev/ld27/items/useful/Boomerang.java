@@ -3,14 +3,14 @@ package com.gamedev.ld27.items.useful;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Direction;
 import com.gamedev.ld27.GameSettings;
-import com.gamedev.ld27.items.OffensiveWeaponItem;
+import com.gamedev.ld27.items.RangeWeapon;
 
-public class Boomerang extends OffensiveWeaponItem {
+public class Boomerang extends RangeWeapon {
 	public Boomerang() {
 		super("Boomerang", "if you love something let it go, it'll come back");
 		setIcon(Assets.boomerang);
 		
-		setProperties(false, 7, 30, 1);
+		setProperties(7, 30);
 		
 		setDefeats(GameSettings.CastleGuards);
 	}

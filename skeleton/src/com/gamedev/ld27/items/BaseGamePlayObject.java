@@ -2,13 +2,14 @@
  * Base object for all items that will reside in a space on the game play map
  * Obstacles, weapons, other items
  */
-package com.gamedev.ld27;
+package com.gamedev.ld27.items;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.gamedev.ld27.Config;
 import com.gamedev.ld27.gameobjects.GameObject;
 
 public class BaseGamePlayObject extends GameObject {

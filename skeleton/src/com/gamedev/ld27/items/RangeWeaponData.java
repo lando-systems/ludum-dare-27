@@ -1,12 +1,13 @@
-package com.gamedev.ld27;
+package com.gamedev.ld27.items;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.gamedev.ld27.Config;
+import com.gamedev.ld27.Direction;
 import com.gamedev.ld27.gameobjects.Player;
-import com.gamedev.ld27.items.OffensiveWeaponItem;
 
-public class RangeWeapon {
+public class RangeWeaponData {
 
 	private Player _player;
 	private Vector2 _direction;
@@ -19,7 +20,7 @@ public class RangeWeapon {
 	private float _rotationDr;
 	private float _rotation;
 		
-	public RangeWeapon(Player player, OffensiveWeaponItem item) {
+	public RangeWeaponData(Player player, RangeWeapon item) {
 		_player = player;
 		_direction = getDirection(player, item);
 		_offset = new Vector2(player.getPlayerPosition());
@@ -30,7 +31,7 @@ public class RangeWeapon {
 		_rotationDr = item.getRotation(player.getDirection());
 	}
 	
-	private Vector2 getDirection(Player player, OffensiveWeaponItem item) {
+	private Vector2 getDirection(Player player, Weapon item) {
 		
 		float speed = (item.getRange() * item.getWidth()) / item.animationTime();
 		
