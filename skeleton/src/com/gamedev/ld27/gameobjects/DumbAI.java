@@ -1,6 +1,7 @@
 package com.gamedev.ld27.gameobjects;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Direction;
@@ -20,7 +21,6 @@ public class DumbAI extends PlayerBase {
 	private float _moveTime = 2;
 	
 	protected void handleInput(float delta) {
-		setPosition(pos.cpy());
 		
 		_time += delta;
 		if (_time > _moveTime) {
@@ -43,5 +43,31 @@ public class DumbAI extends PlayerBase {
 			}
 			
 		}
+	}
+		
+	public boolean updatePos(float delta) {
+		Vector2 pos = getPosition().cpy();
+		
+			
+			if ((int)pos.x == (int)targetPos.x &&
+				(int)pos.y == (int)targetPos.y)
+				return true;
+			
+			Vector2 dir = new Vector2(targetPos.x - pos.x, targetPos.y - pos.y);
+			dir.nor();
+			dir.scl(100*delta);
+			float dist = dir.len2();
+			float targetDist = targetPos.dst2(pos);
+			if (dist >= targetDist){
+				pos.x = targetPos.x;
+				pos.y = targetPos.y;
+			} else
+			{
+				pos.add(dir);
+			}
+			
+			setPosition(pos);
+			return false;
+		
 	}
 }
