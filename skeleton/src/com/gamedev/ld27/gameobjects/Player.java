@@ -33,6 +33,10 @@ public class Player extends PlayerBase {
 		return _wearingHelm;
 	}
 	
+	public void SetWearingHelm() {
+		_wearingHelm = true;
+	}
+	
 	public boolean IsWearingGlasses() {
 		return _wearingGlasses;
 	}

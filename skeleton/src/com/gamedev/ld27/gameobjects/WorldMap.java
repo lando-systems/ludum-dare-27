@@ -74,6 +74,8 @@ public class WorldMap extends GameObject {
 		PlaceItem(helmet, new Vector2(992, 224));
 		BaseItem OT = ItemFactory.getItem("OffensiveTower");
 		PlaceItem(OT, new Vector2(1888, 1920));
+		BaseItem hack = ItemFactory.getItem("Hacksaw");
+		PlaceItem(hack, new Vector2(2816, 3040));
 	}
 	
 	@Override
