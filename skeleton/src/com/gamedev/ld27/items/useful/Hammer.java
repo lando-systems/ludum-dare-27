@@ -9,7 +9,6 @@ public class Hammer extends UsefulItem {
 	public Hammer() {
 		this.setDescription("Hammer, mainly used for the smashing");
 		setIcon(Assets.hammer);
-		
-//		setDefeats(GameSettings.Rock);
+		setDefeats(GameSettings.Rocks);
 	}
 }
