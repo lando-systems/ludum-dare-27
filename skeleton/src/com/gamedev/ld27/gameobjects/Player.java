@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Assets;
+import com.gamedev.ld27.Game;
 import com.gamedev.ld27.Utils;
 import com.gamedev.ld27.items.BaseItem;
 import com.gamedev.ld27.obstacle.BaseObstacle;
@@ -13,6 +15,9 @@ import com.gamedev.ld27.obstacle.TrollBridge;
 public class Player extends PlayerBase {
 
 	private BaseObstacle _obstacle;
+	private boolean _wearingHelm;
+	private boolean _wearingGlasses;
+	private float _mushroomEffectTime;
 	
 	public Player(Rectangle bounds) {
 		super(bounds, Assets.playerSheet);
@@ -59,11 +64,11 @@ public class Player extends PlayerBase {
 	
 	protected void finishMove(int tileType) {
 		// e-w bridge
-		if (tileType == 6) {
-			if (Utils.probability(10)) {
-				_obstacle = new TrollBridge(this);
-			}
-		}	
+		Vector2 PlayerTile = Game.gameWorld.mapTileFromPosition(pos);
+		if (!TrollBridge.Spawned && PlayerTile.x == 27 && PlayerTile.y == 57) {
+			_obstacle = new TrollBridge(this);
+		}
+
 	}
 
 	public boolean canUse(BaseItem item) {

@@ -8,13 +8,18 @@ import com.gamedev.ld27.items.useless.*;
 
 public class ItemFactory {
 
-	private static String[] items = {"WetNoodle","BagOfJewels", "BagOfKittens", "BouncyBall", 
-									 "OffensiveTower", "SillyString", "Torch", "Bacon", "Boomerang", "Flute", "Hammer",
-									 "Slinky", "UselessStar", "Mushroom"};
+	private static String[] items = {"WetNoodle","BagOfJewels", "BagOfKittens", "Boomerang", "Hammer"};
+	
+	private static String[] killItems = {"WetNoodle","BagOfJewels", "BagOfKittens", "Bacon", "Boomerang", "Hammer"};
 	
 	public static BaseItem GetRandomItem()
 	{
 		return getItem(items[Assets.random.nextInt(items.length)]);
+	}
+	
+	public static BaseItem GetRandomKillItem()
+	{
+		return getItem(killItems[Assets.random.nextInt(killItems.length)]);
 	}
 	
 	public static BaseItem getItem(String name)
