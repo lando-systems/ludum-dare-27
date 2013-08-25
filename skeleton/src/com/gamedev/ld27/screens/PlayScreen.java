@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Game;
+import com.gamedev.ld27.Utils;
 import com.badlogic.gdx.math.Rectangle;
 
 import com.gamedev.ld27.Skeleton;
@@ -22,7 +23,7 @@ public class PlayScreen extends GameScreen {
 	
 	public PlayScreen(Skeleton game) {
 		super(game);
-		
+		Utils.updateInput();
 		// grid sizes
 		float leftWidth = Config.screenWidth * 0.9f;
 		float rightWidth = Config.screenWidth - leftWidth;
@@ -77,6 +78,8 @@ public class PlayScreen extends GameScreen {
 //		}
 
 		// TODO : update all the things...
+		
+		Utils.updateInput(); // Must be called last!!!
 	}
 	
 	@Override

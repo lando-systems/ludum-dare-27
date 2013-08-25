@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Game;
+import com.gamedev.ld27.Utils;
 
 public class Player extends GameObject {
 
@@ -51,6 +52,7 @@ public class Player extends GameObject {
 	
 	@Override
 	public void update(float delta) {
+		if (Utils.isKeyJustPressed(Keys.B)) System.out.println("Pressed");
 		walkingAnimation += delta * 4f;
 		if (walkingAnimation > 5.0f) walkingAnimation -= 4.0f;
 		if (updatePos(delta)){

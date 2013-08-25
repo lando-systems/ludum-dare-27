@@ -1,5 +1,7 @@
 package com.gamedev.ld27;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -8,7 +10,18 @@ public class Utils {
 
 	private static final String symbols = ",.!?'\"-+=/\\%()<>:;";
 	public static enum EStringJustify { LEFT, CENTER, RIGHT };
+	private static boolean[] lastInput = new boolean[256];
+	
+	public static void updateInput(){
+		for (int i =0; i < 256; i++){
+			lastInput[i] = Gdx.input.isKeyPressed(i);
+		}
+	}
 
+	public static boolean isKeyJustPressed(int key){
+		return (!lastInput[key] && Gdx.input.isKeyPressed(key));
+	}
+	
 	public static void drawText(String text, float x, float y, Color color, EStringJustify justify)
 	{
 		drawText(text, x, y, Config.textWidth, Config.textHeight, color, justify);
