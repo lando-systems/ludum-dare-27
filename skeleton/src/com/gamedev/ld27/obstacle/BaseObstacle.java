@@ -3,7 +3,7 @@
  */
 package com.gamedev.ld27.obstacle;
 
-import com.gamedev.ld27.BaseGamePlayObject;
+import com.gamedev.ld27.items.BaseGamePlayObject;
 
 public abstract class BaseObstacle extends BaseGamePlayObject {
 

@@ -11,7 +11,7 @@ import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Direction;
 import com.gamedev.ld27.Game;
 import com.gamedev.ld27.Utils;
-import com.gamedev.ld27.items.OffensiveWeaponItem;
+import com.gamedev.ld27.items.Weapon;
 
 public class Player extends GameObject {
 
@@ -27,7 +27,7 @@ public class Player extends GameObject {
 	private static int TILE_SIZE = 32;
 	private int animLength;
 	
-	private WeaponSystem weapon;	
+	private WeaponSystem weaponSystem;	
 	
 	public Player(Rectangle bounds) {
 		super(bounds);
@@ -43,7 +43,7 @@ public class Player extends GameObject {
 		pos = new Vector2(startTileX*32,startTileY*32);
 		targetPos = new Vector2(startTileX*32,startTileY*32);
 		
-		weapon = new WeaponSystem(this);
+		weaponSystem = new WeaponSystem(this);
 	}
 	
 	@Override
@@ -56,13 +56,13 @@ public class Player extends GameObject {
 		
 		// need to render behind player
 		if (!south) {
-			weapon.render(batch, walkingDir);
+			weaponSystem.render(batch, walkingDir);
 		}
 		tile.draw(batch);	
 		
 		// render on player
 		if (south) {
-			weapon.render(batch, walkingDir);
+			weaponSystem.render(batch, walkingDir);
 		}
 		
 	}
@@ -93,7 +93,7 @@ public class Player extends GameObject {
 			if (!Game.gameWorld.walkable(targetPos)) targetPos = prevTarget;
 		} 
 		
-		weapon.update(delta);
+		weaponSystem.update(delta);
 	}
 	
 	public boolean updatePos(float delta){
@@ -139,8 +139,8 @@ public class Player extends GameObject {
 		return usePos;
 	}
 
-	public boolean useWeapon(OffensiveWeaponItem item) {
-		return weapon.useItem(item);	
+	public boolean useWeapon(Weapon item) {
+		return weaponSystem.useItem(item);	
 	}
 	
 	public int getDirection() {
