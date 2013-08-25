@@ -12,6 +12,7 @@ public class RangeWeaponData {
 
 	private PlayerBase _player;
 	private Vector2 _direction;
+	private int _dir;
 	private Vector2 _offset;
 	private Vector2 _position;
 	private float _maxTime;
@@ -43,7 +44,7 @@ public class RangeWeaponData {
 	private Vector2 getDirection(PlayerBase player, Weapon item) {
 		
 		float speed = (item.getRange() * item.getWidth()) / item.animationTime();
-		
+		_dir = player.getDirection();
 		switch (player.getDirection())
 		{
 		// fall through switch - gotta love java
@@ -88,8 +89,18 @@ public class RangeWeaponData {
 				_isReturning = false;
 			}
 		}
-		
+		checkHitPlayer();
 		_rotation += _rotationDr*delta;
+	}
+	
+	private void checkHitPlayer(){
+		if (_player == Game.player) return; // don't hit ourselves
+		Vector2 playerTile = Game.gameWorld.mapTileFromPosition(Game.player.pos);
+		Vector2 weaponTile = Game.gameWorld.mapTileFromPosition(_position);
+		if (playerTile.x == weaponTile.x && playerTile.y == weaponTile.y) {
+			Game.player.takeKnockbackDamage(_dir);
+			_time = _maxTime;
+		}
 	}
 	
 	public void render(SpriteBatch batch) {
