@@ -7,26 +7,20 @@ package com.gamedev.ld27;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.gameobjects.GameObject;
 
-public class BaseGamePlayObject extends GameObject{
+public class BaseGamePlayObject extends GameObject {
 
-	protected String description;
+	protected String description = "Anonymous item - give me a name!";
 	protected Sprite icon;
 	protected TextureRegion textureRegion;
-	private Vector2 objectPosition;
 	
-	/**
-	 * Create an instance of a game play object, setting its position
-	 * Description, icon, etc. are all defaulted
-	 * @param position
-	 */
-	public BaseGamePlayObject(Vector2 position)
+	protected BaseGamePlayObject()
 	{
-		objectPosition = position;
+		super(new Rectangle(0, 0, 32, 32));
 	}
-	
 	/**
 	 * Return a description that can be displayed to the user 
 	 * about what the object is
@@ -41,13 +35,13 @@ public class BaseGamePlayObject extends GameObject{
 	{
 		description = desc;
 	}	
-
-	protected Vector2 getObjectPosition() {
-		return objectPosition;
-	}
-
-	protected void setObjectPosition(Vector2 objectPosition) {
-		this.objectPosition = objectPosition;
+	
+	public void setPosition(Vector2 position) {
+		super.setPosition(position);
+		
+		if (icon != null) {
+			setPosition(icon, position.x, position.y);
+		}
 	}
 	
 	/**
@@ -57,7 +51,11 @@ public class BaseGamePlayObject extends GameObject{
 	 */
 	protected void setIcon(TextureRegion region) {
 		icon = new Sprite(region);
-		icon.setPosition(_bounds.x, _bounds.y);
+		setPosition(icon, _bounds.x, _bounds.y);
+	}
+	
+	private void setPosition(Sprite sprite, float x, float y) {
+		icon.setPosition(x - Config.screenHalfWidth, y - Config.screenHalfHeight);
 	}
 	
 	public Sprite getIcon() {

@@ -3,6 +3,7 @@ package com.gamedev.ld27.gameobjects;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.items.BaseItem;
 
 public class ItemsBar extends GameObject {
@@ -24,10 +25,12 @@ public class ItemsBar extends GameObject {
 	public boolean Add(BaseItem item, int index) {
 		boolean added = false;
 		
-		if (index >= 0 && index < _items.length) {
-			_items[index] = item;
-			setBounds(item, index);
-			added = true;
+		if (item != null) {
+			if (index >= 0 && index < _items.length) {
+				_items[index] = item;
+				setBounds(item, index);
+				added = true;
+			}
 		}
 		return added;
 	}
@@ -42,7 +45,10 @@ public class ItemsBar extends GameObject {
 	}
 	
 	private void setBounds(BaseItem item, int index) {
-		
+		float top = _bounds.y + _bounds.height;
+		top -= (index + 1) * _itemHeight;
+		item.setPosition(new Vector2(_bounds.x + ((_bounds.width - item.getWidth())/2),
+				top + ((_itemHeight - item.getHeight())/2)));		
 	}
 	
 	@Override
@@ -58,8 +64,10 @@ public class ItemsBar extends GameObject {
 
 	@Override
 	public void update(float delta) {
-		// TODO Auto-generated method stub
-
+		for (BaseItem item : _items) {
+			if (item != null) {
+				item.update(delta);
+			}
+		}
 	}
-
 }
