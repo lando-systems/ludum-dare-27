@@ -9,5 +9,6 @@ public class BagOfKittens extends OffensiveWeaponItem {
 	{
 		super(position);
 		this.setDescription("Bag of Kittens");
+		
 	}
 }

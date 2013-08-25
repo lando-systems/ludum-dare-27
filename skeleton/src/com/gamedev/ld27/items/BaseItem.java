@@ -14,7 +14,6 @@ public abstract class BaseItem extends BaseGamePlayObject {
 	public BaseItem(Vector2 position) {
 		super(position);
 		setDescription("Anonymous item - give me a name!");
-		setIcon("default_item.png");
 	}
 
 	public boolean doesDefeat(int gameCode) {
