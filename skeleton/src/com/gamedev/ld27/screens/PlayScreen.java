@@ -15,6 +15,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.gamedev.ld27.Skeleton;
 import com.gamedev.ld27.gameobjects.*;
 import com.gamedev.ld27.items.offensive.*;
+import com.gamedev.ld27.items.useful.*;
+import com.gamedev.ld27.items.modifiers.*;
 
 public class PlayScreen extends GameScreen {
 
@@ -123,8 +125,13 @@ public class PlayScreen extends GameScreen {
 //				});
 //				t.start();
 		
-		Game.itemsBar.Add(new WetNoodle(), 3);
-		Game.itemsBar.Add(new BagOfJewels(), 6);
+		Game.itemsBar.Add(new WetNoodle(), 0);
+		Game.itemsBar.Add(new BagOfJewels(), 1);
+		Game.itemsBar.Add(new Hammer(), 2);
+		Game.itemsBar.Add(new Boomerang(), 3);
+		Game.itemsBar.Add(new Bombs(), 4);
+		Game.itemsBar.Add(new Mushroom(), 5);
+		Game.itemsBar.Add(new Bacon(), 6);
 	}
 
 }
