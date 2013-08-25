@@ -15,6 +15,7 @@ public class OffensiveTower extends BaseItem {
 		this.setIcon(Assets.offensiveTower);
 		setDefeats(GameSettings.DefensiveTower);
 		setAutoPickup(false);
+		_walkable = false;
 	}
 	
 	private float _time;

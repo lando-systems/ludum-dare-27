@@ -16,6 +16,7 @@ import com.gamedev.ld27.Config;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.items.BaseItem;
+import com.gamedev.ld27.items.ItemFactory;
 
 public class WorldMap extends GameObject {
 
@@ -28,6 +29,9 @@ public class WorldMap extends GameObject {
 	private int mapWidth = 100;
 	private int mapHeight = 100;
 	private int[] mapGrid; // this is the game map indexes
+	
+	public BaseItem RandomDropItem;
+	private float RandomItemTimer = 0f;
 	
 	public ArrayList<BaseItem> worldItems = new ArrayList<BaseItem>(20);
 	
@@ -60,6 +64,11 @@ public class WorldMap extends GameObject {
 	
 	@Override
 	public void update(float delta) {
+		RandomItemTimer -= delta;
+		if (RandomItemTimer <= 0 ){
+			placeNewRandom();
+			RandomItemTimer += 10.0f;
+		}
 		ArrayList<BaseItem> itemsToRemove= new ArrayList<BaseItem>();
 		for (BaseItem item:worldItems) {
 			item.update(delta);
@@ -108,6 +117,20 @@ public class WorldMap extends GameObject {
 			screenPositionFromWorld(tile, item.getPosition());
 			tile.draw(batch);
 		}
+	}
+	
+	private void placeNewRandom()
+	{
+		worldItems.remove(RandomDropItem);
+		RandomDropItem = ItemFactory.GetRandomItem();
+		Vector2 tempPos; 
+		do {
+			tempPos = Game.player.pos.cpy();
+			int dx = Assets.random.nextInt(20) - 10;
+			int dy = Assets.random.nextInt(20) - 10;
+			tempPos.add(dx*32,dy*32);
+		} while (!Game.gameWorld.walkable(tempPos));
+		PlaceItem(RandomDropItem, tempPos);
 	}
 	
 	public void screenPositionFromWorld(Sprite tile, Vector2 pos){

@@ -8,7 +8,9 @@ import com.gamedev.ld27.items.useless.*;
 
 public class ItemFactory {
 
-	private static String[] items = {"WetNoodle","BagOfJewels"};
+	private static String[] items = {"WetNoodle","BagOfJewels", "BagOfKittens", "BouncyBall", 
+									 "OffensiveTower", "SillyString", "Torch", "Bacon", "Boomerang", "Flute", "Hammer",
+									 "Slinky", "UselessStar", "Mushroom"};
 	
 	public static BaseItem GetRandomItem()
 	{
