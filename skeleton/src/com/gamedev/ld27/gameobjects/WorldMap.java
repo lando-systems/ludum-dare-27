@@ -22,6 +22,7 @@ public class WorldMap extends GameObject {
 
 	private Sprite[] mapTiles; 
 	private Sprite[] mapTilesMushroom;
+	private Sprite[] mapTilesGlasses;
 	private static int TILE_SIZE = 32;
 	private int tilesWide;
 	private int tilesHigh;
@@ -43,10 +44,12 @@ public class WorldMap extends GameObject {
 		tilesHigh = Assets.mapTiles.getHeight()/TILE_SIZE;
 		mapTiles = new Sprite[tilesWide * tilesHigh]; 
 		mapTilesMushroom = new Sprite[tilesWide * tilesHigh];
+		mapTilesGlasses = new Sprite[tilesWide * tilesHigh];
 		for (int y = 0; y < tilesHigh; y++){
 			for (int x = 0; x < tilesWide; x++){
 				mapTiles[x + (y * tilesWide)] = new Sprite(Assets.mapTiles, x*TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 				mapTilesMushroom[x + (y * tilesWide)] = new Sprite(Assets.mapTilesMushroom, x*TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+				mapTilesGlasses[x + (y * tilesWide)] = new Sprite(Assets.mapTilesGlasses, x*TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 			}
 		}
 		
@@ -102,13 +105,16 @@ public class WorldMap extends GameObject {
 				// Not on screen
 				if (!viewPort.contains((x-2)*32, (y-2)*32) && !viewPort.contains((x+2)*32, (y+2)*32) &&
 					!viewPort.contains((x-2)*32, (y+2)*32) && !viewPort.contains((x+2)*32, (y-2)*32)) continue;
-				
+				Sprite[] activeTextures = mapTiles;
+				if (Game.player.IsWearingGlasses()) activeTextures = mapTilesGlasses;
+				if (Game.player.isOnMushrooms()) activeTextures = mapTilesMushroom;
 				if (x < 0 || x >= mapWidth || y < 0 || y >= mapHeight)
 				{
-					tile = mapTiles[2]; // Make this Mountains
+
+					tile = activeTextures[2]; // Make this Mountains
 				}
 				else {
-					tile = mapTiles[mapGrid[x + (y *mapWidth)]];
+					tile = activeTextures[mapGrid[x + (y *mapWidth)]];
 				}
 				screenPositionFromWorld(tile, new Vector2(x*TILE_SIZE, y * TILE_SIZE));
 				tile.draw(batch);

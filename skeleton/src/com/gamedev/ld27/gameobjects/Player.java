@@ -25,10 +25,22 @@ public class Player extends PlayerBase {
 		_livePlayer = true;
 	}
 	
+	public boolean isOnMushrooms(){
+		return _mushroomEffectTime > 0;
+	}
+	
+	public boolean isWearingHelf() {
+		return _wearingHelm;
+	}
+	
+	public boolean IsWearingGlasses() {
+		return _wearingGlasses;
+	}
+	
 	public void update(float delta) {
 		
 		IgnoreInput = (_obstacle != null);
-		
+		if (_mushroomEffectTime > 0) _mushroomEffectTime -= delta;
 		super.update(delta);
 		
 		if (_obstacle != null) {
