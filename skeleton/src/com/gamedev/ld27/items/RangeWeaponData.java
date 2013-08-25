@@ -19,6 +19,8 @@ public class RangeWeaponData {
 	private float _scale;
 	private float _rotationDr;
 	private float _rotation;
+	private boolean _isReturning;
+	private RangeWeapon _weapon;
 		
 	public RangeWeaponData(Player player, RangeWeapon item) {
 		_player = player;
@@ -29,6 +31,12 @@ public class RangeWeaponData {
 		_texture = item.getWeaponUseImage(player.getDirection());
 		_scale = item.getRangeScale();
 		_rotationDr = item.getRotation(player.getDirection());
+		_isReturning = item.doesReturn();
+		_weapon = item;
+	}
+	
+	public boolean isWeapon(Weapon weapon) {
+		return (_weapon == weapon);
 	}
 	
 	private Vector2 getDirection(Player player, Weapon item) {
@@ -49,15 +57,36 @@ public class RangeWeaponData {
 		}
 	}
 	
+	private float _returnSpeed = -1;
+	
 	public void update(float delta) {
-		Vector2 playerPos = new Vector2(_player.getPlayerPosition());
-		float dx = _offset.x - playerPos.x;
-		float dy = _offset.y - playerPos.y;
-		_offset = playerPos;
 		
-		_position.x += (_direction.x*delta + dx);
-		_position.y += (_direction.y*delta + dy);
-		_time += delta;	
+		if (_time < _maxTime) {
+			Vector2 playerPos = new Vector2(_player.getPlayerPosition());
+			float dx = _offset.x - playerPos.x;
+			float dy = _offset.y - playerPos.y;
+			_offset = playerPos;
+			
+			_position.x += (_direction.x*delta + dx);
+			_position.y += (_direction.y*delta + dy);
+			_time += delta;	
+		} else {
+			Vector2 returnPath = _player.getPosition().cpy();
+			returnPath.sub(_position);
+
+			if (_returnSpeed < 0) {
+				_returnSpeed = returnPath.len();
+			} else {
+				returnPath.nor().scl(_returnSpeed);
+			}
+				
+			_position.add(returnPath.scl(delta));
+			
+			Vector2 dif = _player.getPosition().cpy().sub(_position);
+			if (dif.len() < 2) {
+				_isReturning = false;
+			}
+		}
 		
 		_rotation += _rotationDr*delta;
 	}
@@ -68,6 +97,6 @@ public class RangeWeaponData {
 	}
 	
 	public boolean isComplete() {
-		return (_time >= _maxTime);
+		return (_time >= _maxTime && !_isReturning);
 	}
 }

@@ -46,7 +46,9 @@ public class WeaponSystem {
 			_time += delta;
 			
 			if (_time >= _item.animationTime()) {
-				_item = null;
+				if (!isInUse(_item)) {
+					_item = null;
+				}
 			}
 		}
 		
@@ -61,6 +63,19 @@ public class WeaponSystem {
 		for (RangeWeaponData range : removeList) {
 			_rangeWeapons.remove(range);
 		}
+	}
+	
+	private boolean isInUse(Weapon weapon) {
+		if (weapon.isSingleUse()) {
+			for (RangeWeaponData rwd : _rangeWeapons) {
+				if (rwd.isWeapon(weapon)) {
+					return true;
+				}
+			}
+		}
+		return false;
+		
+		
 	}
 
 	public void render(SpriteBatch batch, int walkingDir) {

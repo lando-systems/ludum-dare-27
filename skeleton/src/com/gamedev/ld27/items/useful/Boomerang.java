@@ -27,4 +27,8 @@ public class Boomerang extends RangeWeapon {
 	public boolean isSingleUse() {
 		return true;
 	}
+	
+	public boolean doesReturn() {
+		return true;
+	}
 }
