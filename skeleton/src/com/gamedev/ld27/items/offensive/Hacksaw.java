@@ -7,7 +7,7 @@ import com.gamedev.ld27.items.Weapon;
 public class Hacksaw extends Weapon {
 
 	public Hacksaw() {
-		super("Hacksaw", "Not Jim Dugan");
+		super("Hacksaw", "Able to cut the mightiest of chains!");
 		setIcon(Assets.hacksaw);
 		
 		setProperties(1, 10);
