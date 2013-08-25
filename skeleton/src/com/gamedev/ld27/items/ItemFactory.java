@@ -19,7 +19,7 @@ public class ItemFactory {
 
 	private static String[] items = {"WetNoodle","BagOfJewels", "BagOfKittens", "Boomerang", "Hammer"};
 	
-	private static String[] killItems = {"WetNoodle","BagOfJewels", "BagOfKittens", "Bacon", "Boomerang", "Hammer"};
+	private static String[] killItems = {"WetNoodle","BagOfJewels", "BagOfKittens", "Bacon", "Boomerang", "Hammer", "Bombs", "RedHerring", "Shrubbery"};
 	
 	public static BaseItem GetRandomItem()
 	{
