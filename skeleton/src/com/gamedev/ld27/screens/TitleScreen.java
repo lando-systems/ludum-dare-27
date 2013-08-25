@@ -1,5 +1,7 @@
 package com.gamedev.ld27.screens;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
@@ -55,7 +57,20 @@ public class TitleScreen extends GameScreen {
 		sprite.draw(Assets.batch);
 		Assets.batch.end();
 		
-		Utils.drawText("LD27 - 10 Seconds", 20, 0, 16, 16, Color.BLACK, EStringJustify.CENTER);
+		Utils.drawText(Config.title, 20, 300, 48, 48, Color.WHITE, EStringJustify.CENTER);
+		
+		float introTextX = 10 - Config.screenHalfWidth;
+		float introTextY = 10 - Config.screenHalfHeight;
+		float introTextHeight = 16;
+		
+		ArrayList<String> introText = new ArrayList<String>();
+		introText.add("The evil princess is keeping a magnificant wild dragon as a pet");
+		introText.add("Only you can save it");
+		introText.add("Press any key to begin");
+		for(int i = 0; i < introText.size();  i++)
+		{
+			Utils.drawText(introText.get(i), introTextX, introTextY + ((introTextHeight+1) * (introText.size() - i)), 16, 16, Color.WHITE, EStringJustify.LEFT);
+		}
 	}
 
 	@Override
