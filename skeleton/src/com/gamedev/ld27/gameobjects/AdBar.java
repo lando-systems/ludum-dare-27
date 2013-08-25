@@ -8,7 +8,6 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.gamedev.ld27.items.BaseItem;
 import com.gamedev.ld27.items.offensive.BagOfKittens;
-import com.gamedev.ld27.items.offensive.SillyString;
 import com.gamedev.ld27.items.offensive.WetNoodle;
 
 public class AdBar extends GameObject {
@@ -32,7 +31,6 @@ public class AdBar extends GameObject {
 		Array<BaseItem> items = new Array<BaseItem>();
 		items.add(new WetNoodle());
 		items.add(new BagOfKittens());
-		items.add(new SillyString());
 		_currentItem = items.random();
 		
 		if (_currentItem != null) 

@@ -27,11 +27,8 @@ public class ItemFactory {
 		if (name.equals("WetNoodle")) return new WetNoodle();
 		if (name.equals("BagOfJewels")) return new BagOfJewels();
 		if (name.equals("BagOfKittens")) return new BagOfKittens();
-		if (name.equals("BouncyBall")) return new BouncyBall();
 		if (name.equals("Hacksaw")) return new Hacksaw();
 		if (name.equals("OffensiveTower")) return new OffensiveTower();
-		if (name.equals("SillyString")) return new SillyString();
-		if (name.equals("Torch")) return new Torch();
 		if (name.equals("Bacon")) return new Bacon();
 		if (name.equals("Bombs")) return new Bombs();
 		if (name.equals("Boomerang")) return new Boomerang();
