@@ -113,6 +113,10 @@ public class WorldMap extends GameObject {
 		tile.setPosition(_bounds.x + (_bounds.width/2.0f) - 16 - Game.player.pos.x -Config.screenHalfWidth + pos.x, _bounds.y + (_bounds.height/2.0f) - 16 - Game.player.pos.y -Config.screenHalfHeight + pos.y );
 	}
 	
+	public Vector2 worldPosToScreenMapPos(Vector2 pos){
+		return new Vector2(_bounds.x + (_bounds.width/2.0f) - 16 - Game.player.pos.x -Config.screenHalfWidth + pos.x, _bounds.y + (_bounds.height/2.0f) - 16 - Game.player.pos.y -Config.screenHalfHeight + pos.y );
+	}
+	
 	public boolean walkable(Vector2 worldPos){
 		int tileX = (int)(worldPos.x / 32);
 		int tileY = (int)(worldPos.y / 32);
