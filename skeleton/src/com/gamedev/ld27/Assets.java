@@ -26,6 +26,9 @@ public class Assets {
 	public static TextureRegion[][] digits;
 	public static TextureRegion[][] symbols;
 	
+	// 10 Secondzzzz!!!! ----------------------
+	public static TextureRegion[] stopwatchFrames;
+	
 	// Key items ------------------------------
 	public static TextureRegion wetNoodle;
 	public static TextureRegion bagOfJewels;
@@ -137,6 +140,12 @@ public class Assets {
 		// obstacles
 		troll 		   = itemRow[3][0];
 		rock 	       = itemRow[3][1];
+		
+		// stopwatch
+		stopwatchFrames = new TextureRegion[11];
+		for (int i = 0; i < 11; ++i) {
+			stopwatchFrames[i] = itemRow[2][i];
+		}
 		
 		letters = splitAndGet(spritesheet, 8, 8, 0, 30, 26, 1);
 		digits  = splitAndGet(spritesheet, 8, 8, 0, 31, 10, 1);
