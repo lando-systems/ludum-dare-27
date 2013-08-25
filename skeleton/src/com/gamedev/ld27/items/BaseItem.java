@@ -17,6 +17,12 @@ import com.gamedev.ld27.Game;
 public abstract class BaseItem extends BaseGamePlayObject {
 
 	private int _defeats;
+	private boolean _autoPickup;
+	
+	protected BaseItem(String name, String description) {
+		super(name, description);
+		setAutoPickup(true);
+	}
 	
 	public boolean doesDefeat(int gameCode) {
 		return (_defeats & gameCode) != 0;
@@ -49,5 +55,13 @@ public abstract class BaseItem extends BaseGamePlayObject {
 			Game.gameWorld.PlaceItem(this, position);
 			Game.itemsBar.Remove(this);
 		}
+	}
+
+	public boolean isAutoPickup() {
+		return _autoPickup;
+	}
+
+	protected void setAutoPickup(boolean autoPickup) {
+		_autoPickup = autoPickup;
 	}
 }

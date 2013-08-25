@@ -4,9 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.gamedev.ld27.Config;
-import com.gamedev.ld27.Utils;
-import com.gamedev.ld27.Utils.EStringJustify;
 import com.gamedev.ld27.items.BaseItem;
 import com.gamedev.ld27.items.offensive.WetNoodle;
 

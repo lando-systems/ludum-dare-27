@@ -6,7 +6,7 @@ import com.gamedev.ld27.items.OffensiveWeaponItem;
 public class Torch extends OffensiveWeaponItem {
 
 	public Torch() {
-		this.setDescription("Oxy acetylene torch");
+		super("Oxy acetylene torch", "This torch can cut through metal");
 		setDefeats(GameSettings.DragonChain);
 	}
 }

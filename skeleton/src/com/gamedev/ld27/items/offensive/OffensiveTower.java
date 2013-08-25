@@ -10,10 +10,11 @@ import com.gamedev.ld27.items.OffensiveWeaponItem;
 public class OffensiveTower extends OffensiveWeaponItem {
 	
 	public OffensiveTower() {
-		this.setDescription("This tower is really offensive");
-		this.setIcon(Assets.offensiveTower);
+		super("Offensive Tower", "This tower is really offensive");
 		
+		this.setIcon(Assets.offensiveTower);
 		setDefeats(GameSettings.DefensiveTower);
+		setAutoPickup(false);
 	}
 	
 	private float _time;

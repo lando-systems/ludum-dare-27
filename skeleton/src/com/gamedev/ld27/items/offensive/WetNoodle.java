@@ -7,7 +7,7 @@ import com.gamedev.ld27.items.OffensiveWeaponItem;
 public class WetNoodle extends OffensiveWeaponItem {
 
 	public WetNoodle() {
-		this.setDescription("Wet Noodle");
+		super("Wet Noodle", "You can hit something with a wet noodle");
 		setIcon(Assets.wetNoodle);
 		
 		setDefeats(GameSettings.CastleGuards);

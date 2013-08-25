@@ -7,9 +7,9 @@ import com.gamedev.ld27.items.OffensiveWeaponItem;
 public class SillyString extends OffensiveWeaponItem {
 
 	public SillyString() {
-		this.setDescription("Can of silly string: don't get it in your eyes");
+		super("Can of silly string", "Don't get it in your eyes");
 		this.setIcon(Assets.sillyString);
-		
+	
 		setDefeats(GameSettings.CastleGuards);
 	}
 }

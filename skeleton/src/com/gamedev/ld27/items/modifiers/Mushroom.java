@@ -6,7 +6,7 @@ import com.gamedev.ld27.items.ModifierItem;;
 public class Mushroom extends ModifierItem {
 
 	public Mushroom() {
-		this.setDescription("Mushroom: tasty and enlightening");
+		super("Mushroom", "Tasty and enlightening - remember kids, don't use drugs");
 		setIcon(Assets.mushroom);
 	}
 }

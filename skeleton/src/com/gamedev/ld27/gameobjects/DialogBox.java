@@ -6,12 +6,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.gamedev.ld27.Config;
-import com.gamedev.ld27.Utils;
-import com.gamedev.ld27.Utils.EStringJustify;
+import com.gamedev.ld27.DialogText;
 
 public class DialogBox extends GameObject {
 	
-	private final ArrayList<String> _dialogText = new ArrayList<String>(20);
+	private final ArrayList<DialogText> _dialogText = new ArrayList<DialogText>(20);
 	private float _yPosition;
 	private int _maxText;
 	private int _maxTextWidth;
@@ -20,6 +19,8 @@ public class DialogBox extends GameObject {
 		super(bounds);
 		_maxText = (int)(bounds.height / Config.textHeight);
 		_maxTextWidth = (int)(bounds.width / Config.textWidth) - 2;
+		_yPosition = bounds.y + bounds.height 
+				- ((bounds.height - (_maxText*Config.textHeight))/2) - Config.textHeight;
 	}
 	
 	@Override
@@ -28,18 +29,36 @@ public class DialogBox extends GameObject {
 		float x = _bounds.x + 10 - Config.screenHalfWidth;
 		float y = _yPosition - Config.screenHalfHeight;
 		
-		int i = Math.max(0,  _dialogText.size() - _maxText);		
-		for (; i < _dialogText.size(); i++) {
-			Utils.drawText(batch, _dialogText.get(i), x,  y, Color.RED, EStringJustify.LEFT);
-			y += Config.textHeight;
+		int lines = 0;
+		for (int i = _dialogText.size() - 1; i >=0; i--) {
+			DialogText text = _dialogText.get(i);
+			text.render(batch, x, y);
+			
+			y -= Config.textHeight;
+			
+			if (++lines == _maxText) {
+				break;
+			}
 		}	
 	}
 
+	private ArrayList<DialogText> _removeList = new ArrayList<DialogText>(10);
+	
 	@Override
 	public void update(float delta) {
-		// not using word wrap	
-		int textLines = Math.min(_maxText,  _dialogText.size());		
-		_yPosition = _bounds.y + (_bounds.height - (textLines * Config.textHeight)) /2;
+		_removeList.clear();
+		
+		for (DialogText text : _dialogText) {
+			text.update(delta);
+			
+			if (text.shouldRemove()) {
+				_removeList.add(text);
+			}
+		}
+		
+		for (DialogText text : _removeList) {
+			_dialogText.remove(text);
+		}		
 	}
 	
 	public void AppendText(String text) {
@@ -52,8 +71,7 @@ public class DialogBox extends GameObject {
 	}
 	
 	private void add(String text) {
-		int insertIndex = _dialogText.size();
-		
+		int insert = _dialogText.size();
 		while (text.length() > _maxTextWidth) {
 			int index = _maxTextWidth;
 			while (text.charAt(index) != ' ') {
@@ -61,9 +79,9 @@ public class DialogBox extends GameObject {
 			}
 			
 			String subText = text.substring(0, index);
-			_dialogText.add(insertIndex, subText);
+			_dialogText.add(insert, new DialogText(subText));
 			text = text.substring(index);
 		}
-		_dialogText.add(insertIndex, text);
+		_dialogText.add(insert, new DialogText(text));
 	}
 }
