@@ -18,6 +18,7 @@ public class Player extends PlayerBase {
 	private boolean _wearingGlasses;
 	private float _mushroomEffectTime;
 	private boolean _wearingDisguise;
+	private boolean _wearingBox;
 	
 	public Player(Rectangle bounds) {
 		super(bounds, Assets.playerSheet);
@@ -53,8 +54,16 @@ public class Player extends PlayerBase {
 		_wearingDisguise = !_wearingDisguise;
 	}
 	
+	public void toggleBox() {
+		_wearingBox = !_wearingBox;
+	}
+	
 	public boolean isWearingDisguise() {
 		return _wearingDisguise;
+	}
+	
+	public boolean isWearingBox() {
+		return _wearingBox;
 	}
 	
 	public void update(float delta) {
