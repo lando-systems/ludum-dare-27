@@ -21,7 +21,7 @@ import com.gamedev.ld27.gameobjects.ItemsBar;
 import com.gamedev.ld27.gameobjects.Player;
 import com.gamedev.ld27.gameobjects.WorldMap;
 import com.gamedev.ld27.items.useful.Boomerang;
-import com.gamedev.ld27.items.useful.Slinky;
+import com.gamedev.ld27.items.useful.ExplodingCigar;
 
 public class PlayScreen extends GameScreen {
 
@@ -71,7 +71,6 @@ public class PlayScreen extends GameScreen {
 		camera = new OrthographicCamera(Config.screenWidth, Config.screenHeight);
 		
 		Game.itemsBar.Add(new Boomerang());
-		Game.itemsBar.Add(new Slinky());
 	}
 	
 
