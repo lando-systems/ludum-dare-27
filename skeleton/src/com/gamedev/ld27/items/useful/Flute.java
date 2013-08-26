@@ -13,9 +13,11 @@ public class Flute extends BaseItem {
 		this.setIcon(Assets.flute);
 		
 		setDefeats(GameSettings.Snake);
+		setSound(Assets.fluteSound);
 	}
 	
 	public void use() {
+		this.playUseSound();
 		if (Game.gameWorld.SameTile(Game.player.getPosition(), new Vector2(0*32,80*32)) && Game.player.getDirection() == Direction.North){
 			Game.snake.Alive = false;
 			Game.itemsBar.Remove(this);
