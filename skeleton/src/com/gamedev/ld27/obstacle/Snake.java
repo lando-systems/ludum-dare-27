@@ -7,7 +7,7 @@ public class Snake extends BaseObstacle {
 	
 	public Snake() {
 		super("Snake", "Hisssssss", GameSettings.Snake);
-		this.setIcon(Assets.aShrubbery);
+		this.setIcon(Assets.snake);
 	}
 
 }

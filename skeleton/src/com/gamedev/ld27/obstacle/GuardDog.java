@@ -7,6 +7,6 @@ public class GuardDog extends BaseObstacle {
 
 	public GuardDog() {
 		super("Guard Dog", "Dangerously fishy breath", GameSettings.GuardDog);
-		this.setIcon(Assets.cardboardBox);
+		this.setIcon(Assets.dog);
 	}
 }

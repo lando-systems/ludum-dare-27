@@ -7,6 +7,6 @@ public class DragonShackles extends BaseObstacle {
 
 	public DragonShackles() {
 		super("Dragon Shackles", "The dragon is in chains and has to be released from them", GameSettings.DragonChain);
-		this.setIcon(Assets.cardboardBox);
+		this.setIcon(Assets.dragonChains);
 	}
 }
