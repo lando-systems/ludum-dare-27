@@ -29,6 +29,10 @@ public class Player extends PlayerBase {
 		return _mushroomEffectTime > 0;
 	}
 	
+	public void StartTripping() {
+		_mushroomEffectTime = 10f;
+	}
+	
 	public boolean isWearingHelf() {
 		return _wearingHelm;
 	}
@@ -39,6 +43,10 @@ public class Player extends PlayerBase {
 	
 	public boolean IsWearingGlasses() {
 		return _wearingGlasses;
+	}
+	
+	public void StartWearingGlasses() {
+		_wearingGlasses = true;
 	}
 	
 	public void update(float delta) {
