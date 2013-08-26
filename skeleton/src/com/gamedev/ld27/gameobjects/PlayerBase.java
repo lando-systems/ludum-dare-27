@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Direction;
 import com.gamedev.ld27.Game;
@@ -18,12 +19,14 @@ public class PlayerBase extends GameObject {
 	protected int walkingDir = Direction.North; // N = 0; E = 1; S = 2; W = 3
 	protected float walkingAnimation = 0f;
 	
-	protected Sprite[] animTiles; 
+	protected Sprite[] animTiles;
+	protected Sprite[] animTilesHelmet;
 	protected static final int TILE_SIZE = 32;
 	protected int animLength;
 	
 	protected boolean _livePlayer;
 	protected float _immuneTime;
+	protected boolean _wearingHelm = false;
 	
 	protected WeaponSystem weaponSystem;	
 	
@@ -32,9 +35,11 @@ public class PlayerBase extends GameObject {
 		_immuneTime = 0f;
 		animLength = textureSheet.getWidth() / TILE_SIZE;
 		animTiles = new Sprite[4 * animLength]; 
+		animTilesHelmet = new Sprite[4 * animLength];
 		for (int y = 0; y < 4; y++){
 			for (int x = 0; x < animLength; x++){
 				animTiles[x + (y * animLength)] = new Sprite(textureSheet, x*TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+				animTilesHelmet[x + (y * animLength)] = new Sprite(Assets.playerHelmetSheet, x*TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 			}
 		}
 		
@@ -52,7 +57,12 @@ public class PlayerBase extends GameObject {
 	@Override
 	public void render(SpriteBatch batch) {
 		int animationFrame = (int)walkingAnimation % 4;
-		Sprite tile = animTiles[animationFrame + (walkingDir * animLength)];
+		Sprite tile;
+		if (_wearingHelm){
+			tile = animTilesHelmet[animationFrame + (walkingDir * animLength)];
+		} else {
+			tile = animTiles[animationFrame + (walkingDir * animLength)];
+		}
 		tile.setPosition(_bounds.x - Config.screenHalfWidth, _bounds.y - Config.screenHalfHeight);
 		
 		boolean south = (walkingDir == Direction.South);
