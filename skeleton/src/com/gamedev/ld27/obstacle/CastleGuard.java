@@ -7,7 +7,7 @@ public class CastleGuard extends BaseObstacle {
 
 	public CastleGuard() {
 		super("Castle guard", "The guard will prevent you from getting into the castle", GameSettings.CastleGuards);
-		this.setIcon(Assets.cardboardBox);
+		this.setIcon(Assets.commonGuard);
 	}
 
 }

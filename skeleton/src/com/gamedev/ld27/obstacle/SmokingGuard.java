@@ -7,7 +7,7 @@ public class SmokingGuard extends BaseObstacle {
 
 	public SmokingGuard() {
 		super("Smoking Guard", "Remember kids, smoking kills!", GameSettings.GuardDog);
-		this.setIcon(Assets.cardboardBox);
+		this.setIcon(Assets.smokingGuard);
 	}
 
 }

@@ -7,6 +7,6 @@ public class DefensiveTower extends BaseObstacle {
 
 	public DefensiveTower() {
 		super("Defensive Tower", "This guy can't take a joke", GameSettings.DefensiveTower);
-		this.setIcon(Assets.cardboardBox);
+		this.setIcon(Assets.defensiveTower);
 	}
 }
