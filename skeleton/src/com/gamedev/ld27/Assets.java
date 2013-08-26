@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,6 +17,7 @@ public class Assets {
 	public static ShapeRenderer shapes;
 
 	public static Music music;
+	public static Sound boomerangSound;
 	
 	public static Texture spritesheet;
 	public static Texture titleBackground;
@@ -164,11 +166,13 @@ public class Assets {
 		
 		music = Gdx.audio.newMusic(Gdx.files.internal("data/dragon-and-toast.mp3"));
 		music.setLooping(true);
-		Game.music = music;
-		Game.music.play();
+		music.play();
+		
+		boomerangSound = Gdx.audio.newSound(Gdx.files.internal("data/boomerang.wav"));
 	}
 
 	public static void dispose() {
+		// TODO : dispose all the other things
 		itemsheet.dispose();
 		mapTiles.dispose();
 		titleBackground.dispose();
