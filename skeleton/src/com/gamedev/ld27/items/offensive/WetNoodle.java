@@ -18,6 +18,6 @@ public class WetNoodle extends Weapon {
 	}
 	
 	public TextureRegion getWeaponUseImage(int direction) {
-		return ((direction % 2) == 0) ? Assets.wetNoodleVert : Assets.wetNoodleHor;
+		return ((direction % 2) == 0) ? Assets.wetNoodle : Assets.wetNoodle;
 	}
 }
