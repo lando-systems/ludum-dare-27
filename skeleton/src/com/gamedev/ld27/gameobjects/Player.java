@@ -92,6 +92,26 @@ public class Player extends PlayerBase {
 	
 	protected void finishMove(int tileType) {
 		//TODO Add stuff so players know what they need to do
+		
+		//FLow of the game is as such
+		// Get bacon from killing things
+		// Give Bacon to vegan hippie (get a disguise)
+		// Get helmet from behind hippie
+		// Get a bag of jewels or a hammer
+		// meet the troll, give him jewels or break rock (get cigar)
+		// get flute from middle of map
+		// get slinky from buttom right
+		// use flute on snake to get cardboard box and get access to knight who says NI
+		// Give shubbery to knight for mushrooms
+		// Put on the helmet so you can pick up the offensive tower on the right
+		// use slinky on level to lower draw bridge
+		// use offenseive tower on defensive tower
+		// use the exploding cigar to make the smoking guard leave
+		// Put on the disguise or the cardboard box to walk past the guards
+		// Give the red herring to the dog to get past and get the eyeglasses so you can see the path
+		// get the hacksaw from the hidden path in the top right
+		// cut the dragon free, and die (end game)
+		
 		Vector2 PlayerTile = Game.gameWorld.mapTileFromPosition(pos);
 		if (!TrollBridge.Spawned && PlayerTile.x == 27 && PlayerTile.y == 57) {
 			_obstacle = new TrollBridge(this);
