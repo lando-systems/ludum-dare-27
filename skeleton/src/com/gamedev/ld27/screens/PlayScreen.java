@@ -55,6 +55,7 @@ public class PlayScreen extends GameScreen {
 		_gameObjects.add(Game.gameWorld);
 		
 		Game.player = new Player(new Rectangle((leftWidth/2.0f -16), y + (mapHeight/2.0f)-16, 32, 32));
+		//TODO set this back to 100
 		Game.player.init(900,  10, 10);
 		_gameObjects.add(Game.player);
 		
@@ -202,10 +203,10 @@ public class PlayScreen extends GameScreen {
 //				});
 //				t.start();
 		
-
-		Game.itemsBar.Add(new Hammer());
-		Game.itemsBar.Add(new Boomerang());
-		Game.itemsBar.Add(new Flute());
+//
+//		Game.itemsBar.Add(new Hammer());
+//		Game.itemsBar.Add(new Boomerang());
+//		Game.itemsBar.Add(new Flute());
 
 
 	}
