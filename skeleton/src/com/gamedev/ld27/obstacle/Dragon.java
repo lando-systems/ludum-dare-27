@@ -4,12 +4,12 @@ package com.gamedev.ld27.obstacle;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.GameSettings;
 
-public class DragonShackles extends BaseObstacle {
+public class Dragon extends BaseObstacle {
 
 
-	public DragonShackles() {
+	public Dragon() {
 		super("Dragon Shackles", "The dragon is in chains and has to be released from them", GameSettings.DragonChain);
-		this.setIcon(Assets.dragonChains);
+		this.setIcon(Assets.dragon);
 
 	}
 	
