@@ -12,7 +12,7 @@ public abstract class Weapon extends BaseItem {
 	// time to draw this item as used
 	protected float _animationTime = 1f;
 	private float _range = 1.5f;
-	private int _uses = 4;
+	private int _uses = 3;
 	protected boolean _isMelee = true;
 	public int Damage = 0;
 	
