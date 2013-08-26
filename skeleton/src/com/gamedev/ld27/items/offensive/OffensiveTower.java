@@ -5,6 +5,7 @@ import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Game;
 import com.gamedev.ld27.GameSettings;
 import com.gamedev.ld27.items.BaseItem;
+import com.gamedev.ld27.items.modifiers.Mushroom;
 
 
 public class OffensiveTower extends BaseItem {
@@ -17,6 +18,17 @@ public class OffensiveTower extends BaseItem {
 		setAutoPickup(false);
 		_walkable = true;
 		_time = 10f;
+	}
+	
+	@Override
+	public void use(){
+		if (Game.gameWorld.SameTile(Game.player.getUsePosition(), Game.defensiveTower.getPosition())){
+			//TODO fix this dialog
+			Game.dialogBox.AppendText("Thank you for the shrubbery");
+			Game.itemsBar.Remove(this);
+			Game.defensiveTower.Alive = false;
+			playUseSound();
+		}
 	}
 	
 	private float _time;
