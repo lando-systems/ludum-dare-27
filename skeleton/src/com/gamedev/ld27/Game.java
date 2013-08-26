@@ -1,7 +1,7 @@
 package com.gamedev.ld27;
 
+import com.badlogic.gdx.audio.Music;
 import com.gamedev.ld27.gameobjects.*;
-import com.gamedev.ld27.items.BaseItem;
 import com.gamedev.ld27.obstacle.*;
 import com.gamedev.ld27.screens.PlayScreen;
 
@@ -21,5 +21,5 @@ public class Game {
 	public static DefensiveTower defensiveTower;
 	public static DragonShackles dragonShackles;
 	public static KnightWhoSaysNi knight;
-
+	public static Music music;
 }
