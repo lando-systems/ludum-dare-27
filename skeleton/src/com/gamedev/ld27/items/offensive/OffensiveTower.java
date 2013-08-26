@@ -12,7 +12,7 @@ public class OffensiveTower extends BaseItem {
 	
 	public OffensiveTower() {
 		super("Offensive Tower", "This tower is really offensive");
-		
+		setAdDescription("You missed George Carlin, so be sure to check out the offensive tower");
 		this.setIcon(Assets.offensiveTower);
 		setDefeats(GameSettings.DefensiveTower);
 		setAutoPickup(false);

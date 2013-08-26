@@ -8,7 +8,8 @@ public class BagOfJewels extends BaseItem {
 
 	public BagOfJewels() {
 		super("Bag of Jewels", "Diamonds, Saphires and Rubies, Oh My!");
-		this.setIcon(Assets.bagOfJewels);		
+		this.setIcon(Assets.bagOfJewels);
+		setAdDescription("Money doesn't buy happiness, but it does cross bridges");
 		
 		setDefeats(GameSettings.TrollBridge);
 	}

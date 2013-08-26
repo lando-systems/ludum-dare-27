@@ -10,7 +10,7 @@ import com.gamedev.ld27.items.BaseItem;
 public class Bacon extends BaseItem {
 	public Bacon() {
 		super("Bacon", "None can resist its awesome power");
-		
+		setAdDescription("PITA: people eating tasty animals?  Bacon can overcome conviction");
 		setIcon(Assets.bacon);
 		setDefeats(GameSettings.Vegetarian);
 	}
