@@ -98,6 +98,8 @@ public class WorldMap extends GameObject {
 		PlaceItem(Game.dragonShackles, new Vector2(35*32,95*32));
 		BaseItem dragon = new Dragon();
 		PlaceItem(dragon, new Vector2(34*32,95*32));
+		BaseItem princess = new Princess();
+		PlaceItem(princess, new Vector2(37*32,95*32));
 		
 	}
 	

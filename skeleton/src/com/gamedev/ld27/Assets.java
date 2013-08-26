@@ -60,6 +60,7 @@ public class Assets {
 	public static TextureRegion dragonChains;
 	public static TextureRegion dog;
 	public static TextureRegion snake;
+	public static TextureRegion princess;
 	
 	// offensive weapons use
 	public static TextureRegion noWeapon;
@@ -142,6 +143,7 @@ public class Assets {
 		dragonChains   = itemRow[3][7];
 		dog            = itemRow[3][8];
 		snake          = itemRow[3][9];
+		princess       = itemRow[3][10];
 		
 		// stopwatch
 		stopwatchFrames = new TextureRegion[11];
