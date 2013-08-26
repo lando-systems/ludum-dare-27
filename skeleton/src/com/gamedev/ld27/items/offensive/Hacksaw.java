@@ -15,6 +15,7 @@ public class Hacksaw extends Weapon {
 		setProperties(1, 10);
 		
 		setDefeats(GameSettings.DragonChain);
+		setSound(Assets.sawSound);
 	}
 	
 	@Override

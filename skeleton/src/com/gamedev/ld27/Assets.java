@@ -21,6 +21,7 @@ public class Assets {
 	public static Sound fluteSound;
 	public static Sound noodleSound;
 	public static Sound hammerSound;
+	public static Sound sawSound;
 	
 	public static Texture spritesheet;
 	public static Texture titleBackground;
@@ -175,6 +176,7 @@ public class Assets {
 		fluteSound = Gdx.audio.newSound(Gdx.files.internal("data/flute.mp3"));
 		noodleSound = Gdx.audio.newSound(Gdx.files.internal("data/noodle.wav"));
 		hammerSound = Gdx.audio.newSound(Gdx.files.internal("data/hammer.wav"));
+		sawSound = Gdx.audio.newSound(Gdx.files.internal("data/saw.wav"));
 	}
 
 	public static void dispose() {
