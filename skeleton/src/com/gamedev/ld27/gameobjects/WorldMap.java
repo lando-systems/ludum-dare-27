@@ -96,6 +96,8 @@ public class WorldMap extends GameObject {
 		PlaceItem(Game.VegHippie, new Vector2(26*32,12*32));
 		Game.dragonShackles = new DragonShackles();
 		PlaceItem(Game.dragonShackles, new Vector2(35*32,95*32));
+		BaseItem dragon = new Dragon();
+		PlaceItem(dragon, new Vector2(34*32,95*32));
 		
 	}
 	
