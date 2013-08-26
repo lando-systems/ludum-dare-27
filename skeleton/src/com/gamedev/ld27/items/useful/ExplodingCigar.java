@@ -13,13 +13,14 @@ public class ExplodingCigar extends BaseItem {
 		
 		setIcon(Assets.explodingCigar);
 		setDefeats(GameSettings.SmokingGuard);
+		setSound(Assets.explodingCigarSound);
 	}
 
 	@Override
 	public void use(){
 		if (Game.gameWorld.SameTile(Game.player.getUsePosition(), Game.smokingGuard.getPosition())){
 			//TODO fix this dialog
-			Game.dialogBox.AppendText("Thanks I can use a Smoke");
+			Game.dialogBox.AppendText("Thanks I could use a Smoke");
 			Game.itemsBar.Remove(this);
 			Game.smokingGuard.Alive = false;
 			playUseSound();

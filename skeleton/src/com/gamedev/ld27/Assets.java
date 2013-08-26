@@ -25,6 +25,7 @@ public class Assets {
 	public static Sound catSound;
 	public static Sound mushroomSound;
 	public static Sound slinkySound;
+	public static Sound explodingCigarSound;
 	
 	public static Texture spritesheet;
 	public static Texture titleBackground;
@@ -183,6 +184,7 @@ public class Assets {
 		catSound = Gdx.audio.newSound(Gdx.files.internal("data/cat.wav"));
 		mushroomSound = Gdx.audio.newSound(Gdx.files.internal("data/ohwow.wav"));
 		slinkySound = Gdx.audio.newSound(Gdx.files.internal("data/slinky.mp3"));
+		explodingCigarSound = Gdx.audio.newSound(Gdx.files.internal("data/explosion.wav"));
 	}
 
 	public static void dispose() {
