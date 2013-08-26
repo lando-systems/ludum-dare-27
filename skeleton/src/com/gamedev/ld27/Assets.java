@@ -22,6 +22,7 @@ public class Assets {
 	public static Texture mapTilesGlasses;
 	public static Texture itemsheet;
 	public static Texture playerSheet;
+	public static Texture playerHelmetSheet;
 
 	public static TextureRegion[][] letters;
 	public static TextureRegion[][] digits;
@@ -91,6 +92,9 @@ public class Assets {
 		
 		playerSheet = new Texture(Gdx.files.internal("data/playersheet.png"));
 		playerSheet .setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+		
+		playerHelmetSheet = new Texture(Gdx.files.internal("data/playersheet_helmet.png"));
+		playerHelmetSheet .setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 		
 		// Key items ------------------------------
 		TextureRegion[][] itemRow = splitAndGet(itemsheet, 32, 32, 0, 0, 20, 4);

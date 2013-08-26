@@ -205,7 +205,7 @@ public class PlayScreen extends GameScreen {
 		
 //
 //		Game.itemsBar.Add(new Hammer());
-//		Game.itemsBar.Add(new Boomerang());
+		Game.itemsBar.Add(new Boomerang());
 //		Game.itemsBar.Add(new Flute());
 
 

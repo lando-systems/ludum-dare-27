@@ -14,9 +14,10 @@ import com.gamedev.ld27.obstacle.TrollBridge;
 public class Player extends PlayerBase {
 
 	private BaseObstacle _obstacle;
-	private boolean _wearingHelm;
+
 	private boolean _wearingGlasses;
 	private float _mushroomEffectTime;
+	private boolean _wearingDisguise;
 	
 	public Player(Rectangle bounds) {
 		super(bounds, Assets.playerSheet);
@@ -46,6 +47,10 @@ public class Player extends PlayerBase {
 	
 	public void StartWearingGlasses() {
 		_wearingGlasses = true;
+	}
+	
+	public void ToggleDisguise(){
+		_wearingDisguise = !_wearingDisguise;
 	}
 	
 	public void update(float delta) {
@@ -102,9 +107,22 @@ public class Player extends PlayerBase {
 			Game.dialogBox.AppendText("Look at that lever on the other side of the moat!");
 		}
 		if (PlayerTile.x == 10 && PlayerTile.y == 93){
-			// TODO Say something about the Lever
+			// TODO Say something about the knights who says NI
 			Game.dialogBox.AppendText("I am one of the knights who says NI");
 		}
+		if (Game.defensiveTower.Alive && PlayerTile.x == 22 && PlayerTile.y == 91){
+			// TODO Say something about the Defensive Tower
+		}
+		if (Game.smokingGuard.Alive && PlayerTile.x == 25 && PlayerTile.y == 95){
+			// TODO Say something about the Smoking Guard
+		}
+		if (!_wearingDisguise && (PlayerTile.x == 30 || PlayerTile.x == 31) && PlayerTile.y == 93){
+			// TODO Say something about the How you need a disguise
+		}
+		if (Game.guardDog.Alive && PlayerTile.x == 37 && PlayerTile.y == 90){
+			// TODO Say something about the Dog and a red herring?
+		}
+		
 		
 	}
 
