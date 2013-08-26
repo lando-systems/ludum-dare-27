@@ -15,7 +15,7 @@ public class PlayerBase extends GameObject {
 
 	public Vector2 pos;
 	protected Vector2 targetPos;
-	protected float speed = 100.0f;
+	protected float speed = 1.0f;
 	protected int walkingDir = Direction.North; // N = 0; E = 1; S = 2; W = 3
 	protected float walkingAnimation = 0f;
 	

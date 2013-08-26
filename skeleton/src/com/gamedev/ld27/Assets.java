@@ -18,6 +18,7 @@ public class Assets {
 
 	public static Music music;
 	public static Sound boomerangSound;
+	public static Sound fluteSound;
 	
 	public static Texture spritesheet;
 	public static Texture titleBackground;
@@ -169,6 +170,7 @@ public class Assets {
 		music.play();
 		
 		boomerangSound = Gdx.audio.newSound(Gdx.files.internal("data/boomerang.wav"));
+		fluteSound = Gdx.audio.newSound(Gdx.files.internal("data/flute.mp3"));
 	}
 
 	public static void dispose() {
