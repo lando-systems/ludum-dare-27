@@ -1,8 +1,18 @@
 package com.gamedev.ld27;
 
-import com.badlogic.gdx.audio.Music;
-import com.gamedev.ld27.gameobjects.*;
-import com.gamedev.ld27.obstacle.*;
+import com.gamedev.ld27.gameobjects.AdBar;
+import com.gamedev.ld27.gameobjects.DialogBox;
+import com.gamedev.ld27.gameobjects.ItemsBar;
+import com.gamedev.ld27.gameobjects.Player;
+import com.gamedev.ld27.gameobjects.WorldMap;
+import com.gamedev.ld27.obstacle.CastleGuard;
+import com.gamedev.ld27.obstacle.DefensiveTower;
+import com.gamedev.ld27.obstacle.DragonShackles;
+import com.gamedev.ld27.obstacle.GuardDog;
+import com.gamedev.ld27.obstacle.KnightWhoSaysNi;
+import com.gamedev.ld27.obstacle.SmokingGuard;
+import com.gamedev.ld27.obstacle.Snake;
+import com.gamedev.ld27.obstacle.VegetarianGuy;
 import com.gamedev.ld27.screens.PlayScreen;
 
 public class Game {
@@ -21,5 +31,4 @@ public class Game {
 	public static DefensiveTower defensiveTower;
 	public static DragonShackles dragonShackles;
 	public static KnightWhoSaysNi knight;
-	public static Music music;
 }

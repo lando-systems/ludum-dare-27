@@ -13,6 +13,7 @@ public class Boomerang extends RangeWeapon {
 		setProperties(7, 10);
 		Damage = 1;
 		setDefeats(GameSettings.CastleGuards);
+		setSound(Assets.boomerangSound);
 	}
 	
 	public float getRotation(int direction)

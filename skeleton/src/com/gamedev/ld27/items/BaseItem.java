@@ -4,6 +4,7 @@
  */
 package com.gamedev.ld27.items;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -21,6 +22,7 @@ public abstract class BaseItem extends BaseGamePlayObject {
 	private boolean _autoPickup;
 	protected boolean _walkable = true;
 	public boolean PlaceOnUnWalkable = false;
+	private Sound _sound;
 	
 	protected BaseItem(String name, String description) {
 		super(name, description);
@@ -39,6 +41,10 @@ public abstract class BaseItem extends BaseGamePlayObject {
 
 	public boolean getWalkable(){
 		return _walkable;
+	}
+	
+	public void setSound(Sound sound) {
+		_sound = sound;
 	}
 	
 	/**
@@ -73,7 +79,11 @@ public abstract class BaseItem extends BaseGamePlayObject {
 		}
 	}
 	
-	public void playUseSound() { }
+	public void playUseSound() { 
+		if (_sound != null) {
+			_sound.play();
+		}
+	}
 
 	public boolean isAutoPickup() {
 		return _autoPickup;
