@@ -6,19 +6,24 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Game;
-import com.gamedev.ld27.Utils;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
-
 import com.gamedev.ld27.Skeleton;
-import com.gamedev.ld27.gameobjects.*;
-import com.gamedev.ld27.items.BaseItem;
-import com.gamedev.ld27.items.modifiers.Mushroom;
-import com.gamedev.ld27.items.offensive.*;
-import com.gamedev.ld27.items.useful.*;
+import com.gamedev.ld27.Utils;
+import com.gamedev.ld27.gameobjects.AdBar;
+import com.gamedev.ld27.gameobjects.DialogBox;
+import com.gamedev.ld27.gameobjects.DumbAI;
+import com.gamedev.ld27.gameobjects.GameObject;
+import com.gamedev.ld27.gameobjects.ItemsBar;
+import com.gamedev.ld27.gameobjects.Player;
+import com.gamedev.ld27.gameobjects.Stopwatch;
+import com.gamedev.ld27.gameobjects.WorldMap;
+import com.gamedev.ld27.items.useful.Boomerang;
+import com.gamedev.ld27.items.useful.Flute;
+import com.gamedev.ld27.items.useful.Hammer;
 
 public class PlayScreen extends GameScreen {
 
@@ -196,7 +201,7 @@ public class PlayScreen extends GameScreen {
 
 		Game.itemsBar.Add(new Hammer());
 		Game.itemsBar.Add(new Boomerang());
-		Game.itemsBar.Add(new Mushroom());
+		Game.itemsBar.Add(new Flute());
 
 
 	}
