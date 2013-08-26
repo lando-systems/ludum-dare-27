@@ -47,16 +47,15 @@ public abstract class BaseItem extends BaseGamePlayObject {
 	 * @param adBarBounds
 	 */
 	public void renderAd(SpriteBatch batch, Rectangle adBarBounds) {
-		fill(Color.GREEN);
 		icon.draw(batch);
 
-		float x = adBarBounds.x + 10;
-		float y = (adBarBounds.height -  adBarBounds.y)/2;
+		float x = adBarBounds.x + 32;
+		float y = (adBarBounds.height -  adBarBounds.y)/2 - 10;
 		this.setPosition(new Vector2(x,y));
 		
 		//Print the description text next to the icon
-		x = adBarBounds.x + icon.getOriginX() - Config.screenHalfWidth + icon.getWidth();
-		y = (adBarBounds.height -  adBarBounds.y)/2 - Config.screenHalfHeight;
+		x = adBarBounds.x + icon.getOriginX() - Config.screenHalfWidth + icon.getWidth() + 32;
+		y = (adBarBounds.height -  adBarBounds.y)/2 - Config.screenHalfHeight - 8;
 		
 		//TODO:   Handle wrapping
 		Utils.drawText(batch, this.getAdDescription(), x,  y, Color.BLACK, EStringJustify.LEFT);

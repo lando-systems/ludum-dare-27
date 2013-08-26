@@ -31,6 +31,8 @@ public class Assets {
 	public static TextureRegion[][] digits;
 	public static TextureRegion[][] symbols;
 	
+	public static TextureRegion adbar;
+	
 	// 10 Secondzzzz!!!! ----------------------
 	public static TextureRegion[] stopwatchFrames;
 	
@@ -107,6 +109,8 @@ public class Assets {
 		
 		playerHelmetSheet = new Texture(Gdx.files.internal("data/playersheet_helmet.png"));
 		playerHelmetSheet .setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+		
+		adbar = splitAndGet(itemsheet, 256, 64, 0, 2, 1, 1)[0][0];
 		
 		// Key items ------------------------------
 		TextureRegion[][] itemRow = splitAndGet(itemsheet, 32, 32, 0, 0, 20, 4);
