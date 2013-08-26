@@ -13,6 +13,7 @@ public class Eyeglasses extends ModifierItem {
 
 	public void use() {
 		Game.player.StartWearingGlasses();
+		Game.dialogBox.AppendText("Ahh I can see again!");
 		Game.itemsBar.Remove(this);
 	}
 }
