@@ -114,33 +114,32 @@ public class Player extends PlayerBase {
 		
 		Vector2 PlayerTile = Game.gameWorld.mapTileFromPosition(pos);
 		if (!TrollBridge.Spawned && PlayerTile.x == 27 && PlayerTile.y == 57) {
+			Game.dialogBox.AppendText("Give me something shiny that cuts class, and you may pass");
 			_obstacle = new TrollBridge(this);
 		}
 		if (Game.VegHippie.Alive && PlayerTile.x == 25 && PlayerTile.y == 12){
-			// TODO Say something about the vegan guy
+			Game.dialogBox.AppendText("Lately my Tofu, Lettuce and Tomato Sandwich hasn't been cutting it");
 		}
 		if (Game.snake.Alive && PlayerTile.x == 0 && PlayerTile.y == 80){
-			// TODO Say something about the snake in the box
+			Game.dialogBox.AppendText("So charming and disarming (to a snake)");
 		}
 		if (!Game.gameWorld.DrawBridgeDropped && PlayerTile.x == 25 && PlayerTile.y == 83){
-			// TODO Say something about the Lever
 			Game.dialogBox.AppendText("Look at that lever on the other side of the moat!");
 		}
 		if (PlayerTile.x == 10 && PlayerTile.y == 93){
-			// TODO Say something about the knights who says NI
 			Game.dialogBox.AppendText("I am one of the knights who says NI");
 		}
 		if (Game.defensiveTower.Alive && PlayerTile.x == 22 && PlayerTile.y == 91){
-			// TODO Say something about the Defensive Tower
+			Game.dialogBox.AppendText("Even the best defense can't overcome a good offense (or insult)");
 		}
 		if (Game.smokingGuard.Alive && PlayerTile.x == 25 && PlayerTile.y == 95){
-			// TODO Say something about the Smoking Guard
+			Game.dialogBox.AppendText("Make his habit blow up in his face");
 		}
 		if (!_wearingDisguise && (PlayerTile.x == 30 || PlayerTile.x == 31) && PlayerTile.y == 93){
-			// TODO Say something about the How you need a disguise
+			Game.dialogBox.AppendText("Find a way to hide in plain sight");
 		}
 		if (Game.guardDog.Alive && PlayerTile.x == 37 && PlayerTile.y == 90){
-			// TODO Say something about the Dog and a red herring?
+			Game.dialogBox.AppendText("Here fishy fish fish.  Hungry doggy?");
 		}
 		
 		
