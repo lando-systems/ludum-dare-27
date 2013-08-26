@@ -143,12 +143,15 @@ public class Player extends PlayerBase {
 		}
 		if (PlayerTile.x == 35 && PlayerTile.y == 94){
 			// This is in front of the dragon chains
+			Game.dialogBox.AppendText("Hacking isn't just for devs. Find something with teeth");
 		}
 		if (PlayerTile.x == 34 && PlayerTile.y == 94){
 			// This is in front of the dragon 
+			Game.dialogBox.AppendText("ME HUNGRY!");
 		}
 		if (PlayerTile.x == 37 && PlayerTile.y == 94){
 			// This is in front of the princess 
+			Game.dialogBox.AppendText("Isn't my precious dragon beautiful?!  Next I want a polar bear.");
 		}
 		
 	}
