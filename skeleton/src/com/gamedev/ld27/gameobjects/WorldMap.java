@@ -6,17 +6,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-import com.gamedev.ld27.Assets;
-import com.gamedev.ld27.Game;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.gamedev.ld27.Config;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.gamedev.ld27.Assets;
+import com.gamedev.ld27.Config;
+import com.gamedev.ld27.Game;
 import com.gamedev.ld27.items.BaseItem;
 import com.gamedev.ld27.items.ItemFactory;
+import com.gamedev.ld27.obstacle.Snake;
 
 public class WorldMap extends GameObject {
 
@@ -76,8 +76,8 @@ public class WorldMap extends GameObject {
 		PlaceItem(OT, new Vector2(1888, 1920));
 		BaseItem hack = ItemFactory.getItem("Hacksaw");
 		PlaceItem(hack, new Vector2(2816, 3040));
-		BaseItem snake = ItemFactory.getItem("Snake");
-		PlaceItem(snake, new Vector2(0*32,81*32));
+		Game.snake = (Snake) ItemFactory.getItem("Snake");
+		PlaceItem(Game.snake, new Vector2(0*32,81*32));
 		BaseItem knight = ItemFactory.getItem("KnightWhoSaysNi");
 		PlaceItem(knight, new Vector2(10*32,94*32));
 	}
