@@ -47,6 +47,7 @@ public abstract class BaseItem extends BaseGamePlayObject {
 	 * @param adBarBounds
 	 */
 	public void renderAd(SpriteBatch batch, Rectangle adBarBounds) {
+		fill(Color.GREEN);
 		icon.draw(batch);
 
 		float x = adBarBounds.x + 10;
