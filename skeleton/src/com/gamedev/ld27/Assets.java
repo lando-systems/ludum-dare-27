@@ -53,6 +53,13 @@ public class Assets {
 	public static TextureRegion offensiveTower;
 	public static TextureRegion defensiveTower;
 	public static TextureRegion vegDude;
+	public static TextureRegion commonGuard;
+	public static TextureRegion smokingGuard;
+	public static TextureRegion knightOfNi;
+	public static TextureRegion dragon;
+	public static TextureRegion dragonChains;
+	public static TextureRegion dog;
+	public static TextureRegion snake;
 	
 	// offensive weapons use
 	public static TextureRegion noWeapon;
@@ -128,6 +135,13 @@ public class Assets {
 		troll 		   = itemRow[3][0];
 		rock 	       = itemRow[3][1];
 		vegDude		   = itemRow[3][2];
+		commonGuard    = itemRow[3][3];
+		smokingGuard   = itemRow[3][4];
+		knightOfNi     = itemRow[3][5];
+		dragon         = itemRow[3][6];
+		dragonChains   = itemRow[3][7];
+		dog            = itemRow[3][8];
+		snake          = itemRow[3][9];
 		
 		// stopwatch
 		stopwatchFrames = new TextureRegion[11];
