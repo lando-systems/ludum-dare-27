@@ -7,7 +7,7 @@ public class VegetarianGuy extends BaseObstacle {
 
 	public VegetarianGuy() {
 		super("Vegetarian Guy", "With the right incentive, he could be turned", GameSettings.Vegetarian);
-		this.setIcon(Assets.cardboardBox);
+		this.setIcon(Assets.vegDude);
 	}
 
 }
