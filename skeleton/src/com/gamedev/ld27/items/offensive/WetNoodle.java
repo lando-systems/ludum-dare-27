@@ -15,6 +15,7 @@ public class WetNoodle extends Weapon {
 		
 		setDefeats(GameSettings.CastleGuards);
 		Damage = 5;
+		setSound(Assets.noodleSound);
 	}
 	
 	public TextureRegion getWeaponUseImage(int direction) {
