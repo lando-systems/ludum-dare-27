@@ -20,6 +20,7 @@ import com.gamedev.ld27.gameobjects.GameObject;
 import com.gamedev.ld27.gameobjects.ItemsBar;
 import com.gamedev.ld27.gameobjects.Player;
 import com.gamedev.ld27.gameobjects.WorldMap;
+import com.gamedev.ld27.items.offensive.BagOfKittens;
 import com.gamedev.ld27.items.offensive.Hacksaw;
 import com.gamedev.ld27.items.useful.Boomerang;
 
@@ -71,7 +72,7 @@ public class PlayScreen extends GameScreen {
 		camera = new OrthographicCamera(Config.screenWidth, Config.screenHeight);
 		
 		Game.itemsBar.Add(new Boomerang());
-		Game.itemsBar.Add(new Hacksaw());
+		Game.itemsBar.Add(new BagOfKittens());
 	}
 	
 

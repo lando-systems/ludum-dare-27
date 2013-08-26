@@ -10,5 +10,6 @@ public class BagOfKittens extends RangeWeapon {
 		setIcon(Assets.bagOfKittens);
 		setAdDescription("PSA:  beware of kitten claws when they are flying at you");
 		setProperties(3, 5, 1);
+		setSound(Assets.catSound);
 	}
 }
