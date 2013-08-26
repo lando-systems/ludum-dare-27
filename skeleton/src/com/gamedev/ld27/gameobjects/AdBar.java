@@ -1,16 +1,26 @@
 package com.gamedev.ld27.gameobjects;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.gamedev.ld27.Assets;
+import com.gamedev.ld27.Config;
 import com.gamedev.ld27.items.BaseItem;
-import com.gamedev.ld27.items.offensive.*;
-import com.gamedev.ld27.items.useful.*;
-import com.gamedev.ld27.items.modifiers.*;
+import com.gamedev.ld27.items.modifiers.Mushroom;
+import com.gamedev.ld27.items.offensive.BagOfJewels;
 import com.gamedev.ld27.items.offensive.BagOfKittens;
+import com.gamedev.ld27.items.offensive.Hacksaw;
+import com.gamedev.ld27.items.offensive.OffensiveTower;
 import com.gamedev.ld27.items.offensive.WetNoodle;
+import com.gamedev.ld27.items.useful.Bacon;
+import com.gamedev.ld27.items.useful.Bombs;
+import com.gamedev.ld27.items.useful.Boomerang;
+import com.gamedev.ld27.items.useful.Flute;
+import com.gamedev.ld27.items.useful.Hammer;
+import com.gamedev.ld27.items.useful.Helmet;
+import com.gamedev.ld27.items.useful.Slinky;
 
 public class AdBar extends GameObject {
 
@@ -62,7 +72,7 @@ public class AdBar extends GameObject {
 	@Override
 	public void render(SpriteBatch batch) {
 		//TODO:   Get the ad color from the item
-		fill(Color.GREEN);
+		batch.draw(Assets.adbar, -Config.screenHalfWidth, -Config.screenHalfHeight, Config.screenWidth, adBarBounds.height);
 		
 		if((TimeUtils.millis() - lastAdTime) > 10000)
 		{

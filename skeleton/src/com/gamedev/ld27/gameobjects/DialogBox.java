@@ -20,7 +20,7 @@ public class DialogBox extends GameObject {
 		_maxText = (int)(bounds.height / Config.textHeight);
 		_maxTextWidth = (int)(bounds.width / Config.textWidth) - 2;
 		_yPosition = bounds.y + bounds.height 
-				- ((bounds.height - (_maxText*Config.textHeight))/2) - Config.textHeight;
+				- ((bounds.height - (_maxText*Config.textHeight))/2) - Config.textHeight - 16;
 	}
 	
 	@Override
