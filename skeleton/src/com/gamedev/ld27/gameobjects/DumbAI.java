@@ -34,7 +34,7 @@ public class DumbAI extends PlayerBase {
 	protected void handleInput(float delta) {
 		if (_hitPoints <= 0) {
 			if (Alive){
-				BaseItem drop = ItemFactory.GetRandomItem();
+				BaseItem drop = ItemFactory.GetRandomKillItem();
 				drop.setPosition(pos);
 				Game.gameWorld.PlaceItem(drop, pos);
 			}

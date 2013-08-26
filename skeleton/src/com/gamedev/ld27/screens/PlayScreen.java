@@ -155,6 +155,10 @@ public class PlayScreen extends GameScreen {
 			_gameObjects.add(1, new Stopwatch(new Rectangle(Game.player.pos.x, Game.player.pos.y, 32, 32)));
 		}
 
+		if (!Game.player.Alive) {
+			game.setScreen(game.screens.get("End"));
+		}
+		
 		// TODO : update all the things...
 		
 		Utils.updateInput(); // Must be called last!!!

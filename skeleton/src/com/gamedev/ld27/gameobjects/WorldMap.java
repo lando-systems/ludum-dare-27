@@ -16,7 +16,7 @@ import com.gamedev.ld27.Config;
 import com.gamedev.ld27.Game;
 import com.gamedev.ld27.items.BaseItem;
 import com.gamedev.ld27.items.ItemFactory;
-import com.gamedev.ld27.obstacle.Snake;
+import com.gamedev.ld27.obstacle.*;
 
 public class WorldMap extends GameObject {
 
@@ -34,6 +34,7 @@ public class WorldMap extends GameObject {
 	
 	public BaseItem RandomDropItem;
 	private float RandomItemTimer = 0f;
+	public boolean DrawBridgeDropped = false;
 	
 	public ArrayList<BaseItem> worldItems = new ArrayList<BaseItem>(20);
 	
@@ -78,8 +79,22 @@ public class WorldMap extends GameObject {
 		PlaceItem(hack, new Vector2(2816, 3040));
 		Game.snake = (Snake) ItemFactory.getItem("Snake");
 		PlaceItem(Game.snake, new Vector2(0*32,81*32));
-		BaseItem knight = ItemFactory.getItem("KnightWhoSaysNi");
-		PlaceItem(knight, new Vector2(10*32,94*32));
+		Game.knight = new KnightWhoSaysNi();
+		PlaceItem(Game.knight, new Vector2(10*32,94*32));
+		
+		Game.smokingGuard = new SmokingGuard();
+		PlaceItem(Game.smokingGuard, new Vector2(26*32,95*32));
+		Game.guardDog = new GuardDog();
+		PlaceItem(Game.guardDog, new Vector2(37*32,91*32));
+		Game.castleguard1 = new CastleGuard();
+		PlaceItem(Game.castleguard1, new Vector2(30*32,92*32));
+		Game.castleguard2 = new CastleGuard();
+		PlaceItem(Game.castleguard2, new Vector2(31*32,92*32));
+		Game.defensiveTower = new DefensiveTower();
+		PlaceItem(Game.defensiveTower, new Vector2(22*32,92*32));
+		Game.VegHippie = new VegetarianGuy();
+		PlaceItem(Game.defensiveTower, new Vector2(26*32,12*32));
+		
 	}
 	
 	@Override

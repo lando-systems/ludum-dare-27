@@ -7,7 +7,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Game;
-import com.gamedev.ld27.Utils;
 import com.gamedev.ld27.items.BaseItem;
 import com.gamedev.ld27.obstacle.BaseObstacle;
 import com.gamedev.ld27.obstacle.TrollBridge;
@@ -87,12 +86,26 @@ public class Player extends PlayerBase {
 	}
 	
 	protected void finishMove(int tileType) {
-		// e-w bridge
+		//TODO Add stuff so players know what they need to do
 		Vector2 PlayerTile = Game.gameWorld.mapTileFromPosition(pos);
 		if (!TrollBridge.Spawned && PlayerTile.x == 27 && PlayerTile.y == 57) {
 			_obstacle = new TrollBridge(this);
 		}
-
+		if (Game.VegHippie.Alive && PlayerTile.x == 25 && PlayerTile.y == 12){
+			// TODO Say something about the vegan guy
+		}
+		if (Game.snake.Alive && PlayerTile.x == 0 && PlayerTile.y == 80){
+			// TODO Say something about the snake in the box
+		}
+		if (!Game.gameWorld.DrawBridgeDropped && PlayerTile.x == 25 && PlayerTile.y == 83){
+			// TODO Say something about the Lever
+			Game.dialogBox.AppendText("Look at that lever on the other side of the moat!");
+		}
+		if (PlayerTile.x == 10 && PlayerTile.y == 93){
+			// TODO Say something about the Lever
+			Game.dialogBox.AppendText("I am one of the knights who says NI");
+		}
+		
 	}
 
 	public boolean canUse(BaseItem item) {

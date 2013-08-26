@@ -21,6 +21,7 @@ public class Slinky extends Weapon {
 	public void use() {
 		if (Game.gameWorld.SameTile(Game.player.getPosition(), new Vector2(800, 2656)) && Game.player.getDirection() == Direction.North){
 			Game.gameWorld.SetMapTile(23, 84, 5);
+			Game.gameWorld.DrawBridgeDropped = true;
 			Game.player.useWeapon(this);
 			Game.itemsBar.Remove(this);
 			
