@@ -1,6 +1,7 @@
 package com.gamedev.ld27.items.useful;
 
 import com.gamedev.ld27.Assets;
+import com.gamedev.ld27.Game;
 import com.gamedev.ld27.GameSettings;
 import com.gamedev.ld27.items.BaseItem;
 
@@ -12,5 +13,9 @@ public class CardboardBox extends BaseItem {
 		setIcon(Assets.cardboardBox);
 		setDefeats(GameSettings.CastleGuards);
 	}
-
+	
+	public void use() {
+		Game.player.toggleBox();
+		Game.itemsBar.Remove(this);
+	}
 }

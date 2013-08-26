@@ -13,7 +13,7 @@ public class CastleGuard extends BaseObstacle {
 
 	@Override
 	public void update(float delta) {
-		if (Game.player.isWearingDisguise()) {
+		if (Game.player.isWearingDisguise() || Game.player.isWearingBox()) {
 			this._walkable = true;
 		} else {
 			this._walkable = false;
