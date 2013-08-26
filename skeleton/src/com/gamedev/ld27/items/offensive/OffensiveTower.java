@@ -35,7 +35,7 @@ public class OffensiveTower extends BaseItem {
 	
 	public void update(float delta) {
 		if (isInWorld()) {
-			if (Game.player.isWearingHelf()) setAutoPickup(true);
+			if (Game.player.isWearingHelm()) setAutoPickup(true);
 			if (inRange()){
 				_time += delta;
 
