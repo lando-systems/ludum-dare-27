@@ -20,7 +20,7 @@ public class TrollBridge extends BaseObstacle {
 	public TrollBridge(Player player) {		
 		super("Troll Bridge", "Like a toll bridge, but with an extra R", GameSettings.TrollBridge);
 		_walkable = false;
-		trollSprite = new Sprite(Assets.playerSheet, 0, 0, 32, 32);
+		trollSprite = new Sprite(Assets.troll);
 		Vector2 position = player.getPosition().cpy();
 		if (player.getDirection() == Direction.East) {
 			position.x += 32;
