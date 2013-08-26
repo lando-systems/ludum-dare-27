@@ -2,25 +2,13 @@ package com.gamedev.ld27.items;
 
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.items.modifiers.Mushroom;
-import com.gamedev.ld27.items.offensive.BagOfJewels;
-import com.gamedev.ld27.items.offensive.BagOfKittens;
-import com.gamedev.ld27.items.offensive.Hacksaw;
-import com.gamedev.ld27.items.offensive.OffensiveTower;
-import com.gamedev.ld27.items.offensive.WetNoodle;
-import com.gamedev.ld27.items.useful.Bacon;
-import com.gamedev.ld27.items.useful.Bombs;
-import com.gamedev.ld27.items.useful.Boomerang;
-import com.gamedev.ld27.items.useful.ExplodingCigar;
-import com.gamedev.ld27.items.useful.Flute;
-import com.gamedev.ld27.items.useful.Hammer;
-import com.gamedev.ld27.items.useful.Helmet;
-import com.gamedev.ld27.items.useful.Slinky;
-import com.gamedev.ld27.obstacle.KnightWhoSaysNi;
-import com.gamedev.ld27.obstacle.Snake;
+import com.gamedev.ld27.items.offensive.*;
+import com.gamedev.ld27.items.useful.*;
+import com.gamedev.ld27.obstacle.*;
 
 public class ItemFactory {
 
-	private static String[] items = {"WetNoodle","BagOfJewels", "BagOfKittens", "Boomerang", "Hammer"};
+	private static String[] items = {"WetNoodle","BagOfJewels", "BagOfKittens", "Boomerang", "Hammer", "Bombs", "RedHerring", "Shrubbery"};
 	
 	private static String[] killItems = {"WetNoodle","BagOfJewels", "BagOfKittens", "Bacon", "Boomerang", "Hammer", "Bombs", "RedHerring", "Shrubbery"};
 	
@@ -52,6 +40,8 @@ public class ItemFactory {
 		if (name.equals("ExplodingCigar")) return new ExplodingCigar();
 		if (name.equals("Snake")) return new Snake();
 		if (name.equals("KnightWhoSaysNi")) return new KnightWhoSaysNi();
+		if (name.equals("Shrubbery")) return new Shrubbery();
+		if (name.equals("RedHerring")) return new RedHerring();
 		
 		return null;
 	}
