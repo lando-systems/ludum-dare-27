@@ -141,7 +141,15 @@ public class Player extends PlayerBase {
 		if (Game.guardDog.Alive && PlayerTile.x == 37 && PlayerTile.y == 90){
 			Game.dialogBox.AppendText("Here fishy fish fish.  Hungry doggy?");
 		}
-		
+		if (PlayerTile.x == 35 && PlayerTile.y == 94){
+			// This is in front of the dragon chains
+		}
+		if (PlayerTile.x == 34 && PlayerTile.y == 94){
+			// This is in front of the dragon 
+		}
+		if (PlayerTile.x == 37 && PlayerTile.y == 94){
+			// This is in front of the princess 
+		}
 		
 	}
 
