@@ -22,8 +22,6 @@ import com.gamedev.ld27.gameobjects.Player;
 import com.gamedev.ld27.gameobjects.Stopwatch;
 import com.gamedev.ld27.gameobjects.WorldMap;
 import com.gamedev.ld27.items.useful.Boomerang;
-import com.gamedev.ld27.items.useful.Flute;
-import com.gamedev.ld27.items.useful.Hammer;
 
 public class PlayScreen extends GameScreen {
 
@@ -70,26 +68,9 @@ public class PlayScreen extends GameScreen {
 		Game.itemsBar = new ItemsBar(new Rectangle(leftWidth, Config.screenHeight - topHeight, rightWidth, topHeight));
 		_gameObjects.add(Game.itemsBar);
 		
-
-		
 		camera = new OrthographicCamera(Config.screenWidth, Config.screenHeight);
 		
-		// test
-//		Thread t = new Thread(new Runnable() {
-//			public void run() {
-//				try {
-//					while (true) {
-//						Game.dialogBox.AppendText("Text test" + Config.rand.nextInt(30));
-//						Game.itemsBar.Add(new WetNoodle());
-//						Game.adBar.selectRandomAd();
-//						Thread.sleep(800);
-//					}
-//				} catch(Exception e) {
-//				}
-//			}
-//		});
-//		t.start();
-		TESTCODE();
+		Game.itemsBar.Add(new Boomerang());
 	}
 	
 
@@ -152,9 +133,9 @@ public class PlayScreen extends GameScreen {
 		}
 				
 		// TEMPORARY, Stopwatch testing
-		if (Gdx.input.justTouched()) {
-			_gameObjects.add(1, new Stopwatch(new Rectangle(Game.player.pos.x, Game.player.pos.y, 32, 32)));
-		}
+//		if (Gdx.input.justTouched()) {
+//			_gameObjects.add(1, new Stopwatch(new Rectangle(Game.player.pos.x, Game.player.pos.y, 32, 32)));
+//		}
 
 		if (!Game.player.Alive) {
 			game.setScreen(game.screens.get("End"));
@@ -183,32 +164,6 @@ public class PlayScreen extends GameScreen {
 	}
 
 	@Override
-	public void dispose() {
-		
-	}
-	
-	public void TESTCODE() {
-		// test
-//				Thread t = new Thread(new Runnable() {
-//					public void run() {
-//						try {
-//							while (true) {
-//								Game.dialogBox.AppendText("Text test" + Config.rand.nextInt(30));
-//								Game.itemsBar.Add(new WetNoodle());
-//								Thread.sleep(800);
-//							}
-//						} catch(Exception e) {
-//						}
-//					}
-//				});
-//				t.start();
-		
-//
-//		Game.itemsBar.Add(new Hammer());
-		Game.itemsBar.Add(new Boomerang());
-//		Game.itemsBar.Add(new Flute());
-
-
-	}
+	public void dispose() {}
 
 }

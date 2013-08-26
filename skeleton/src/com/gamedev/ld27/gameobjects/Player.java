@@ -33,7 +33,7 @@ public class Player extends PlayerBase {
 		_mushroomEffectTime = 10f;
 	}
 	
-	public boolean isWearingHelf() {
+	public boolean isWearingHelm() {
 		return _wearingHelm;
 	}
 	
@@ -51,6 +51,10 @@ public class Player extends PlayerBase {
 	
 	public void ToggleDisguise(){
 		_wearingDisguise = !_wearingDisguise;
+	}
+	
+	public boolean isWearingDisguise() {
+		return _wearingDisguise;
 	}
 	
 	public void update(float delta) {
