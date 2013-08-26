@@ -33,7 +33,6 @@ public class AdBar extends GameObject {
 		//offensive
 		items.add(new BagOfJewels());
 		items.add(new BagOfKittens());
-		items.add(new BinaryQuestion());
 		items.add(new Hacksaw());
 		items.add(new OffensiveTower());
 		items.add(new WetNoodle());
