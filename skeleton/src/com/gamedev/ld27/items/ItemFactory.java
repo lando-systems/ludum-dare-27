@@ -15,6 +15,8 @@ import com.gamedev.ld27.items.useful.Flute;
 import com.gamedev.ld27.items.useful.Hammer;
 import com.gamedev.ld27.items.useful.Helmet;
 import com.gamedev.ld27.items.useful.Slinky;
+import com.gamedev.ld27.obstacle.KnightWhoSaysNi;
+import com.gamedev.ld27.obstacle.Snake;
 
 public class ItemFactory {
 
@@ -48,6 +50,8 @@ public class ItemFactory {
 		if (name.equals("Slinky")) return new Slinky();
 		if (name.equals("Mushroom")) return new Mushroom();
 		if (name.equals("ExplodingCigar")) return new ExplodingCigar();
+		if (name.equals("Snake")) return new Snake();
+		if (name.equals("KnightWhoSaysNi")) return new KnightWhoSaysNi();
 		
 		return null;
 	}
