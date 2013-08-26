@@ -25,6 +25,8 @@ public abstract class BaseItem extends BaseGamePlayObject {
 	protected BaseItem(String name, String description) {
 		super(name, description);
 		setAutoPickup(true);
+		//default the ad description to the original description
+		setAdDescription(description);
 	}
 	
 	public boolean doesDefeat(int gameCode) {
