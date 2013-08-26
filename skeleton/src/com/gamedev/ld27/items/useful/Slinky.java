@@ -15,6 +15,7 @@ public class Slinky extends Weapon {
 		setProperties(4, 1);
 		
 		setDefeats(GameSettings.Abyss);
+		setSound(Assets.slinkySound);
 	}
 	
 	// no longer a weapon =(
@@ -24,7 +25,7 @@ public class Slinky extends Weapon {
 			Game.gameWorld.DrawBridgeDropped = true;
 			Game.player.useWeapon(this);
 			Game.itemsBar.Remove(this);
-			
+			playUseSound();			
 		}
 	}
 }
