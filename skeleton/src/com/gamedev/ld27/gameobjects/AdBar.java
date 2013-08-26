@@ -3,10 +3,12 @@ package com.gamedev.ld27.gameobjects;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.gamedev.ld27.items.BaseItem;
+import com.gamedev.ld27.items.offensive.*;
+import com.gamedev.ld27.items.useful.*;
+import com.gamedev.ld27.items.modifiers.*;
 import com.gamedev.ld27.items.offensive.BagOfKittens;
 import com.gamedev.ld27.items.offensive.WetNoodle;
 
@@ -27,10 +29,26 @@ public class AdBar extends GameObject {
 		//TODO:   for now the noodle is hard coded, need to select a random one
 		//TODO:   create a factory class for items
 		//TODO:   the randomizer should probably come out of Adbar so we can drop them into the game world too
-		_currentItem = new WetNoodle();
 		Array<BaseItem> items = new Array<BaseItem>();
-		items.add(new WetNoodle());
+		//offensive
+		items.add(new BagOfJewels());
 		items.add(new BagOfKittens());
+		items.add(new BinaryQuestion());
+		items.add(new Hacksaw());
+		items.add(new OffensiveTower());
+		items.add(new WetNoodle());
+		//useful
+		items.add(new Bacon());
+		items.add(new Bombs());
+		items.add(new Boomerang());
+		items.add(new Flute());
+		items.add(new Hammer());
+		items.add(new Helmet());
+		items.add(new Slinky());
+		
+		//modifiers
+		items.add(new Mushroom());
+		
 		_currentItem = items.random();
 		
 		if (_currentItem != null) 
@@ -47,10 +65,7 @@ public class AdBar extends GameObject {
 		//TODO:   Get the ad color from the item
 		fill(Color.GREEN);
 		
-		//determine if it's time to change the ad - every 10 seconds
-		long currentTimeSec = TimeUtils.millis() / 1000;
-		long lastAdTimeSec = lastAdTime / 1000;
-		if(currentTimeSec - lastAdTimeSec > 10)
+		if((TimeUtils.millis() - lastAdTime) > 10000)
 		{
 			selectRandomAd(batch);
 		}

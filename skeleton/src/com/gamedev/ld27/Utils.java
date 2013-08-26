@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 
 public class Utils {
 
@@ -11,6 +12,7 @@ public class Utils {
 	public static enum EStringJustify { LEFT, CENTER, RIGHT };
 	private static boolean[] lastInput = new boolean[256];
 	private static int pixelsBetweenCharacters = 2; // spacing between characters (pixels)
+	
 	public static void updateInput(){
 		for (int i =0; i < 256; i++){
 			lastInput[i] = Gdx.input.isKeyPressed(i);
@@ -40,7 +42,20 @@ public class Utils {
 //		if(wrap)
 //		{
 //			//If there is more text than will fit on one line
-//			if(text.length() * (Config.textWidth + pixelsBetweenChacters) > Config.textWidth())
+//			if(text.length() * (Config.textWidth + pixelsBetweenCharacters) > batch.g)
+//			{
+//				int breakpoint = 0;
+//				int originalLength = text.length();
+//				
+//				while(breakpoint != -1 && breakpoint < originalLength)
+//				{
+//					breakpoint = text.lastIndexOf(' ', Config.textWidth);
+//					//TODO:   build this up into a single print
+//					drawText(batch, text.substring(0, breakpoint), x, y, Config.textWidth, Config.textHeight, color, justify);
+//					y = y - Config.textHeight - pixelsBetweenCharacters;
+//					text = text.substring(breakpoint + 1);
+//				}
+//			}
 //		}
 //		else{
 //			//Just draw as much of the text as will fit
