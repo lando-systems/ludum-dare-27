@@ -52,6 +52,7 @@ public class Assets {
 	public static TextureRegion aShrubbery;	
 	public static TextureRegion offensiveTower;
 	public static TextureRegion defensiveTower;
+	public static TextureRegion vegDude;
 	
 	// offensive weapons use
 	public static TextureRegion noWeapon;
@@ -126,6 +127,7 @@ public class Assets {
 		// obstacles
 		troll 		   = itemRow[3][0];
 		rock 	       = itemRow[3][1];
+		vegDude		   = itemRow[3][2];
 		
 		// stopwatch
 		stopwatchFrames = new TextureRegion[11];
