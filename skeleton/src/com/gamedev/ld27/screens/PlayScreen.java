@@ -16,6 +16,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Skeleton;
 import com.gamedev.ld27.gameobjects.*;
 import com.gamedev.ld27.items.BaseItem;
+import com.gamedev.ld27.items.modifiers.Mushroom;
 import com.gamedev.ld27.items.offensive.*;
 import com.gamedev.ld27.items.useful.*;
 
@@ -195,6 +196,7 @@ public class PlayScreen extends GameScreen {
 
 		Game.itemsBar.Add(new Hammer());
 		Game.itemsBar.Add(new Boomerang());
+		Game.itemsBar.Add(new Mushroom());
 
 
 	}

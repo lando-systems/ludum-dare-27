@@ -76,6 +76,10 @@ public class WorldMap extends GameObject {
 		PlaceItem(OT, new Vector2(1888, 1920));
 		BaseItem hack = ItemFactory.getItem("Hacksaw");
 		PlaceItem(hack, new Vector2(2816, 3040));
+		BaseItem snake = ItemFactory.getItem("Snake");
+		PlaceItem(snake, new Vector2(0*32,81*32));
+		BaseItem knight = ItemFactory.getItem("KnightWhoSaysNi");
+		PlaceItem(knight, new Vector2(10*32,94*32));
 	}
 	
 	@Override
@@ -158,6 +162,9 @@ public class WorldMap extends GameObject {
 	
 	public void screenPositionFromWorld(Sprite tile, Vector2 pos){
 		if (pos == null || Game.player == null) return; // No idea why this sometimes happens
+		if (tile == null) {
+			tile = null;
+		}
 		tile.setPosition(_bounds.x + (_bounds.width/2.0f) - 16 - Game.player.pos.x -Config.screenHalfWidth + pos.x, _bounds.y + (_bounds.height/2.0f) - 16 - Game.player.pos.y -Config.screenHalfHeight + pos.y );
 	}
 	
