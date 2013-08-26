@@ -1,5 +1,6 @@
 package com.gamedev.ld27.items.useful;
 
+import com.badlogic.gdx.math.Vector2;
 import com.gamedev.ld27.Assets;
 import com.gamedev.ld27.Game;
 import com.gamedev.ld27.GameSettings;
@@ -24,6 +25,14 @@ public class RedHerring extends BaseItem {
 			Game.itemsBar.Add(new Eyeglasses());
 			Game.guardDog.Alive = false;
 			playUseSound();
+		} else {
+			Vector2 position = Game.player.getUsePosition();
+			if (this.PlaceOnUnWalkable || Game.gameWorld.walkable(position))
+			{
+				Game.gameWorld.PlaceItem(this, position);
+				Game.itemsBar.Remove(this);
+				playUseSound();
+			}
 		}
 	}
 
