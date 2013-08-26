@@ -17,6 +17,7 @@ public class Hammer extends Weapon {
 		setProperties(1, 3);
 		Damage = 1;
 		setDefeats(GameSettings.Rocks);
+		setSound(Assets.hammerSound);
 	}
 	
 	@Override 
