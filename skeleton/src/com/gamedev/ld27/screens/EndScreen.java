@@ -3,6 +3,7 @@ package com.gamedev.ld27.screens;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -33,7 +34,7 @@ public class EndScreen extends GameScreen {
 	public void update(float delta) {
 		super.update(delta);
 
-		if (Gdx.input.justTouched()) {
+		if (Gdx.input.justTouched() || Gdx.input.isKeyPressed(Keys.ESCAPE)) {
 			Gdx.app.exit();
 		}
 
@@ -59,11 +60,35 @@ public class EndScreen extends GameScreen {
 		float introTextHeight = 16;
 		
 		ArrayList<String> introText = new ArrayList<String>();
-		introText.add("The dragon has packed you and the princess up for snacks on its journey home");
-		introText.add("It's never wise to free a dragon.  no matter how evil the princess");
+		introText.add("Congratulations!");
+		introText.add("");
+		introText.add("");
+		introText.add("");
+		introText.add("The dragon has");
+		introText.add("");
+		introText.add("packed you and");
+		introText.add("");
+		introText.add("the princess up");
+		introText.add("");
+		introText.add("to be snacks on");
+		introText.add("");
+		introText.add("its journey home");
+		introText.add("");
+		introText.add("");
+		introText.add("");
+		introText.add("What did you");
+		introText.add("");
+		introText.add("think would happen?");
+		introText.add("");
+		introText.add("");
+		introText.add("");
+		introText.add("Dragons are dangerous");
+		introText.add("");
+		introText.add("Let this be a lesson to you!");
+
 		for(int i = 0; i < introText.size();  i++)
 		{
-			Utils.drawText(introText.get(i), introTextX, introTextY + ((introTextHeight+1) * (introText.size() - i)), 16, 16, Color.LIGHT_GRAY, EStringJustify.LEFT);
+			Utils.drawText(introText.get(i), introTextX, introTextY + ((introTextHeight+1) * (introText.size() - i)) + 64, 16, 16, Color.ORANGE, EStringJustify.LEFT);
 		}
 	}
 

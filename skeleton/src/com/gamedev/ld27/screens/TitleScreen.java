@@ -67,8 +67,24 @@ public class TitleScreen extends GameScreen {
 		introText.add("The evil princess is keeping");
 		introText.add("a magnificant wild dragon");
 		introText.add("as a pet");
-		introText.add(" ");
+		introText.add("");
 		introText.add("Only you can save it");
+		introText.add("");
+		introText.add("Some items appear randomly every 10 seconds");
+		introText.add("Others are hidden throughout the world");
+		introText.add("Its up to you to find them and use them");
+		introText.add("");
+		introText.add("");
+		introText.add("");
+		introText.add("");
+		introText.add("<WASD>   to move");
+		introText.add("<arrows> to select items");
+		introText.add("<space>  to use an item");
+		introText.add("");
+		introText.add("");
+		introText.add("");
+		introText.add("");
+		introText.add("");
 		introText.add("Press any key to begin");
 		for(int i = 0; i < introText.size();  i++)
 		{
