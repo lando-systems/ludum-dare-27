@@ -58,7 +58,7 @@ public class PlayScreen extends GameScreen {
 		
 		Game.player = new Player(new Rectangle((leftWidth/2.0f -16), y + (mapHeight/2.0f)-16, 32, 32));
 		//TODO Adjust player speed here
-		Game.player.init(900,  10, 10);
+		Game.player.init(100,  10, 10);
 		_gameObjects.add(Game.player);
 		
 		y -= dialogHeight;
