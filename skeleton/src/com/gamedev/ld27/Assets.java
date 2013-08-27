@@ -28,6 +28,7 @@ public class Assets {
 	public static Sound explodingCigarSound;
 	public static Sound niSound;
 	public static Sound aShrubberySound;
+	public static Sound barkSound;
 	
 	public static Texture spritesheet;
 	public static Texture titleBackground;
@@ -189,6 +190,7 @@ public class Assets {
 		explodingCigarSound = Gdx.audio.newSound(Gdx.files.internal("data/explosion.wav"));
 		niSound = Gdx.audio.newSound(Gdx.files.internal("data/ni.wav"));
 		aShrubberySound = Gdx.audio.newSound(Gdx.files.internal("data/ashrubbery.wav"));
+		barkSound = Gdx.audio.newSound(Gdx.files.internal("data/bark.wav"));
 	}
 
 	public static void dispose() {
