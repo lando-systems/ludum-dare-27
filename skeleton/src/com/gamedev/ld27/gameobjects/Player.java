@@ -154,6 +154,7 @@ public class Player extends PlayerBase {
 		}
 		if (Game.guardDog.Alive && PlayerTile.x == 37 && PlayerTile.y == 90){
 			Game.dialogBox.AppendText("Here fishy fish fish.  Hungry doggy?");
+			Assets.barkSound.play();
 		}
 		if (PlayerTile.x == 35 && PlayerTile.y == 94){
 			// This is in front of the dragon chains
