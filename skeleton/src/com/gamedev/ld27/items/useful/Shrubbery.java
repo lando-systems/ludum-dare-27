@@ -24,6 +24,7 @@ public class Shrubbery extends BaseItem {
 			Game.itemsBar.Remove(this);
 			Game.itemsBar.Add(new Mushroom());
 			playUseSound();
+			Assets.aShrubberySound.play();
 		} else {
 			Vector2 position = Game.player.getUsePosition();
 			if (this.PlaceOnUnWalkable || Game.gameWorld.walkable(position))

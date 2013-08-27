@@ -141,6 +141,7 @@ public class Player extends PlayerBase {
 		}
 		if (PlayerTile.x == 10 && PlayerTile.y == 93){
 			Game.dialogBox.AppendText("I am one of the knights who says NI, you must bring me... a shrubbery!");
+			Assets.niSound.play();
 		}
 		if (Game.defensiveTower.Alive && PlayerTile.x == 22 && PlayerTile.y == 91){
 			Game.dialogBox.AppendText("Even the best defense can't overcome a good offense (or insult)");
